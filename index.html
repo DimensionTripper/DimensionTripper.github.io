@@ -229,6 +229,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/Luogu P1083 借教室线段树AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DimensionTripper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DimensionTripper">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/18/Luogu P1083 借教室线段树AC/" itemprop="url">P1083 借教室线段树AC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-18T19:47:58+08:00">
+                2018-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先我们说这道题是线段树<del>（其实只是不会二分而已）</del></p>
+<p>既然是线段树，那么我们首先当然是最简单的建树</p>
+<p>建树代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a[p].left=l;</span><br><span class="line">    a[p].right=r;</span><br><span class="line">    <span class="keyword">if</span>(l==r)</span><br><span class="line">    &#123;</span><br><span class="line">        a[p].num=data[l];</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(a[p].left+a[p].right)/<span class="number">2</span>;</span><br><span class="line">    build(<span class="number">2</span>*p,l,mid);</span><br><span class="line">    build(<span class="number">2</span>*p+<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">    pushup(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处只需要查询区间最小值，所以建树是很基础的，就不多赘述了。</p>
+<p>接下来是更新</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">long</span> <span class="keyword">long</span> d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(f==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[p].left==l&amp;&amp;a[p].right==r)</span><br><span class="line">    &#123;</span><br><span class="line">        a[p].val+=d;</span><br><span class="line">        a[p].num+=d;</span><br><span class="line">        <span class="keyword">if</span>(a[p].num&lt;<span class="number">0</span>)</span><br><span class="line">            f=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    pushdown(p);</span><br><span class="line">    <span class="keyword">int</span> mid=(a[p].left+a[p].right)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(r&lt;=mid)</span><br><span class="line">        add(<span class="number">2</span>*p,l,r,d);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(l&gt;mid)</span><br><span class="line">        add(<span class="number">2</span>*p+<span class="number">1</span>,l,r,d);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        add(<span class="number">2</span>*p,l,mid,d);</span><br><span class="line">        add(<span class="number">2</span>*p+<span class="number">1</span>,mid+<span class="number">1</span>,r,d);</span><br><span class="line">    &#125;</span><br><span class="line">    pushup(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>值得注意的是此处的标记是为了优化，如果不加就会T掉一个点</p>
+<p>最后查询的时候只需查询根节点的区间最小值，只需查标记就可以了（但是先要更新）</p>
+<p>总代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> left,right;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> val,num;</span><br><span class="line">&#125;;<span class="class"><span class="keyword">struct</span> <span class="title">node</span> <span class="title">a</span>[4*<span class="title">N</span>];</span></span><br><span class="line"><span class="keyword">int</span> data[N],n,m,x,y,z,b,f;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a[p].num=min(a[<span class="number">2</span>*p].num,a[<span class="number">2</span>*p+<span class="number">1</span>].num);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a[p].val!=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        a[<span class="number">2</span>*p].val+=a[p].val;</span><br><span class="line">        a[<span class="number">2</span>*p+<span class="number">1</span>].val+=a[p].val;</span><br><span class="line">        a[<span class="number">2</span>*p].num+=a[p].val;</span><br><span class="line">        a[<span class="number">2</span>*p+<span class="number">1</span>].num+=a[p].val;</span><br><span class="line">        a[p].val=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a[p].left=l;</span><br><span class="line">    a[p].right=r;</span><br><span class="line">    <span class="keyword">if</span>(l==r)</span><br><span class="line">    &#123;</span><br><span class="line">        a[p].num=data[l];</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(a[p].left+a[p].right)/<span class="number">2</span>;</span><br><span class="line">    build(<span class="number">2</span>*p,l,mid);</span><br><span class="line">    build(<span class="number">2</span>*p+<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">    pushup(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">long</span> <span class="keyword">long</span> d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(f==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[p].left==l&amp;&amp;a[p].right==r)</span><br><span class="line">    &#123;</span><br><span class="line">        a[p].val+=d;</span><br><span class="line">        a[p].num+=d;</span><br><span class="line">        <span class="keyword">if</span>(a[p].num&lt;<span class="number">0</span>)</span><br><span class="line">            f=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    pushdown(p);</span><br><span class="line">    <span class="keyword">int</span> mid=(a[p].left+a[p].right)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(r&lt;=mid)</span><br><span class="line">        add(<span class="number">2</span>*p,l,r,d);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(l&gt;mid)</span><br><span class="line">        add(<span class="number">2</span>*p+<span class="number">1</span>,l,r,d);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        add(<span class="number">2</span>*p,l,mid,d);</span><br><span class="line">        add(<span class="number">2</span>*p+<span class="number">1</span>,mid+<span class="number">1</span>,r,d);</span><br><span class="line">    &#125;</span><br><span class="line">    pushup(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;data[i]);</span><br><span class="line">    build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">        add(<span class="number">1</span>,y,z,-x);</span><br><span class="line">        <span class="keyword">if</span>(f==<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"-1\n%d"</span>,i);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然说是卡线段树，但其实并不会（虽然3448ms跑的比较慢）</p>
+<p>总还是可以A</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/Luogu P1205 【[USACO1.2]方块转换 Transformations】/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -622,7 +754,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
