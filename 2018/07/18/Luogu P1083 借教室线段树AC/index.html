@@ -239,7 +239,7 @@
 
     
         <meta property="article:published_time" content="Wed Jul 18 2018 19:47:58 GMT+0800">
-        <meta property="article:modified_time" content="Wed Jul 18 2018 19:48:36 GMT+0800">
+        <meta property="article:modified_time" content="Thu Jul 19 2018 09:50:23 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -262,7 +262,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/07/18/Luogu P1083 借教室线段树AC/index.html",
     "headline": "P1083 借教室线段树AC",
     "datePublished": "Wed Jul 18 2018 19:47:58 GMT+0800",
-    "dateModified": "Wed Jul 18 2018 19:48:36 GMT+0800",
+    "dateModified": "Thu Jul 19 2018 09:50:23 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "DimensionTripper",
@@ -472,9 +472,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>首先我们说这道题是线段树<del>（其实只是不会二分而已）</del></p>
-<p>既然是线段树，那么我们首先当然是最简单的建树</p>
-<p>建树代码如下</p>
+        <p>首先我们说这道题是线段树<del>（其实只是不会二分而已）</del><br>既然是线段树，那么我们首先当然是最简单的建树<br>建树代码如下</p>
 <pre><code class="cpp">void build(int p,int l,int r)
 {
     a[p].left=l;
@@ -490,8 +488,7 @@
     pushup(p);
 }
 </code></pre>
-<p>此处只需要查询区间最小值，所以建树是很基础的，就不多赘述了。</p>
-<p>接下来是更新</p>
+<p>此处只需要查询区间最小值，所以建树是很基础的，就不多赘述了。<br>接下来是更新</p>
 <pre><code class="cpp">void add(int p,int l,int r,long long d)
 {
     if(f==1)
@@ -518,9 +515,7 @@
     pushup(p);
 }
 </code></pre>
-<p>值得注意的是此处的标记是为了优化，如果不加就会T掉一个点</p>
-<p>最后查询的时候只需查询根节点的区间最小值，只需查标记就可以了（但是先要更新）</p>
-<p>总代码如下：</p>
+<p>值得注意的是此处的标记是为了优化，如果不加就会T掉一个点<br>最后查询的时候只需查询根节点的区间最小值，只需查标记就可以了（但是先要更新）<br>总代码如下：</p>
 <pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
 #define N 1000010
 using namespace std;
@@ -604,8 +599,7 @@ int main()
     return 0;
 }
 </code></pre>
-<p>虽然说是卡线段树，但其实并不会（虽然3448ms跑的比较慢）</p>
-<p>总还是可以A</p>
+<p>虽然说是卡线段树，但其实并不会（虽然3448ms跑的比较慢）<br>总还是可以A</p>
 
         
     
