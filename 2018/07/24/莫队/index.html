@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            莫队 | 
+        
+        DimensionTripper
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",分块,莫队">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0080FF !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0080FF !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0080FF !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(http://b244.photo.store.qq.com/psb?/V137oTmC2F4y9l/r4Rxh8RhBW1V31QIlHMRgJiPHzQPRoCy2G76azhbCeU!/c/dPQAAAAAAAAA&amp;bo=gAc4BIAHOAQRADc!);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="DimensionTripper">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/07/24/莫队/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="DimensionTripper">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com/2018/07/24/莫队/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="莫队 | DimensionTripper">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="分块"> <meta property="og:article:tag" content="莫队"> 
+
+    
+        <meta property="article:published_time" content="Tue Jul 24 2018 09:30:52 GMT+0800">
+        <meta property="article:modified_time" content="Tue Jul 24 2018 09:32:18 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2018/07/24/莫队/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/07/24/莫队/index.html",
+    "headline": "莫队",
+    "datePublished": "Tue Jul 24 2018 09:30:52 GMT+0800",
+    "dateModified": "Tue Jul 24 2018 09:32:18 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "DimensionTripper",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.luogu.org/upload/usericon/55454.png"
+        },
+        "description": "自己选择的路，跪着也要走完"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "DimensionTripper",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",分块,莫队",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#普通莫队"><span class="post-toc-number">1.</span> <span class="post-toc-text">普通莫队</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#带修莫队"><span class="post-toc-number">2.</span> <span class="post-toc-text">带修莫队</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#树上莫队"><span class="post-toc-number">3.</span> <span class="post-toc-text">树上莫队</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                莫队
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="https://cdn.luogu.org/upload/usericon/55454.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>DimensionTripper</strong>
+        <span>7月 24, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/分块/">分块</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/莫队/">莫队</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=莫队&url=http://yoursite.com/2018/07/24/莫队/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=莫队&url=http://yoursite.com/2018/07/24/莫队/index.html&via=DimensionTripper" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/07/24/莫队/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/07/24/莫队/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=DimensionTripper&title=莫队&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/07/24/莫队/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>首先%一波莫涛队长orz</p>
+<h1 id="普通莫队"><a href="#普通莫队" class="headerlink" title="普通莫队"></a>普通莫队</h1><p>由于没有什么板子，这里放一道基础题。</p>
+<p>给定一个序列，其中有n个元素，有m次查询，每次查询要求输出区间[l,r]内出现次数不少于k的数字的个数。</p>
+<p>其实乍一看，好像就是可以用暴力做……但其实莫队本身也和暴力区别不大，基础思路就是将序列分成sqrt(n)个块，然后在每个块中进行操作。</p>
+<p>以下是代码</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define N 100000+100
+using namespace std;
+struct node
+{
+    int l,r,k,id,t;
+}ask[N];
+int n,m,blo,a[N],num[N],ans[N],cnt[N];
+inline bool cmp(node x,node y)
+{
+    if(x.t==y.t)
+        return x.r&lt;y.r;
+    return x.t&lt;y.t;
+}
+inline void add(int x)
+{
+    num[a[x]]++;
+    cnt[num[a[x]]]++;
+}
+inline void Minus(int x)
+{
+    num[a[x]]--;
+    cnt[num[a[x]]]--;
+}
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    blo=sqrt(n);
+    for(register int i=1;i&lt;=n;i++)
+        scanf(&quot;%d&quot;,&amp;a[i]);
+    for(register int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%d%d%d&quot;,&amp;ask[i].l,&amp;ask[i].r,&amp;ask[i].k);
+        ask[i].id=i;
+        ask[i].t=ask[i].l/blo;
+    }
+    sort(ask+1,ask+1+m,cmp);
+    for(register int i=ask[1].l;i&lt;=ask[1].r;i++)
+    {
+        num[a[i]]++;
+        cnt[num[a[i]]]++;
+    }
+    ans[ask[1].id]=cnt[ask[1].k];
+    int L=ask[1].l;
+    int R=ask[1].r;
+    for(register int i=2;i&lt;=m;i++)
+    {
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(L);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(R);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(L);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(R);
+            R--;
+        }
+        ans[ask[i].id]=cnt[ask[i].k];
+    }
+    for(register int i=1;i&lt;=m;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>在这个程序中，我们用num[j]来记录j的出现次数，用cnt[j]记录出现次数不小于j的数的个数，在离线操作的基础上，对每次查询依照左端点所在的块进行排序，如果所在块相同则按照右端点进行排序，可以保证L，R两个指针的跳动次数尽可能的小以降低复杂度。</p>
+<p>然后在对每次查询的更新中不断跳动L、R，拓宽区间的时候先拓宽再操作，缩小区间的时候则先操作再缩小，最终在记录下来的ans数组中查询答案。</p>
+<p>以下是几道题：</p>
+<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3809" target="_blank" rel="noopener">BZOJ 3809: Gty的二逼妹子序列</a></p>
+<p>手写AC（调了一下午的绝望）</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define N 1000000+1000
+using namespace std;
+int n,m,blo,cnt;
+int a[100005],ans[1000005];
+int bel[100005];
+int num[100005],bloans[1005];
+struct node
+{
+    int l,r,p,q,id;
+}ask[1000005];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+        return x.r&lt;y.r;
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add(int x)
+{
+    num[a[x]]++;
+    if(num[a[x]]==1)
+        bloans[bel[a[x]]]++;
+}
+inline void Minus(int x)
+{
+    num[a[x]]--;
+    if(!num[a[x]])
+        bloans[bel[a[x]]]--;
+}
+inline int query(int x,int y)
+{
+    int ret=0;
+    int L=bel[x];
+    int R=bel[y];
+    if(L==R)
+    {
+        for(register int i=x;i&lt;=y;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+    }
+    else
+    {
+        for(register int i=x;i&lt;(L+1)*blo;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+        for(register int i=R*blo;i&lt;=y;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+        for(register int i=L+1;i&lt;R;i++)
+            ret+=bloans[i];
+    }
+    return ret;
+}
+int main()
+{
+    n=read();
+    m=read();
+    blo=sqrt(n);
+    for(register int i=1;i&lt;=n;i++)
+    {
+        a[i]=read();
+        bel[i]=i/blo;
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        ask[i].l=read();
+        ask[i].r=read();
+        ask[i].p=read();
+        ask[i].q=read();
+        ask[i].id=i;
+    }
+    sort(ask+1,ask+1+m,cmp);
+    int L=1;
+    int R=0;
+    for(register int i=1;i&lt;=m;i++)
+    {
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(L);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(R);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(L);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(R);
+            R--;
+        }
+        ans[ask[i].id]=query(ask[i].p,ask[i].q);
+    }
+    for(register int i=1;i&lt;=m;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>这道题说起来难度其实不大，一个值域分块的莫队保证m√n的复杂度完全没压力，就是这个28Mb的空间稍微有点坑。</p>
+<p><a href="https://www.luogu.org/problemnew/show/P4137" target="_blank" rel="noopener"> P4137 Rmq Problem / mex</a></p>
+<p>手写AC（一遍A O2-1296ms）</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define N 200000+1000
+using namespace std;
+struct node
+{
+    int l,r,id;
+}ask[N];
+int n,m,blo,now,a[N],num[N],ans[N],bel[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+        return x.r&lt;y.r;
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add(int x)
+{
+    if(a[x]&gt;n)
+        return;
+    num[a[x]]++;
+    if(a[x]==now)
+    {
+        while(num[now])
+            now++;
+    }
+}
+inline void Minus(int x)
+{
+    if(a[x]&gt;n)
+        return;
+    num[a[x]]--;
+    if(a[x]&lt;now)
+        if(!num[a[x]])
+            now=a[x];
+}
+int main()
+{
+    n=read();
+    m=read();
+    blo=sqrt(n);
+    for(register int i=1;i&lt;=n;i++)
+    {
+        a[i]=read();
+        bel[i]=i/blo;
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        ask[i].l=read();
+        ask[i].r=read();
+        ask[i].id=i;
+    }
+    sort(ask+1,ask+1+m,cmp);
+    int L=1;
+    int R=0;
+    for(register int i=1;i&lt;=m;i++)
+    {
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(L);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(R);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(L);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(R);
+            R--;
+        }
+        ans[ask[i].id]=now;
+    }
+    for(register int i=1;i&lt;=m;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>仍旧是对0到n进行分块，因为最坏情况是a[1]~a[n]对应0~n-1。所以就在上一题的基础上修改一下更新操作，在每次更新的时候与当前的最小值进行比较，如果最小值数量增加就寻找新的最优解，如果有新的解出现并且优于最优解就更新最优解。</p>
+<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3236" target="_blank" rel="noopener">BZOJ 3236: [AHOI2013]作业</a></p>
+<p>手写AC</p>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 1000000+1000
+using namespace std;
+int n,m,blo,cnt;
+int a[100005],ans[1000005][2];
+int bel[100005];
+int num[100005],bloans[1005],bloans1[1005];
+struct node
+{
+    int l,r,p,q,id;
+}ask[1000005];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+        return x.r&lt;y.r;
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add(int x)
+{
+    num[a[x]]++;
+    bloans1[bel[a[x]]]++;
+    if(num[a[x]]==1)
+        bloans[bel[a[x]]]++;
+}
+inline void Minus(int x)
+{
+    num[a[x]]--;
+    bloans1[bel[a[x]]]--;
+    if(!num[a[x]])
+        bloans[bel[a[x]]]--;
+}
+inline int query(int x,int y)
+{
+    int ret=0;
+    int L=bel[x];
+    int R=bel[y];
+    if(L==R)
+    {
+        for(register int i=x;i&lt;=y;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+    }
+    else
+    {
+        for(register int i=x;i&lt;(L+1)*blo;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+        for(register int i=R*blo;i&lt;=y;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+        for(register int i=L+1;i&lt;R;i++)
+            ret+=bloans[i];
+    }
+    return ret;
+}
+inline int Query(int x,int y)
+{
+    int ret=0;
+    int L=bel[x];
+    int R=bel[y];
+    if(L==R)
+    {
+        for(register int i=x;i&lt;=y;i++)
+            ret+=num[i];
+    }
+    else
+    {
+        for(register int i=x;i&lt;(L+1)*blo;i++)
+            ret+=num[i];
+        for(register int i=R*blo;i&lt;=y;i++)
+            ret+=num[i];
+        for(register int i=L+1;i&lt;R;i++)
+            ret+=bloans1[i];
+    }
+    return ret;
+}
+int main()
+{
+    n=read();
+    m=read();
+    blo=sqrt(n);
+    for(register int i=1;i&lt;=n;i++)
+    {
+        a[i]=read();
+        bel[i]=i/blo;
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        ask[i].l=read();
+        ask[i].r=read();
+        ask[i].p=read();
+        ask[i].q=read();
+        ask[i].id=i;
+    }
+    sort(ask+1,ask+1+m,cmp);
+    int L=1;
+    int R=0;
+    for(register int i=1;i&lt;=m;i++)
+    {
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(L);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(R);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(L);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(R);
+            R--;
+        }
+        ans[ask[i].id][0]=query(ask[i].p,ask[i].q);
+        ans[ask[i].id][1]=Query(ask[i].p,ask[i].q);
+    }
+    for(register int i=1;i&lt;=m;i++)
+        printf(&quot;%d %d\n&quot;,ans[i][1],ans[i][0]);
+    return 0;
+}
+</code></pre><p>几乎无思维难度，在BZOJ 3809的基础上加一个查询数量的函数就行了</p>
+<h1 id="带修莫队"><a href="#带修莫队" class="headerlink" title="带修莫队"></a>带修莫队</h1><p><a href="https://www.luogu.org/recordnew/show/6262891" target="_blank" rel="noopener">P1903 [国家集训队]数颜色</a></p>
+<p>手写AC</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define N 100000+100
+using namespace std;
+int n,m,blo,cnt,t,Time;
+int a[N],ans[N],bel[N],num[N],bloans[N],now[N];
+struct node
+{
+    int l,r,tim,id;
+}ask[N];
+struct change
+{
+    int pos,New,Old;
+}chg[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+    {
+        if(bel[x.r]==bel[y.r])
+            return x.tim&lt;y.tim;
+        return bel[x.r]&lt;bel[y.r];
+    }
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add(int x)
+{
+    num[x]++;
+    if(num[x]==1)
+        cnt++;
+}
+inline void Minus(int x)
+{
+    num[x]--;
+    if(!num[x])
+        cnt--;
+}
+inline void Change(int l,int r,int x,int d)
+{
+    if(l&lt;=x&amp;&amp;x&lt;=r)
+    {
+        add(d);
+        Minus(a[x]);
+    }
+    a[x]=d;
+}
+int main()
+{
+    n=read();
+    m=read();
+    blo=pow(n,2.0/3);
+    for(register int i=1;i&lt;=n;i++)
+    {
+        a[i]=read();
+        now[i]=a[i];
+        bel[i]=i/blo;
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        char ch;
+        cin&gt;&gt;ch;
+        if(ch==&#39;Q&#39;)
+        {
+            ask[++t].l=read();
+            ask[t].r=read();
+            ask[t].tim=Time;
+            ask[t].id=t;
+        }
+        else
+        {
+            chg[++Time].pos=read();
+            chg[Time].New=read();
+            chg[Time].Old=now[chg[Time].pos];
+            now[chg[Time].pos]=chg[Time].New;
+        }
+    }
+    sort(ask+1,ask+1+t,cmp);
+    int L=1;
+    int R=0;
+    int T=0;
+    for(register int i=1;i&lt;=t;i++)
+    {
+        while(T&lt;ask[i].tim)
+        {
+            T++;
+            Change(L,R,chg[T].pos,chg[T].New);
+        }
+        while(T&gt;ask[i].tim)
+        {
+            Change(L,R,chg[T].pos,chg[T].Old);
+            T--;
+        }
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(a[L]);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(a[R]);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(a[L]);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(a[R]);
+            R--;
+        }
+        ans[ask[i].id]=cnt;
+    }
+    for(register int i=1;i&lt;=t;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>就难度系数而言其实并不算高，作为带修莫队的板子题来说挺不错的。</p>
+<p>那么以下是带修莫队的思路。</p>
+<p>如果我们把每次修改当作一次时间的推移，然后就只需要在查询中加入一个新的关键字Tim，也就是时间，仅在两个询问的l和r都在同一分块中的情况才依照Tim进行排序。</p>
+<p>然后在操作中进行L和R的跳动之前先进行时间指针T的跳动，使时间到达当前查询的时间点。由于时间需要不停的跳动，所以对于每次修改操作要另开一个结构体记录修改位置（pos）、修改后的值（New）和修改前的值（Old），这个Old在后面时间倒流的时候会有用。</p>
+<p>对于每次T的跳动进行一次Change操作，时间增加就将指定位置的值修改为T++后的修改操作的New值，时间倒流就先将指定位置的值修改为T时修改操作的Old值（即还原），然后就没什么区别了。</p>
+<p>对于Change操作也比较简单，如果当前位置在[L,R]区间中就将修改后的值Add进去，然后将原位置上的值Minus掉，如果不在区间内就直接将原位置数据赋为修改后的值，因为以后指针跳动的时候会自行更新的。</p>
+<p>稍微扯两句，带修莫队的复杂度经过某些dalao的证明后确定为n^(5/3),此时分为n^(1/3)块，每块有n^(2/3)个元素，所以blo=pow(n,2.0/3)。</p>
+<h1 id="树上莫队"><a href="#树上莫队" class="headerlink" title="树上莫队"></a>树上莫队</h1><p>例题：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=4129" target="_blank" rel="noopener">BZOJ 4129: Haruna’s Breakfast</a><del>（小天使！！！！！！！！）</del></p>
+<p>什么，树上能跑莫队，还带修改？那岂不是要爆裂吗？</p>
+<p>这是我第一次听说树上莫队时的想法。</p>
+<p>不过我们知道对于一棵树，还有DFS序这种美妙的东西，这样的话树不就变成序列了吗？</p>
+<p>比如说对于下面一棵树：</p>
+<p><img src="http://b117.photo.store.qq.com/psb?/V137oTmC2F4y9l/rCZWGAv7jto.1koazTeSrgBU4uyU.JxZDsnZZbZdt74!/c/dHUAAAAAAAAA&amp;bo=mwEtAZsBLQEBACc!" alt=""></p>
+<p>它的DFS序就是：1 2 4 4 5 5 2 3 6 6 7 7 3 1</p>
+<p>然后求j,k两点之间的链上的mex值。我们用in[i]记录i第一次出现的位置，用out[i]记录i最后出现的位置。</p>
+<p>首先假设j是k的祖先，那么我们可以发现[j,k]间的信息就存在in[j],in[k]之间或out[j],out[k]之间，对于出现两次的数我们就忽略掉好了。</p>
+<p>那么如果j不是k的祖先呢？我们会发现[j,k]之间的信息存在了in[j],out[k]之间或者out[j],in[k]之间，同样我们忽略出现了两次的数。但是如果仔细看一下就会发现，j、k的LCA好像不见了，那么我们只要特殊处理一下LCA就OK了。</p>
+<p>然后就可以用序列上的莫队来处理了DA☆ZE！（不过代码比较长就是了）</p>
+<p>以下是AC代码（我可是自带大常数和大空间的男人）</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define N 500000+100
+using namespace std;
+int n,m,blo,cnt,Time,tot,cur;
+int a[N],in[N],dfn[N],ans[N],bel[N],num[N],out[N],now[N];
+int siz[N],deep[N],fa[N],son[N],p[N],top[N];
+short tag[N];
+struct node
+{
+    int l,r,tim,id,Lca;
+}ask[N];
+struct change
+{
+    int pos,New,Old;
+}chg[N];
+struct edge
+{
+    int to,nxt;
+}e[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+    {
+        if(bel[x.r]==bel[y.r])
+            return x.tim&lt;y.tim;
+        return bel[x.r]&lt;bel[y.r];
+    }
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add_edge(int u,int v)
+{
+    e[++tot]=(edge){v,p[u]};
+    p[u]=tot;
+}
+inline void dfs(int x)
+{
+    siz[x]++;
+    dfn[++dfn[0]]=x;
+    in[x]=dfn[0];
+    int f=-1;
+    for(int i=p[x];i;i=e[i].nxt)
+    {
+        int v=e[i].to;
+        if(v==fa[x])
+            continue;
+        deep[v]=deep[x]+1;
+        fa[v]=x;
+        dfs(v);
+        siz[x]+=siz[v];
+        if(siz[v]&gt;f)
+        {
+            son[x]=v;
+            f=siz[v];
+        }
+    }
+    if(f==-1)
+        son[x]=x;
+    dfn[++dfn[0]]=x;
+    out[x]=dfn[0];
+}
+inline int LCA(int x,int y)
+{
+    while(top[x]!=top[y])
+    {
+        if(deep[top[x]]&lt;deep[top[y]])
+            swap(x,y);
+        x=fa[top[x]];
+    }
+    if(deep[x]&gt;deep[y])
+        swap(x,y);
+    return x;
+}
+inline void choose(int x,int y,int cur)
+{
+    int l=0,r=0,lca=LCA(x,y);
+    if(x==lca||y==lca)
+    {
+        if(abs(in[x]-in[y])&lt;abs(out[x]-out[y]))
+            l=min(in[x],in[y]),r=max(in[x],in[y]);
+        else
+            l=min(out[x],out[y]),r=max(out[x],out[y]);
+        lca=0;
+    }
+    else
+    {
+        if(abs(in[x]-out[y])&lt;abs(out[x]-in[y]))
+            l=min(in[x],out[y]),r=max(in[x],out[y]);
+        else
+            l=min(out[x],in[y]),r=max(out[x],in[y]);
+    }
+    ask[cur]=(node){l,r,Time,cur,lca};
+}
+inline void add(int x)
+{
+    if(x&gt;n)
+        return;
+    num[x]++;
+    if(x==cnt)
+    {
+        while(num[cnt])
+            cnt++;
+    }
+}
+inline void Minus(int x)
+{
+    if(x&gt;n)
+        return;
+    num[x]--;
+    if(x&lt;cnt)
+        if(!num[x])
+            cnt=x;
+}
+inline void Work(int x)
+{
+    if(tag[x])
+        Minus(a[x]);
+    else
+        add(a[x]);
+    tag[x]^=1;
+}
+inline void Change(int pos,int x)
+{
+    if(tag[pos])
+    {
+        Work(pos);
+        a[pos]=x;
+        Work(pos);
+    }
+    else
+        a[pos]=x;
+}
+int main()
+{
+    n=read(),m=read();
+    blo=pow(n&lt;&lt;1,2.0/3)*0.7;
+    for(register int i=1;i&lt;=n;i++)
+        now[i]=a[i]=read();
+    for(register int i=1;i&lt;n;i++)
+    {
+        int x,y;
+        x=read(),y=read();
+        add_edge(x,y),add_edge(y,x);
+    }
+    dfs(1);
+    for(register int i=1;i&lt;=dfn[0];i++)
+    {
+        bel[i]=i/blo;
+        if(top[dfn[i]])
+            continue;
+        else if(dfn[i]==son[fa[dfn[i]]])
+            top[dfn[i]]=top[fa[dfn[i]]];
+        else
+            top[dfn[i]]=dfn[i];
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        int c=read();
+        if(c)
+        {
+            int x=read(),y=read();
+            choose(x,y,++cur);
+        }
+        else
+        {
+            int x=read(),y=read();
+            chg[++Time]=(change){x,y,now[x]};
+            now[x]=y;
+        }
+    }
+    sort(ask+1,ask+1+cur,cmp);
+    int L=1,R=0,T=0;
+    for(register int i=1;i&lt;=cur;i++)
+    {
+        while(T&lt;ask[i].tim)
+        {
+            T++;
+            Change(chg[T].pos,chg[T].New);
+        }
+        while(T&gt;ask[i].tim)
+        {
+            Change(chg[T].pos,chg[T].Old);
+            T--;
+        }
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            Work(dfn[L]);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            Work(dfn[R]);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Work(dfn[L]);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Work(dfn[R]);
+            R--;
+        }
+        if(ask[i].Lca)
+            Work(ask[i].Lca);
+        ans[ask[i].id]=cnt;
+        if(ask[i].Lca)
+            Work(ask[i].Lca);
+    }
+    for(register int i=1;i&lt;=cur;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>这里LCA我用的树剖（当然倍增也可以啦</p>
+<p>顺便注明一下，那个tag数组是用来记录某个位置在区间里出现了几次，因为不论是0次还是2次都是不计入答案的，所以只要把2次当0次看就可以避免很多复杂的讨论了。然后修改的时候tag是0就加，tag是1就减，最后要把tag进行变换（即0-&gt;1，1-&gt;0）。</p>
+<p>要说修改与mex这两个的话，还是看上面的讲解吧。</p>
+<p>再说起来，其实树上莫队可以在树上分块的基础上搞，但是我太蒻了，看不懂dalao的讲解。</p>
+<p>还有一题：<a href="https://www.luogu.org/problemnew/show/P4074#sub" target="_blank" rel="noopener">P4074 [WC2013]糖果公园</a></p>
+<p>几乎就是板子吧，具体自己看代码（其实没啥差别）</p>
+<p>手写AC（O2-6s，莫名其妙就Rank 5了）</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+#define N 500000+100
+using namespace std;
+int n,m,blo,Time,tot,cur,q;
+int a[N],in[N],dfn[N],bel[N],num[N],out[N],now[N];
+int siz[N],deep[N],fa[N],son[N],p[N],top[N];
+short tag[N];
+long long Ans,ans[N],W[N],V[N];
+struct node
+{
+    int l,r,tim,id,Lca;
+}ask[N];
+struct change
+{
+    int pos,New,Old;
+}chg[N];
+struct edge
+{
+    int to,nxt;
+}e[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+    {
+        if(bel[x.r]==bel[y.r])
+            return x.tim&lt;y.tim;
+        return bel[x.r]&lt;bel[y.r];
+    }
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add_edge(int u,int v)
+{
+    e[++tot]=(edge){v,p[u]};
+    p[u]=tot;
+}
+inline void dfs(int x)
+{
+    siz[x]++;
+    dfn[++dfn[0]]=x;
+    in[x]=dfn[0];
+    int f=-1;
+    for(int i=p[x];i;i=e[i].nxt)
+    {
+        int v=e[i].to;
+        if(v==fa[x])
+            continue;
+        deep[v]=deep[x]+1;
+        fa[v]=x;
+        dfs(v);
+        siz[x]+=siz[v];
+        if(siz[v]&gt;f)
+        {
+            son[x]=v;
+            f=siz[v];
+        }
+    }
+    if(f==-1)
+        son[x]=x;
+    dfn[++dfn[0]]=x;
+    out[x]=dfn[0];
+}
+inline int LCA(int x,int y)
+{
+    while(top[x]!=top[y])
+    {
+        if(deep[top[x]]&lt;deep[top[y]])
+            swap(x,y);
+        x=fa[top[x]];
+    }
+    if(deep[x]&gt;deep[y])
+        swap(x,y);
+    return x;
+}
+inline void choose(int x,int y,int cur)
+{
+    int l=0,r=0,lca=LCA(x,y);
+    if(x==lca||y==lca)
+    {
+        if(abs(in[x]-in[y])&lt;abs(out[x]-out[y]))
+            l=min(in[x],in[y]),r=max(in[x],in[y]);
+        else
+            l=min(out[x],out[y]),r=max(out[x],out[y]);
+        lca=0;
+    }
+    else
+    {
+        if(abs(in[x]-out[y])&lt;abs(out[x]-in[y]))
+            l=min(in[x],out[y]),r=max(in[x],out[y]);
+        else
+            l=min(out[x],in[y]),r=max(out[x],in[y]);
+    }
+    ask[cur]=(node){l,r,Time,cur,lca};
+}
+inline void add(int x)
+{
+    num[x]++;
+    Ans+=W[num[x]]*V[x];
+}
+inline void Minus(int x)
+{
+    Ans-=W[num[x]]*V[x];
+    num[x]--;
+}
+inline void Work(int x)
+{
+    if(tag[x])
+        Minus(a[x]);
+    else
+        add(a[x]);
+    tag[x]^=1;
+}
+inline void Change(int pos,int x)
+{
+    if(tag[pos])
+    {
+        Work(pos);
+        a[pos]=x;
+        Work(pos);
+    }
+    else
+        a[pos]=x;
+}
+int main()
+{
+    n=read(),m=read(),q=read();
+    blo=pow(n&lt;&lt;1,2.0/3)*0.7;
+    for(register int i=1;i&lt;=m;i++)
+        V[i]=read();
+    for(register int i=1;i&lt;=n;i++)
+        W[i]=read();
+    for(register int i=1;i&lt;n;i++)
+    {
+        int x,y;
+        x=read(),y=read();
+        add_edge(x,y),add_edge(y,x);
+    }
+    dfs(1);
+    for(register int i=1;i&lt;=n;i++)
+        now[i]=a[i]=read();
+    for(register int i=1;i&lt;=dfn[0];i++)
+    {
+        bel[i]=i/blo;
+        if(top[dfn[i]])
+            continue;
+        else if(dfn[i]==son[fa[dfn[i]]])
+            top[dfn[i]]=top[fa[dfn[i]]];
+        else
+            top[dfn[i]]=dfn[i];
+    }
+    for(register int i=1;i&lt;=q;i++)
+    {
+        int c=read();
+        if(c)
+        {
+            int x=read(),y=read();
+            choose(x,y,++cur);
+        }
+        else
+        {
+            int x=read(),y=read();
+            chg[++Time]=(change){x,y,now[x]};
+            now[x]=y;
+        }
+    }
+    sort(ask+1,ask+1+cur,cmp);
+    int L=1,R=0,T=0;
+    for(register int i=1;i&lt;=cur;i++)
+    {
+        while(T&lt;ask[i].tim)
+        {
+            T++;
+            Change(chg[T].pos,chg[T].New);
+        }
+        while(T&gt;ask[i].tim)
+        {
+            Change(chg[T].pos,chg[T].Old);
+            T--;
+        }
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            Work(dfn[L]);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            Work(dfn[R]);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Work(dfn[L]);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Work(dfn[R]);
+            R--;
+        }
+        if(ask[i].Lca)
+            Work(ask[i].Lca);
+        ans[ask[i].id]=Ans;
+        if(ask[i].Lca)
+            Work(ask[i].Lca);
+    }
+    for(register int i=1;i&lt;=cur;i++)
+        printf(&quot;%lld\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>以上就是莫队——一个优雅的暴力算法</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/07/24/网络最大流/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/07/24/可持久化线段树（主席树）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(http://b289.photo.store.qq.com/psb?/V137oTmC2F4y9l/oZNFIxX4ZCtS9FVnsdXcov2jp11l5N7T1gKXBgGhwbg!/c/dCEBAAAAAAAA&amp;bo=bAFsAWwBbAEBACc!);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="https://cdn.luogu.org/upload/usericon/55454.png" alt="DimensionTripper's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        kancolle233@yahoo.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="https://www.yahoo.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">18</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/学习笔记/">学习笔记<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/瞎jb搞/">瞎jb搞<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/祭/">祭<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/题解/">题解<span class="sidebar_archives-count">8</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">18</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/DimensionTripper" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+        <a href="https://space.bilibili.com/10850777/#/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-bilibili">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>DimensionTripper
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
