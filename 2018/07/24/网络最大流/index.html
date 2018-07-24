@@ -421,101 +421,7 @@
 <p>这样就可以得到2的正确答案了。</p>
 <p>那么这样为什么是对的呢？很简单，走2-1的时候就相当于把1-2这条边已经走的退了回去，这样就又变成了S-1-T和S-2-T两条路了。这样就给了程序一个反悔的机会。</p>
 <p>然后就完了DA☆ZE！</p>
-<p>贴代码（236ms）：</p>
-<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#define N 200000+110
-using namespace std;
-int n,m,S,T,cnt,ans;
-int head[N],q[N],pre[N];
-bool vis[N];
-struct edge
-{
-    int fr,to,nxt,weigh;
-}e[N];
-inline int read()
-{
-    int x=0,f=1;
-    char ch=getchar();
-    while(ch&lt;&#39;0&#39;||ch&gt;&#39;9&#39;)
-    {
-        if(ch==&#39;-&#39;)
-            f=-1;
-        ch=getchar();
-    }
-    while(ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
-    {
-        x=x*10+ch-&#39;0&#39;;
-        ch=getchar();
-    }
-    return x*f;
-}
-inline int add(int u,int v,int w)
-{
-    e[cnt]=(edge){u,v,head[u],w};
-    head[u]=cnt++;
-}
-inline bool bfs(int s,int t)
-{
-    memset(vis,0,sizeof(vis));
-    memset(pre,-1,sizeof(pre));
-    int fr=1,tl=0;
-    q[1]=s,vis[s]=1;
-    while(tl&lt;fr)
-    {
-        int u=q[++tl];
-        for(register int i=head[u];i!=-1;i=e[i].nxt)
-        {
-            int v=e[i].to;
-            if(!vis[v]&amp;&amp;e[i].weigh&gt;0)
-            {
-                pre[v]=i;
-                vis[v]=1;
-                if(v==t)
-                    return true;
-                q[++fr]=v;
-            }
-        }
-    }
-    return false;
-}
-inline int EK(int s,int t)
-{
-    int mn;
-    while(bfs(s,t))
-    {
-        mn=0x7fffffff;
-        int i=pre[t];
-        while(i!=-1)
-        {
-            mn=min(mn,e[i].weigh);
-            i=pre[e[i].fr];
-        }
-        i=pre[t];
-        while(i!=-1)
-        {
-            e[i].weigh-=mn;
-            e[i^1].weigh+=mn;
-            i=pre[e[i].fr];
-        }
-        ans+=mn;
-    }
-    return ans;
-}
-int main()
-{
-    memset(head,-1,sizeof(head));
-    n=read(),m=read(),S=read(),T=read();
-    for(register int i=1;i&lt;=m;i++)
-    {
-        int u,v,w;
-        u=read(),v=read(),w=read();
-        add(u,v,w);
-        add(v,u,0);
-    }
-    printf(&quot;%d&quot;,EK(S,T));
-    return 0;
-}
-</code></pre>
+<p>贴代码（236ms）：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200000+110</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,S,T,cnt,ans;</span><br><span class="line"><span class="keyword">int</span> head[N],q[N],pre[N];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> fr,to,nxt,weigh;</span><br><span class="line">&#125;e[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ch==<span class="string">'-'</span>)</span><br><span class="line">            f=<span class="number">-1</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[cnt]=(edge)&#123;u,v,head[u],w&#125;;</span><br><span class="line">    head[u]=cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">    <span class="built_in">memset</span>(pre,<span class="number">-1</span>,<span class="keyword">sizeof</span>(pre));</span><br><span class="line">    <span class="keyword">int</span> fr=<span class="number">1</span>,tl=<span class="number">0</span>;</span><br><span class="line">    q[<span class="number">1</span>]=s,vis[s]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(tl&lt;fr)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=q[++tl];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=head[u];i!=<span class="number">-1</span>;i=e[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v=e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(!vis[v]&amp;&amp;e[i].weigh&gt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                pre[v]=i;</span><br><span class="line">                vis[v]=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(v==t)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                q[++fr]=v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">EK</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mn;</span><br><span class="line">    <span class="keyword">while</span>(bfs(s,t))</span><br><span class="line">    &#123;</span><br><span class="line">        mn=<span class="number">0x7fffffff</span>;</span><br><span class="line">        <span class="keyword">int</span> i=pre[t];</span><br><span class="line">        <span class="keyword">while</span>(i!=<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            mn=min(mn,e[i].weigh);</span><br><span class="line">            i=pre[e[i].fr];</span><br><span class="line">        &#125;</span><br><span class="line">        i=pre[t];</span><br><span class="line">        <span class="keyword">while</span>(i!=<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            e[i].weigh-=mn;</span><br><span class="line">            e[i^<span class="number">1</span>].weigh+=mn;</span><br><span class="line">            i=pre[e[i].fr];</span><br><span class="line">        &#125;</span><br><span class="line">        ans+=mn;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">    n=read(),m=read(),S=read(),T=read();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u,v,w;</span><br><span class="line">        u=read(),v=read(),w=read();</span><br><span class="line">        add(u,v,w);</span><br><span class="line">        add(v,u,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,EK(S,T));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>pre数组的作用是记录到达每个顶点的边。</p>
 <p>【注明】本段讲解部分引用<a href="http://blog.sina.com.cn/s/blog_6cf509db0100uy5n.html" target="_blank" rel="noopener">最大流模板【EdmondsKarp算法，简称EK算法，O(m^2n)】</a></p>
 <hr>
@@ -533,212 +439,12 @@ int main()
 <p>然后很明显1和2这两个点在同一深度，它们在DFS中是无法互相搜到的。</p>
 <p>至于BFS过程本身的变化其实不是特别大，对于一个点v进队的条件，不过是从EK的“当前边的残量大于0”变成了“当前边的残量大于0且v点未分配深度”而已，如果v没有分配深度，就把它的深度赋为u的深度+1。</p>
 <p>然后在Dinic的主过程中就只需要不停的寻找增广路知道再也找不到为止。</p>
-<p>以下是代码（手写520ms）：</p>
-<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#define N 200000+110
-#define inf 0x7fffffff
-using namespace std;
-int n,m,S,T,cnt;
-int deep[N/10],head[N],q[N/10];
-struct edge
-{
-    int to,nxt,weigh;
-}e[N];
-inline int read()
-{
-    int x=0,f=1;
-    char ch=getchar();
-    while(ch&lt;&#39;0&#39;||ch&gt;&#39;9&#39;)
-    {
-        if(ch==&#39;-&#39;)
-            f=-1;
-        ch=getchar();
-    }
-    while(ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
-    {
-        x=x*10+ch-&#39;0&#39;;
-        ch=getchar();
-    }
-    return x*f;
-}
-inline void add(int u,int v,int w)
-{
-    e[cnt]=(edge){v,head[u],w};
-    head[u]=cnt++;
-}
-inline bool bfs(int s,int t)
-{
-    int fr=1,tl=0;
-    memset(deep,0,sizeof(deep));
-    deep[s]=1;
-    q[1]=s;
-    while(tl&lt;fr)
-    {
-        int u=q[++tl];
-        for(register int i=head[u];i!=-1;i=e[i].nxt)
-        {
-            int v=e[i].to;
-            if(deep[v]==0&amp;&amp;e[i].weigh&gt;0)
-            {
-                deep[v]=deep[u]+1;
-                q[++fr]=v;
-            }
-        }
-    }
-    if(!deep[t])
-        return 0;
-    return 1;
-}
-inline int dfs(int u,int t,int dist)
-{
-    if(u==t)
-        return dist;
-    for(register int i=head[u];i!=-1;i=e[i].nxt)
-    {
-        int v=e[i].to;
-        if(deep[v]==deep[u]+1&amp;&amp;e[i].weigh&gt;0)
-        {
-            int dis=dfs(v,t,min(dist,e[i].weigh));
-            if(dis&gt;0)
-            {
-                e[i].weigh-=dis;
-                e[i^1].weigh+=dis;
-                return dis;
-            }
-        }
-    }
-    return 0;
-}
-inline int Dinic(int s,int t)
-{
-    int Ans=0;
-    while(bfs(s,t))
-    {
-        while(int delta=dfs(s,t,inf))
-            Ans+=delta;
-    }
-    return Ans;
-}
-int main()
-{
-    memset(head,-1,sizeof(head));
-    n=read(),m=read(),S=read(),T=read();
-    for(register int i=1;i&lt;=m;i++)
-    {
-        int u=read(),v=read(),w=read();
-        add(u,v,w);
-        add(v,u,0);
-    }
-    printf(&quot;%d&quot;,Dinic(S,T));
-    return 0;
-}
-</code></pre>
+<p>以下是代码（手写520ms）：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200000+110</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x7fffffff</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,S,T,cnt;</span><br><span class="line"><span class="keyword">int</span> deep[N/<span class="number">10</span>],head[N],q[N/<span class="number">10</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,nxt,weigh;</span><br><span class="line">&#125;e[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ch==<span class="string">'-'</span>)</span><br><span class="line">            f=<span class="number">-1</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[cnt]=(edge)&#123;v,head[u],w&#125;;</span><br><span class="line">    head[u]=cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fr=<span class="number">1</span>,tl=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(deep,<span class="number">0</span>,<span class="keyword">sizeof</span>(deep));</span><br><span class="line">    deep[s]=<span class="number">1</span>;</span><br><span class="line">    q[<span class="number">1</span>]=s;</span><br><span class="line">    <span class="keyword">while</span>(tl&lt;fr)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=q[++tl];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=head[u];i!=<span class="number">-1</span>;i=e[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v=e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(deep[v]==<span class="number">0</span>&amp;&amp;e[i].weigh&gt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                deep[v]=deep[u]+<span class="number">1</span>;</span><br><span class="line">                q[++fr]=v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!deep[t])</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> t,<span class="keyword">int</span> dist)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(u==t)</span><br><span class="line">        <span class="keyword">return</span> dist;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=head[u];i!=<span class="number">-1</span>;i=e[i].nxt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v=e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(deep[v]==deep[u]+<span class="number">1</span>&amp;&amp;e[i].weigh&gt;<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> dis=dfs(v,t,min(dist,e[i].weigh));</span><br><span class="line">            <span class="keyword">if</span>(dis&gt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                e[i].weigh-=dis;</span><br><span class="line">                e[i^<span class="number">1</span>].weigh+=dis;</span><br><span class="line">                <span class="keyword">return</span> dis;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Dinic</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(bfs(s,t))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">int</span> delta=dfs(s,t,inf))</span><br><span class="line">            Ans+=delta;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">    n=read(),m=read(),S=read(),T=read();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=read(),v=read(),w=read();</span><br><span class="line">        add(u,v,w);</span><br><span class="line">        add(v,u,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,Dinic(S,T));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="当前弧优化的Dinic"><a href="#当前弧优化的Dinic" class="headerlink" title="当前弧优化的Dinic"></a>当前弧优化的Dinic</h2><p>如果你比较细心的话大概就会注意到，EK的时间是236ms，而Dinic却要520ms。可这不对啊，说好的EK复杂度更高呢？原因就在于<del>数据太水</del>每次搜的时候都是从第一条边开始的，然后就导致有许多边被重复搜索，就跑得很慢啦。</p>
 <p>那么我们就记录u之前循环到了哪条边然后直接从这条边开始不就完了吗？</p>
 <p>对，就是这样，只要多开一个cur数组记录一下就行了，然后在DFS的循环中i改变的时候也同时改变cur来记录当前弧，但是不要忘记每一次建立完分层图后都要把cur置为每一个点的第一条边。</p>
 <p>然后就可以跑的很快了DA☆ZE！</p>
-<p>贴代码（手写132ms）：</p>
-<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#define N 200000+110
-#define inf 0x7fffffff
-using namespace std;
-int n,m,S,T,cnt;
-int deep[N/10],head[N],q[N/10],cur[N];
-struct edge
-{
-    int to,nxt,weigh;
-}e[N];
-inline int read()
-{
-    int x=0,f=1;
-    char ch=getchar();
-    while(ch&lt;&#39;0&#39;||ch&gt;&#39;9&#39;)
-    {
-        if(ch==&#39;-&#39;)
-            f=-1;
-        ch=getchar();
-    }
-    while(ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
-    {
-        x=x*10+ch-&#39;0&#39;;
-        ch=getchar();
-    }
-    return x*f;
-}
-inline void add(int u,int v,int w)
-{
-    e[cnt]=(edge){v,head[u],w};
-    head[u]=cnt++;
-}
-inline bool bfs(int s,int t)
-{
-    int fr=1,tl=0;
-    memset(deep,0,sizeof(deep));
-    deep[s]=1;
-    q[1]=s;
-    while(tl&lt;fr)
-    {
-        int u=q[++tl];
-        for(register int i=head[u];i!=-1;i=e[i].nxt)
-        {
-            int v=e[i].to;
-            if(deep[v]==0&amp;&amp;e[i].weigh&gt;0)
-            {
-                deep[v]=deep[u]+1;
-                q[++fr]=v;
-            }
-        }
-    }
-    if(!deep[t])
-        return 0;
-    return 1;
-}
-inline int dfs(int u,int t,int dist)
-{
-    if(u==t)
-        return dist;
-    for(register int&amp; i=cur[u];i!=-1;i=e[i].nxt)//当然也可以去掉‘&amp;’然后在循环最后加一句“cur[u]=e[i].nxt”
-    {
-        int v=e[i].to;
-        if(deep[v]==deep[u]+1&amp;&amp;e[i].weigh&gt;0)
-        {
-            int dis=dfs(v,t,min(dist,e[i].weigh));
-            if(dis&gt;0)
-            {
-                e[i].weigh-=dis;
-                e[i^1].weigh+=dis;
-                return dis;
-            }
-        }
-    }
-    return 0;
-}
-inline int Dinic(int s,int t)
-{
-    int Ans=0;
-    while(bfs(s,t))
-    {
-        for(register int i=1;i&lt;=n;i++)
-            cur[i]=head[i];
-        while(int delta=dfs(s,t,inf))
-            Ans+=delta;
-    }
-    return Ans;
-}
-int main()
-{
-    memset(head,-1,sizeof(head));
-    n=read(),m=read(),S=read(),T=read();
-    for(register int i=1;i&lt;=m;i++)
-    {
-        int u=read(),v=read(),w=read();
-        add(u,v,w);
-        add(v,u,0);
-    }
-    printf(&quot;%d&quot;,Dinic(S,T));
-    return 0;
-}
-</code></pre>
+<p>贴代码（手写132ms）：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200000+110</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x7fffffff</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,S,T,cnt;</span><br><span class="line"><span class="keyword">int</span> deep[N/<span class="number">10</span>],head[N],q[N/<span class="number">10</span>],cur[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,nxt,weigh;</span><br><span class="line">&#125;e[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ch==<span class="string">'-'</span>)</span><br><span class="line">            f=<span class="number">-1</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[cnt]=(edge)&#123;v,head[u],w&#125;;</span><br><span class="line">    head[u]=cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fr=<span class="number">1</span>,tl=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(deep,<span class="number">0</span>,<span class="keyword">sizeof</span>(deep));</span><br><span class="line">    deep[s]=<span class="number">1</span>;</span><br><span class="line">    q[<span class="number">1</span>]=s;</span><br><span class="line">    <span class="keyword">while</span>(tl&lt;fr)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=q[++tl];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=head[u];i!=<span class="number">-1</span>;i=e[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v=e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(deep[v]==<span class="number">0</span>&amp;&amp;e[i].weigh&gt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                deep[v]=deep[u]+<span class="number">1</span>;</span><br><span class="line">                q[++fr]=v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!deep[t])</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> t,<span class="keyword">int</span> dist)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(u==t)</span><br><span class="line">        <span class="keyword">return</span> dist;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span>&amp; i=cur[u];i!=<span class="number">-1</span>;i=e[i].nxt)<span class="comment">//当然也可以去掉‘&amp;’然后在循环最后加一句“cur[u]=e[i].nxt”</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v=e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(deep[v]==deep[u]+<span class="number">1</span>&amp;&amp;e[i].weigh&gt;<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> dis=dfs(v,t,min(dist,e[i].weigh));</span><br><span class="line">            <span class="keyword">if</span>(dis&gt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                e[i].weigh-=dis;</span><br><span class="line">                e[i^<span class="number">1</span>].weigh+=dis;</span><br><span class="line">                <span class="keyword">return</span> dis;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Dinic</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(bfs(s,t))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            cur[i]=head[i];</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">int</span> delta=dfs(s,t,inf))</span><br><span class="line">            Ans+=delta;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">    n=read(),m=read(),S=read(),T=read();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=read(),v=read(),w=read();</span><br><span class="line">        add(u,v,w);</span><br><span class="line">        add(v,u,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,Dinic(S,T));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后我们就得到了真正的Dinic算法</p>
 <p>【注明】本段讲解部分引用<a href="http://sycstudio.com/" target="_blank" rel="noopener">SYCstudio</a>大佬的<a href="https://www.cnblogs.com/SYCstudio/p/7260613.html" target="_blank" rel="noopener">Dinic算法（研究总结，网络流）</a></p>
 
@@ -1482,7 +1188,30 @@ int main()
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1499,28 +1228,5 @@ int main()
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

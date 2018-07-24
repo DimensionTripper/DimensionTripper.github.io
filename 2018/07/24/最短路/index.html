@@ -396,10 +396,7 @@
 <p>以下我来讲几种算法（如果有可能的话）</p>
 <h1 id="1、SPFA"><a href="#1、SPFA" class="headerlink" title="1、SPFA"></a>1、SPFA</h1><p>它被誉为“最快最好用的最短路算法”，<del>但是被各种心狠手辣的出题人卡成了狗</del>自有其优越性，毕竟像笔者这种蒟蒻都看了一遍就懂了。</p>
 <p>SPFA用了一种动态逼近的方法，设立一个先进先出的队列q来保存待优化的节点，每次取出队首的节点u，并用u点当前的最短路径的估计值对离开u指向的v节点进行松弛操作，如果v点的最短路径估计值有所调整，并且v不在当前队列中，就把它放入队列中如此不断从队列中取出节点进行松弛操作，直至队列空为止。</p>
-<p>那么说到松弛操作，原理就是十分著名的三角不等式，即我们数学中都用过的“两边之和大于第三边”，也就是v当前的最短路径估算值大于u当前的最短路径估算值与边[u,v]的长度之和，那么就更新v最短路径的估算值，也就是这样：</p>
-<pre><code class="lang-cpp">if(dist[v]&gt;dist[u]+e[i].weigh)
-    dist[v]=dist[u]+e[i].weigh;
-</code></pre>
+<p>那么说到松弛操作，原理就是十分著名的三角不等式，即我们数学中都用过的“两边之和大于第三边”，也就是v当前的最短路径估算值大于u当前的最短路径估算值与边[u,v]的长度之和，那么就更新v最短路径的估算值，也就是这样：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(dist[v]&gt;dist[u]+e[i].weigh)</span><br><span class="line">4dist[v]=dist[u]+e[i].weigh;</span><br></pre></td></tr></table></figure></p>
 <p>当然，实际的代码中还要加上进队的操作。</p>
 <p>当然你也许会说，这个怎么这么像BFS呢？其实还真有点，区别就在于BFS中一个点不能重复进队，而这里是可以反复松弛的。</p>
 <h3 id="切记：每次取出队首节点的时候一定要清空标记！！"><a href="#切记：每次取出队首节点的时候一定要清空标记！！" class="headerlink" title="切记：每次取出队首节点的时候一定要清空标记！！"></a>切记：每次取出队首节点的时候一定要清空标记！！</h3><p>那么在贴代码之前，先来手玩一下样例。样例图如下：</p>
@@ -410,357 +407,16 @@
 <h3 id="q-3-4"><a href="#q-3-4" class="headerlink" title="q:3,4"></a>q:3,4</h3><h3 id="dis-0-2-4-3"><a href="#dis-0-2-4-3" class="headerlink" title="dis:0,2,4,3"></a>dis:0,2,4,3</h3><p>2出队，5&gt;2+2，4&gt;2+1，更新3、4的最短路径</p>
 <h3 id="q-4"><a href="#q-4" class="headerlink" title="q:4"></a>q:4</h3><h3 id="dis-0-2-4-3-1"><a href="#dis-0-2-4-3-1" class="headerlink" title="dis:0,2,4,3"></a>dis:0,2,4,3</h3><p>3出队</p>
 <h3 id="q"><a href="#q" class="headerlink" title="q:"></a>q:</h3><h3 id="dis-0-2-4-3-2"><a href="#dis-0-2-4-3-2" class="headerlink" title="dis:0,2,4,3"></a>dis:0,2,4,3</h3><p>4出队，队列已空，此时已找到最短路径</p>
-<p>以下是代码：</p>
-<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#define N 1000000+110
-#define inf 0x7fffffff
-using namespace std;
-int n,m,S,cnt;
-int dist[N],head[N],q[N];
-bool vis[N];
-struct edge
-{
-    int to,nxt,weigh;
-}e[N];
-inline int read()
-{
-    int x=0,f=1;
-    char ch=getchar();
-    while(ch&lt;&#39;0&#39;||ch&gt;&#39;9&#39;)
-    {
-        if(ch==&#39;-&#39;)
-            f=-1;
-        ch=getchar();
-    }
-    while(ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
-    {
-        x=x*10+ch-&#39;0&#39;;
-        ch=getchar();
-    }
-    return x*f;
-}
-inline void add(int u,int v,int w)
-{
-    e[++cnt]=(edge){v,head[u],w};
-    head[u]=cnt;
-}
-inline void SPFA(int s)
-{
-    int fr=1,tl=0;
-    for(int i=1;i&lt;=n;i++)
-        dist[i]=inf,vis[i]=0;
-    dist[s]=0;
-    q[1]=s;
-    vis[s]=1;
-    while(tl&lt;fr)
-    {
-        int u=q[++tl];
-        vis[u]=0;
-        for(register int i=head[u];i;i=e[i].nxt)
-        {
-            int v=e[i].to;
-            if(dist[v]&gt;dist[u]+e[i].weigh)
-            {
-                dist[v]=dist[u]+e[i].weigh;
-                if(!vis[v])
-                {
-                    q[++fr]=v;
-                    vis[v]=1;
-                }
-            }
-        }
-    }
-}
-int main()
-{
-    n=read(),m=read(),S=read();
-    for(register int i=1;i&lt;=m;i++)
-    {
-        int u=read(),v=read(),w=read();
-        add(u,v,w);
-    }
-    SPFA(S);
-    for(register int i=1;i&lt;=n;i++)
-        printf(&quot;%d &quot;,dist[i]);
-    return 0;
-}
-</code></pre>
+<p>以下是代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000000+110</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x7fffffff</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,S,cnt;</span><br><span class="line"><span class="keyword">int</span> dist[N],head[N],q[N];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,nxt,weigh;</span><br><span class="line">&#125;e[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ch==<span class="string">'-'</span>)</span><br><span class="line">            f=<span class="number">-1</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[++cnt]=(edge)&#123;v,head[u],w&#125;;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fr=<span class="number">1</span>,tl=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        dist[i]=inf,vis[i]=<span class="number">0</span>;</span><br><span class="line">    dist[s]=<span class="number">0</span>;</span><br><span class="line">    q[<span class="number">1</span>]=s;</span><br><span class="line">    vis[s]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(tl&lt;fr)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=q[++tl];</span><br><span class="line">        vis[u]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=head[u];i;i=e[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v=e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(dist[v]&gt;dist[u]+e[i].weigh)</span><br><span class="line">            &#123;</span><br><span class="line">                dist[v]=dist[u]+e[i].weigh;</span><br><span class="line">                <span class="keyword">if</span>(!vis[v])</span><br><span class="line">                &#123;</span><br><span class="line">                    q[++fr]=v;</span><br><span class="line">                    vis[v]=<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=read(),m=read(),S=read();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=read(),v=read(),w=read();</span><br><span class="line">        add(u,v,w);</span><br><span class="line">    &#125;</span><br><span class="line">    SPFA(S);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,dist[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>虽然这样写基本正确，但如果面对这样一个图，SPFA就很绝望了：</p>
 <p><img src="http://b289.photo.store.qq.com/psb?/V137oTmC2F4y9l/ndvqtccKCoyRQveb9Xfz8RpBPNFaWOyO5ZbNSM4HsDM!/c/dCEBAAAAAAAA&amp;bo=ZgI5AWYCOQEBACc!" alt=""></p>
 <p>可以看到，1、2、4三点间形成了一个负环，也就是说这几个点间没有所谓的最短路，因此就会无限的跑下去。</p>
 <p>那么怎么办呢？我们可以对每个点入队的次数进行限制，如果超过所有点的总数，那么就可以判断出现了负环，就跳出函数。</p>
-<p>代码也没有太大的区别：</p>
-<pre><code class="lang-cpp">inline void SPFA(int s)
-{
-    int fr=1,tl=0;
-    for(int i=1;i&lt;=n;i++)
-        dist[i]=inf,vis[i]=0,c[i]=0;
-    dist[s]=0;
-    q[1]=s;
-    vis[s]=1;
-    while(tl&lt;fr)
-    {
-        int u=q[++tl];
-        vis[u]=0;
-        for(register int i=head[u];i;i=e[i].nxt)
-        {
-            int v=e[i].to;
-            if(dist[v]&gt;dist[u]+e[i].weigh)
-            {
-                dist[v]=dist[u]+e[i].weigh;
-                if(!vis[v])
-                {
-                    q[++fr]=v;
-                    c[v]++;
-                    vis[v]=1;
-                    if(c[v]&gt;n)
-                        do something,return;
-                }
-            }
-        }
-    }
-}
-</code></pre>
+<p>代码也没有太大的区别：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fr=<span class="number">1</span>,tl=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        dist[i]=inf,vis[i]=<span class="number">0</span>,c[i]=<span class="number">0</span>;</span><br><span class="line">    dist[s]=<span class="number">0</span>;</span><br><span class="line">    q[<span class="number">1</span>]=s;</span><br><span class="line">    vis[s]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(tl&lt;fr)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=q[++tl];</span><br><span class="line">        vis[u]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=head[u];i;i=e[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v=e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(dist[v]&gt;dist[u]+e[i].weigh)</span><br><span class="line">            &#123;</span><br><span class="line">                dist[v]=dist[u]+e[i].weigh;</span><br><span class="line">                <span class="keyword">if</span>(!vis[v])</span><br><span class="line">                &#123;</span><br><span class="line">                    q[++fr]=v;</span><br><span class="line">                    c[v]++;</span><br><span class="line">                    vis[v]=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">if</span>(c[v]&gt;n)</span><br><span class="line">                        <span class="keyword">do</span> something,<span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>还有另一种办法，就是使用DFS跑SPFA，但是会稍微慢一点……吧</p>
 <p>但是优点是负环的判断很简单，只要松弛了未清除标记的点就判定为出现负环。</p>
-<p>下面是<a href="https://www.luogu.org/problemnew/show/P3385" target="_blank" rel="noopener">P3385 【模板】负环</a>的代码（才不是跑P3371的时候T掉了呢，哼！</p>
-<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#define N 1000000+110
-#define inf 0x7fffffff
-using namespace std;
-int n,m,S,cnt;
-int dist[N],head[N],q[N];
-bool vis[N],flag;
-struct edge
-{
-    int to,nxt,weigh;
-}e[N];
-inline int read()
-{
-    int x=0,f=1;
-    char ch=getchar();
-    while(ch&lt;&#39;0&#39;||ch&gt;&#39;9&#39;)
-    {
-        if(ch==&#39;-&#39;)
-            f=-1;
-        ch=getchar();
-    }
-    while(ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
-    {
-        x=x*10+ch-&#39;0&#39;;
-        ch=getchar();
-    }
-    return x*f;
-}
-inline void add(int u,int v,int w)
-{
-    e[++cnt]=(edge){v,head[u],w};
-    head[u]=cnt;
-}
-inline void SPFA(int u)
-{
-    vis[u]=1;
-    for(register int i=head[u];i;i=e[i].nxt)
-    {
-        int v=e[i].to;
-        if(dist[v]&gt;dist[u]+e[i].weigh)
-        {
-            dist[v]=dist[u]+e[i].weigh;
-            if(vis[v]||flag)
-            {
-                flag=1;
-                break;
-            }
-            SPFA(v);
-        }
-    }
-    vis[u]=0;
-}
-int main()
-{
-    int T=read();
-    while(T--)
-    {
-        n=read(),m=read();
-        for(register int i=1;i&lt;=n;i++)
-            dist[i]=0,vis[i]=0,head[i]=0;
-        flag=0,cnt=0;
-        for(register int i=1;i&lt;=m;i++)
-        {
-            int u=read(),v=read(),w=read();
-            add(u,v,w);
-            if(w&gt;0)
-                add(v,u,w);
-        }
-        for(register int i=1;i&lt;=n;i++)
-        {
-            SPFA(i);
-            if(flag)
-                break;
-        }
-        if(flag)
-            printf(&quot;YE5\n&quot;);
-        else
-            printf(&quot;N0\n&quot;);
-    }
-    return 0;
-}
-</code></pre>
-<p>再放一道例题：<a href="https://www.luogu.org/problemnew/show/P1027" target="_blank" rel="noopener">P1027 Car的旅行路线</a></p>
-<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#define N 400+10
-#define inf 0x7fffffff
-#define ri register int
-#define il inline
-using namespace std;
-int n,s,t,A,B,cnt,head[N],q[N];
-double dist[N];
-bool vis[N];
-struct Vector
-{
-    int x,y;
-    Vector(int X,int Y)
-    {
-        x=X,y=Y;
-    }
-    Vector()
-    {
-        x=0,y=0;
-    }
-    int operator * (const Vector &amp;v)
-    {
-        int ret;
-        ret=x*v.x+y*v.y;
-        return ret;
-    }
-    Vector operator - (const Vector &amp;v)
-    {
-        Vector ret;
-        ret.x=x-v.x;
-        ret.y=y-v.y;
-        return ret;
-    }
-};
-struct city
-{
-    Vector apt[5];
-    int T;
-    void add(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4,int t)
-    {
-        apt[1].x=x1,apt[1].y=y1,apt[2].x=x2,apt[2].y=y2,apt[3].x=x3,apt[3].y=y3,apt[4].x=x4,apt[4].y=y4;
-        T=t;
-    }
-};
-struct edge
-{
-    int to,nxt;
-    double weight;
-};
-city C[N];
-edge e[100000];
-il void work(int x1,int y1,int x2,int y2,int x3,int y3,int &amp;x4,int &amp;y4)
-{
-    Vector ab(x1-x2,y1-y2),bc(x2-x3,y2-y3),ac(x3-x1,y3-y1);
-    if(ab*bc==0)
-    {
-        x4=x3+x1-x2;
-        y4=y3+y1-y2;
-    }
-    else if(ab*ac==0)
-    {
-        x4=x3+x2-x1;
-        y4=y3+y2-y1;
-    }
-    else
-    {
-        x4=x1+x2-x3;
-        y4=y1+y2-y3;
-    }
-    return;
-}
-il double Vector_module(Vector v)
-{
-    return sqrt(v.x*v.x+v.y*v.y);
-}
-il void add_edge(int u,int v,double w)
-{
-    e[++cnt]=(edge){v,head[u],w};
-    head[u]=cnt;
-}
-il void SPFA(int S)
-{
-    int fr=4,tl=0;
-    for(ri i=1;i&lt;=s;i++)
-        for(ri j=1;j&lt;=4;j++)
-            dist[4*(i-1)+j]=inf;
-    for(ri i=0;i&lt;4;i++)
-        dist[S+i]=0,vis[S+i]=1,q[i+1]=S+i;
-    while(tl&lt;fr)
-    {
-        int u=q[++tl];
-        vis[u]=0;
-        for(ri i=head[u];i;i=e[i].nxt)
-        {
-            int v=e[i].to;
-            if(dist[v]&gt;dist[u]+e[i].weight)
-            {
-                dist[v]=dist[u]+e[i].weight;
-                if(!vis[v])
-                {
-                    q[++fr]=v;
-                    vis[v]=1;
-                }
-            }
-        }
-    }
-}
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;n);
-    while(n--)
-    {
-        memset(vis,0,sizeof(vis));
-        memset(e,0,sizeof(e));
-        memset(C,0,sizeof(C));
-        memset(head,0,sizeof(head));
-        cnt=0;
-        scanf(&quot;%d %d %d %d&quot;,&amp;s,&amp;t,&amp;A,&amp;B);
-        for(ri i=1;i&lt;=s;i++)
-        {
-            int x1,x2,x3,x4;
-            int y1,y2,y3,y4;
-            int T;
-            scanf(&quot;%d %d %d %d %d %d %d&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2,&amp;x3,&amp;y3,&amp;T);
-            work(x1,y1,x2,y2,x3,y3,x4,y4);
-            C[i].add(x1,y1,x2,y2,x3,y3,x4,y4,T);
-        }
-        for(ri i=1;i&lt;=s;i++)
-        {
-            for(ri j=1;j&lt;=3;j++)
-                for(ri k=j+1;k&lt;=4;k++)
-                {
-                    double w=Vector_module(C[i].apt[j]-C[i].apt[k])*C[i].T;
-                    add_edge(4*(i-1)+j,4*(i-1)+k,w);
-                    add_edge(4*(i-1)+k,4*(i-1)+j,w);
-                }
-            for(ri j=i+1;j&lt;=s;j++)
-                for(ri k=1;k&lt;=4;k++)
-                    for(ri l=1;l&lt;=4;l++)
-                    {
-                        double w=Vector_module(C[i].apt[k]-C[j].apt[l])*t;
-                        add_edge(4*(i-1)+k,4*(j-1)+l,w);
-                        add_edge(4*(j-1)+l,4*(i-1)+k,w);
-                    }
-        }
-        SPFA(4*(A-1)+1);
-        double ans=inf;
-        for(ri i=1;i&lt;=4;i++)
-            ans=min(ans,dist[4*(B-1)+i]);
-        printf(&quot;%.1lf\n&quot;,ans);
-    }
-    return 0;
-}
-</code></pre>
+<p>下面是<a href="https://www.luogu.org/problemnew/show/P3385" target="_blank" rel="noopener">P3385 【模板】负环</a>的代码（才不是跑P3371的时候T掉了呢，哼！<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000000+110</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x7fffffff</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,S,cnt;</span><br><span class="line"><span class="keyword">int</span> dist[N],head[N],q[N];</span><br><span class="line"><span class="keyword">bool</span> vis[N],flag;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,nxt,weigh;</span><br><span class="line">&#125;e[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ch==<span class="string">'-'</span>)</span><br><span class="line">            f=<span class="number">-1</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[++cnt]=(edge)&#123;v,head[u],w&#125;;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vis[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=head[u];i;i=e[i].nxt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v=e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(dist[v]&gt;dist[u]+e[i].weigh)</span><br><span class="line">        &#123;</span><br><span class="line">            dist[v]=dist[u]+e[i].weigh;</span><br><span class="line">            <span class="keyword">if</span>(vis[v]||flag)</span><br><span class="line">            &#123;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            SPFA(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vis[u]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T=read();</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        n=read(),m=read();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            dist[i]=<span class="number">0</span>,vis[i]=<span class="number">0</span>,head[i]=<span class="number">0</span>;</span><br><span class="line">        flag=<span class="number">0</span>,cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> u=read(),v=read(),w=read();</span><br><span class="line">            add(u,v,w);</span><br><span class="line">            <span class="keyword">if</span>(w&gt;<span class="number">0</span>)</span><br><span class="line">                add(v,u,w);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            SPFA(i);</span><br><span class="line">            <span class="keyword">if</span>(flag)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"YE5\n"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"N0\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再放一道例题：<a href="https://www.luogu.org/problemnew/show/P1027" target="_blank" rel="noopener">P1027 Car的旅行路线</a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 400+10</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x7fffffff</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ri register int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> il inline</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,s,t,A,B,cnt,head[N],q[N];</span><br><span class="line"><span class="keyword">double</span> dist[N];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vector</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line">    Vector(<span class="keyword">int</span> X,<span class="keyword">int</span> Y)</span><br><span class="line">    &#123;</span><br><span class="line">        x=X,y=Y;</span><br><span class="line">    &#125;</span><br><span class="line">    Vector()</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">0</span>,y=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> <span class="keyword">operator</span> * (<span class="keyword">const</span> Vector &amp;v)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> ret;</span><br><span class="line">        ret=x*v.x+y*v.y;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    Vector <span class="keyword">operator</span> - (<span class="keyword">const</span> Vector &amp;v)</span><br><span class="line">    &#123;</span><br><span class="line">        Vector ret;</span><br><span class="line">        ret.x=x-v.x;</span><br><span class="line">        ret.y=y-v.y;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">city</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    Vector apt[<span class="number">5</span>];</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x1,<span class="keyword">int</span> y1,<span class="keyword">int</span> x2,<span class="keyword">int</span> y2,<span class="keyword">int</span> x3,<span class="keyword">int</span> y3,<span class="keyword">int</span> x4,<span class="keyword">int</span> y4,<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        apt[<span class="number">1</span>].x=x1,apt[<span class="number">1</span>].y=y1,apt[<span class="number">2</span>].x=x2,apt[<span class="number">2</span>].y=y2,apt[<span class="number">3</span>].x=x3,apt[<span class="number">3</span>].y=y3,apt[<span class="number">4</span>].x=x4,apt[<span class="number">4</span>].y=y4;</span><br><span class="line">        T=t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,nxt;</span><br><span class="line">    <span class="keyword">double</span> weight;</span><br><span class="line">&#125;;</span><br><span class="line">city C[N];</span><br><span class="line">edge e[<span class="number">100000</span>];</span><br><span class="line"><span class="function">il <span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> x1,<span class="keyword">int</span> y1,<span class="keyword">int</span> x2,<span class="keyword">int</span> y2,<span class="keyword">int</span> x3,<span class="keyword">int</span> y3,<span class="keyword">int</span> &amp;x4,<span class="keyword">int</span> &amp;y4)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Vector ab(x1-x2,y1-y2),bc(x2-x3,y2-y3),ac(x3-x1,y3-y1);</span><br><span class="line">    <span class="keyword">if</span>(ab*bc==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x4=x3+x1-x2;</span><br><span class="line">        y4=y3+y1-y2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ab*ac==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x4=x3+x2-x1;</span><br><span class="line">        y4=y3+y2-y1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        x4=x1+x2-x3;</span><br><span class="line">        y4=y1+y2-y3;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">il <span class="keyword">double</span> <span class="title">Vector_module</span><span class="params">(Vector v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(v.x*v.x+v.y*v.y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">il <span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">double</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[++cnt]=(edge)&#123;v,head[u],w&#125;;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">il <span class="keyword">void</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> S)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fr=<span class="number">4</span>,tl=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=s;i++)</span><br><span class="line">        <span class="keyword">for</span>(ri j=<span class="number">1</span>;j&lt;=<span class="number">4</span>;j++)</span><br><span class="line">            dist[<span class="number">4</span>*(i<span class="number">-1</span>)+j]=inf;</span><br><span class="line">    <span class="keyword">for</span>(ri i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)</span><br><span class="line">        dist[S+i]=<span class="number">0</span>,vis[S+i]=<span class="number">1</span>,q[i+<span class="number">1</span>]=S+i;</span><br><span class="line">    <span class="keyword">while</span>(tl&lt;fr)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u=q[++tl];</span><br><span class="line">        vis[u]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(ri i=head[u];i;i=e[i].nxt)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> v=e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(dist[v]&gt;dist[u]+e[i].weight)</span><br><span class="line">            &#123;</span><br><span class="line">                dist[v]=dist[u]+e[i].weight;</span><br><span class="line">                <span class="keyword">if</span>(!vis[v])</span><br><span class="line">                &#123;</span><br><span class="line">                    q[++fr]=v;</span><br><span class="line">                    vis[v]=<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="built_in">memset</span>(e,<span class="number">0</span>,<span class="keyword">sizeof</span>(e));</span><br><span class="line">        <span class="built_in">memset</span>(C,<span class="number">0</span>,<span class="keyword">sizeof</span>(C));</span><br><span class="line">        <span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">        cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d %d"</span>,&amp;s,&amp;t,&amp;A,&amp;B);</span><br><span class="line">        <span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=s;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> x1,x2,x3,x4;</span><br><span class="line">            <span class="keyword">int</span> y1,y2,y3,y4;</span><br><span class="line">            <span class="keyword">int</span> T;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %d %d %d %d %d %d"</span>,&amp;x1,&amp;y1,&amp;x2,&amp;y2,&amp;x3,&amp;y3,&amp;T);</span><br><span class="line">            work(x1,y1,x2,y2,x3,y3,x4,y4);</span><br><span class="line">            C[i].add(x1,y1,x2,y2,x3,y3,x4,y4,T);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=s;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(ri j=<span class="number">1</span>;j&lt;=<span class="number">3</span>;j++)</span><br><span class="line">                <span class="keyword">for</span>(ri k=j+<span class="number">1</span>;k&lt;=<span class="number">4</span>;k++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">double</span> w=Vector_module(C[i].apt[j]-C[i].apt[k])*C[i].T;</span><br><span class="line">                    add_edge(<span class="number">4</span>*(i<span class="number">-1</span>)+j,<span class="number">4</span>*(i<span class="number">-1</span>)+k,w);</span><br><span class="line">                    add_edge(<span class="number">4</span>*(i<span class="number">-1</span>)+k,<span class="number">4</span>*(i<span class="number">-1</span>)+j,w);</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">for</span>(ri j=i+<span class="number">1</span>;j&lt;=s;j++)</span><br><span class="line">                <span class="keyword">for</span>(ri k=<span class="number">1</span>;k&lt;=<span class="number">4</span>;k++)</span><br><span class="line">                    <span class="keyword">for</span>(ri l=<span class="number">1</span>;l&lt;=<span class="number">4</span>;l++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">double</span> w=Vector_module(C[i].apt[k]-C[j].apt[l])*t;</span><br><span class="line">                        add_edge(<span class="number">4</span>*(i<span class="number">-1</span>)+k,<span class="number">4</span>*(j<span class="number">-1</span>)+l,w);</span><br><span class="line">                        add_edge(<span class="number">4</span>*(j<span class="number">-1</span>)+l,<span class="number">4</span>*(i<span class="number">-1</span>)+k,w);</span><br><span class="line">                    &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        SPFA(<span class="number">4</span>*(A<span class="number">-1</span>)+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">double</span> ans=inf;</span><br><span class="line">        <span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=<span class="number">4</span>;i++)</span><br><span class="line">            ans=min(ans,dist[<span class="number">4</span>*(B<span class="number">-1</span>)+i]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%.1lf\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -1504,7 +1160,30 @@ int main()
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1521,28 +1200,5 @@ int main()
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

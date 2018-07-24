@@ -395,127 +395,7 @@
 <p>那么这样就能过了吗？不是，还需要剪枝。</p>
 <p>在这样一个搜索顺序的基础上，搜完一条加一次判定，虽然会用一些时间，但和它省下来的时间比简直不值一提。</p>
 <p>废话不多说，看代码注释</p>
-<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#pragma GCC optimize(3)//手开O3优化
-#define N 30
-using namespace std;
-bool flag,used[N];
-int n,a[5][N],num[N];
-char s[5][N];
-bool check()//检查是否正确
-{
-    int add=0;
-    for(int i=n;i&gt;=1;i--)
-    {
-        int A,B,C;
-        A=num[a[1][i]],B=num[a[2][i]],C=num[a[3][i]];
-        if((A+B+add)%n!=C)
-            return false;
-        add=(A+B+add)/n;
-    }
-    return true;
-}
-bool Prune()//剪枝，如果最高位要进位或者无论进不进位都不能使等式成立即舍
-{
-    if(num[a[1][1]]+num[a[2][1]]&gt;=n)
-        return true;
-    for(int i=n-1;i&gt;=0;i--)
-    {
-        int A=num[a[1][i]],B=num[a[2][i]],C=num[a[3][i]];
-        if(A==-1||B==-1||C==-1)
-            continue;
-        if((A+B)%n!=C&amp;&amp;(A+B+1)%n!=C)
-            return true;
-    }
-    return false;
-}
-void Print()
-{
-    for(int i=1;i&lt;=n;i++)
-        printf(&quot;%d &quot;,num[i]);
-    return;
-}
-bool Check()//检查是否有字母没赋值
-{
-    for(int i=1;i&lt;=n;i++)
-        if(num[i]==-1)
-            return false;
-    return true;
-}
-void dfs(int x,int y,int t)//x是列，y是行，t是进位
-{
-    if(flag)//标记数组，其实可用exit(0)代替
-        return;
-    if(Prune())//开局剪枝
-        return;
-    if(Check())
-    {
-       if(check())
-        {
-            Print();
-            flag=true;
-        }
-        return;
-    }//如果每个字母都赋值了就进行判定，可以省去一些无用的搜索时间
-    if(num[a[y][x]]==-1)//如果这一位没赋值
-    {
-        for(int i=n-1;i&gt;=0;i--)
-        {
-            if(!used[i])
-            {
-                if(y!=3)//如果不是第三行
-                {
-                    num[a[y][x]]=i;
-                    used[i]=true;
-                    dfs(x,y+1,t);//搜索同列下一行
-                    used[i]=false;
-                    num[a[y][x]]=-1;
-                }
-                else//是第三行
-                {
-                    int z=num[a[1][x]]+num[a[2][x]]+t;
-                    if(z%n!=i)
-                        continue;
-                    used[i]=true;
-                    num[a[y][x]]=i;
-                    dfs(x-1,1,z/n);//搜索下一列第一行，进位改变
-                    used[i]=false;
-                    num[a[y][x]]=-1;
-                }
-            }
-        }
-    }
-    else//这一位已被赋值
-    {
-        if(y!=3)
-            dfs(x,y+1,t);
-        else
-        {
-            int z=num[a[1][x]]+num[a[2][x]]+t;
-            if(Prune())//剪个枝
-                return;
-            dfs(x-1,1,z/n);
-        }
-    }
-    return;
-}
-void Getid()//将字母转换成数字
-{
-    for(int i=1;i&lt;=3;i++)
-        for(int j=0;j&lt;n;j++)
-            a[i][j+1]=s[i][j]-&#39;A&#39;+1;
-    return;
-}
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;n);
-    scanf(&quot;%s%s%s&quot;,s[1],s[2],s[3]);
-    Getid();
-    memset(num,-1,sizeof(num));//初值设为-1
-    dfs(n,1,0);//搜索第n列第1行，进位为0
-    return 0;
-}
-</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(3)<span class="comment">//手开O3优化</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 30</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">bool</span> flag,used[N];</span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">5</span>][N],num[N];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">5</span>][N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span><span class="comment">//检查是否正确</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> add=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> A,B,C;</span><br><span class="line">        A=num[a[<span class="number">1</span>][i]],B=num[a[<span class="number">2</span>][i]],C=num[a[<span class="number">3</span>][i]];</span><br><span class="line">        <span class="keyword">if</span>((A+B+add)%n!=C)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        add=(A+B+add)/n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Prune</span><span class="params">()</span><span class="comment">//剪枝，如果最高位要进位或者无论进不进位都不能使等式成立即舍</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num[a[<span class="number">1</span>][<span class="number">1</span>]]+num[a[<span class="number">2</span>][<span class="number">1</span>]]&gt;=n)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> A=num[a[<span class="number">1</span>][i]],B=num[a[<span class="number">2</span>][i]],C=num[a[<span class="number">3</span>][i]];</span><br><span class="line">        <span class="keyword">if</span>(A==<span class="number">-1</span>||B==<span class="number">-1</span>||C==<span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>((A+B)%n!=C&amp;&amp;(A+B+<span class="number">1</span>)%n!=C)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,num[i]);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Check</span><span class="params">()</span><span class="comment">//检查是否有字母没赋值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">if</span>(num[i]==<span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> t)</span><span class="comment">//x是列，y是行，t是进位</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag)<span class="comment">//标记数组，其实可用exit(0)代替</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(Prune())<span class="comment">//开局剪枝</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(Check())</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">if</span>(check())</span><br><span class="line">        &#123;</span><br><span class="line">            Print();</span><br><span class="line">            flag=<span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;<span class="comment">//如果每个字母都赋值了就进行判定，可以省去一些无用的搜索时间</span></span><br><span class="line">    <span class="keyword">if</span>(num[a[y][x]]==<span class="number">-1</span>)<span class="comment">//如果这一位没赋值</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!used[i])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(y!=<span class="number">3</span>)<span class="comment">//如果不是第三行</span></span><br><span class="line">                &#123;</span><br><span class="line">                    num[a[y][x]]=i;</span><br><span class="line">                    used[i]=<span class="literal">true</span>;</span><br><span class="line">                    dfs(x,y+<span class="number">1</span>,t);<span class="comment">//搜索同列下一行</span></span><br><span class="line">                    used[i]=<span class="literal">false</span>;</span><br><span class="line">                    num[a[y][x]]=<span class="number">-1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span><span class="comment">//是第三行</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> z=num[a[<span class="number">1</span>][x]]+num[a[<span class="number">2</span>][x]]+t;</span><br><span class="line">                    <span class="keyword">if</span>(z%n!=i)</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    used[i]=<span class="literal">true</span>;</span><br><span class="line">                    num[a[y][x]]=i;</span><br><span class="line">                    dfs(x<span class="number">-1</span>,<span class="number">1</span>,z/n);<span class="comment">//搜索下一列第一行，进位改变</span></span><br><span class="line">                    used[i]=<span class="literal">false</span>;</span><br><span class="line">                    num[a[y][x]]=<span class="number">-1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span><span class="comment">//这一位已被赋值</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(y!=<span class="number">3</span>)</span><br><span class="line">            dfs(x,y+<span class="number">1</span>,t);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> z=num[a[<span class="number">1</span>][x]]+num[a[<span class="number">2</span>][x]]+t;</span><br><span class="line">            <span class="keyword">if</span>(Prune())<span class="comment">//剪个枝</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            dfs(x<span class="number">-1</span>,<span class="number">1</span>,z/n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Getid</span><span class="params">()</span><span class="comment">//将字母转换成数字</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">3</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">            a[i][j+<span class="number">1</span>]=s[i][j]-<span class="string">'A'</span>+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s%s%s"</span>,s[<span class="number">1</span>],s[<span class="number">2</span>],s[<span class="number">3</span>]);</span><br><span class="line">    Getid();</span><br><span class="line">    <span class="built_in">memset</span>(num,<span class="number">-1</span>,<span class="keyword">sizeof</span>(num));<span class="comment">//初值设为-1</span></span><br><span class="line">    dfs(n,<span class="number">1</span>,<span class="number">0</span>);<span class="comment">//搜索第n列第1行，进位为0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注：<br>搜索顺序从0到n-1跑的要慢一些，建议学我，从n-1到0去搜</p>
 <h1 id="从0到n-1"><a href="#从0到n-1" class="headerlink" title="从0到n-1"></a>从0到n-1</h1><p><a href="https://www.luogu.org/record/show?rid=5303961" target="_blank" rel="noopener">844ms</a></p>
 <h1 id="从n-1到0"><a href="#从n-1到0" class="headerlink" title="从n-1到0"></a>从n-1到0</h1><p><a href="https://www.luogu.org/record/show?rid=5304076" target="_blank" rel="noopener">16ms</a></p>
@@ -1262,7 +1142,30 @@ int main()
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1279,28 +1182,5 @@ int main()
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

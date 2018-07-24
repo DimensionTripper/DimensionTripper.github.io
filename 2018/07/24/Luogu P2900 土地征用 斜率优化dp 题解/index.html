@@ -398,53 +398,7 @@
 </code></pre><p>有兴趣的dalao可以阅读<a href="https://wenku.baidu.com/view/b97cd22d0066f5335a8121a3.html" target="_blank" rel="noopener">浅谈数形结合思想在信息学竞赛中的应用</a></p>
 <p>总之这里将关系式抽象为形如y=kx+b的式子，只要维护组成图形的下凸性就行了，如下图中就是一种要弹出队尾的情况，因为i节点的插入破坏了图形的下凸性<br><img src="http://img.blog.csdn.net/20170122191654269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQmlsbF9ZYW5nXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
 <p>这里就要用到单调队列了，维护队列中的元素单调（然而我不会，所以请各位懂的大神指点</p>
-<p>不多说见代码</p>
-<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#pragma GCC optimize(3)
-#define N 50010
-using namespace std;
-long long n,tot,q[N],head=1,tail=1,f[N];
-struct node
-{
-    long long len,wid;
-};struct node a[N];
-struct node1
-{
-    long long lent,wide;
-};struct node1 b[N];
-bool mmp(node xx,node yy)
-{
-    return xx.len&gt;yy.len||(xx.len==yy.len&amp;&amp;xx.wid&gt;yy.wid);
-}
-double slope(int x,int y)
-{
-    return (double)(f[y]-f[x])/(double)(b[x+1].lent-b[y+1].lent);
-}//slope 斜率，来自金山词霸
-int main()
-{
-    scanf(&quot;%lld&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++)
-        scanf(&quot;%lld%lld&quot;,&amp;a[i].len,&amp;a[i].wid);
-    sort(a+1,a+1+n,mmp);
-    for(int i=1;i&lt;=n;i++)
-        if(a[i].wid&gt;b[tot].wide)//注意！一定要这样维护b中w的升序排列
-        {
-            b[++tot].lent=a[i].len;
-            b[tot].wide=a[i].wid;
-        }
-    for(int i=1;i&lt;=tot;i++)//1~tot动规
-    {
-        while(head&lt;tail&amp;&amp;slope(q[head],q[head+1])&lt;=b[i].wide)
-            head++;//如果队首不是最优，就弹出队首
-        f[i]=f[q[head]]+b[i].wide*b[q[head]+1].lent;
-        while(head&lt;tail&amp;&amp;slope(q[tail-1],q[tail])&gt;=slope(q[tail],i))
-            tail--;//维护一个下凸包
-        q[++tail]=i;//进队
-    }
-    printf(&quot;%lld\n&quot;,f[tot]);//这里也要用tot
-    return 0;
-}
-</code></pre>
+<p>不多说见代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 50010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> n,tot,q[N],head=<span class="number">1</span>,tail=<span class="number">1</span>,f[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> len,wid;</span><br><span class="line">&#125;;<span class="class"><span class="keyword">struct</span> <span class="title">node</span> <span class="title">a</span>[<span class="title">N</span>];</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node1</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> lent,wide;</span><br><span class="line">&#125;;<span class="class"><span class="keyword">struct</span> <span class="title">node1</span> <span class="title">b</span>[<span class="title">N</span>];</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mmp</span><span class="params">(node xx,node yy)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> xx.len&gt;yy.len||(xx.len==yy.len&amp;&amp;xx.wid&gt;yy.wid);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">slope</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">double</span>)(f[y]-f[x])/(<span class="keyword">double</span>)(b[x+<span class="number">1</span>].lent-b[y+<span class="number">1</span>].lent);</span><br><span class="line">&#125;<span class="comment">//slope 斜率，来自金山词霸</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;a[i].len,&amp;a[i].wid);</span><br><span class="line">    sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n,mmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">if</span>(a[i].wid&gt;b[tot].wide)<span class="comment">//注意！一定要这样维护b中w的升序排列</span></span><br><span class="line">        &#123;</span><br><span class="line">            b[++tot].lent=a[i].len;</span><br><span class="line">            b[tot].wide=a[i].wid;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)<span class="comment">//1~tot动规</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(head&lt;tail&amp;&amp;slope(q[head],q[head+<span class="number">1</span>])&lt;=b[i].wide)</span><br><span class="line">            head++;<span class="comment">//如果队首不是最优，就弹出队首</span></span><br><span class="line">        f[i]=f[q[head]]+b[i].wide*b[q[head]+<span class="number">1</span>].lent;</span><br><span class="line">        <span class="keyword">while</span>(head&lt;tail&amp;&amp;slope(q[tail<span class="number">-1</span>],q[tail])&gt;=slope(q[tail],i))</span><br><span class="line">            tail--;<span class="comment">//维护一个下凸包</span></span><br><span class="line">        q[++tail]=i;<span class="comment">//进队</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,f[tot]);<span class="comment">//这里也要用tot</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>望各位dalao谅解QWQ</p>
 <p>[注] 图片、引文来源<a href="http://blog.csdn.net/bill_yang_2016/article/details/54864284" target="_blank" rel="noopener">[模板] 斜率优化Dp详解</a></p>
 
@@ -1165,7 +1119,30 @@ int main()
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1182,28 +1159,5 @@ int main()
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
