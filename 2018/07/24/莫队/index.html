@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="分块,莫队," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="首先%一波莫涛队长orz 普通莫队由于没有什么板子，这里放一道基础题。 给定一个序列，其中有n个元素，有m次查询，每次查询要求输出区间[l,r]内出现次数不少于k的数字的个数。 其实乍一看，好像就是可以用暴力做……但其实莫队本身也和暴力区别不大，基础思路就是将序列分成sqrt(n)个块，然后在每个块中进行操作。 以下是代码 #include &amp;lt;bits/stdc++.h&amp;gt; #defin">
+<meta name="keywords" content="分块,莫队">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫队">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/莫队/index.html">
+<meta property="og:site_name" content="DimensionTripper">
+<meta property="og:description" content="首先%一波莫涛队长orz 普通莫队由于没有什么板子，这里放一道基础题。 给定一个序列，其中有n个元素，有m次查询，每次查询要求输出区间[l,r]内出现次数不少于k的数字的个数。 其实乍一看，好像就是可以用暴力做……但其实莫队本身也和暴力区别不大，基础思路就是将序列分成sqrt(n)个块，然后在每个块中进行操作。 以下是代码 #include &amp;lt;bits/stdc++.h&amp;gt; #defin">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://b117.photo.store.qq.com/psb?/V137oTmC2F4y9l/rCZWGAv7jto.1koazTeSrgBU4uyU.JxZDsnZZbZdt74!/c/dHUAAAAAAAAA&bo=mwEtAZsBLQEBACc!">
+<meta property="og:updated_time" content="2018-07-24T01:32:18.256Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="莫队">
+<meta name="twitter:description" content="首先%一波莫涛队长orz 普通莫队由于没有什么板子，这里放一道基础题。 给定一个序列，其中有n个元素，有m次查询，每次查询要求输出区间[l,r]内出现次数不少于k的数字的个数。 其实乍一看，好像就是可以用暴力做……但其实莫队本身也和暴力区别不大，基础思路就是将序列分成sqrt(n)个块，然后在每个块中进行操作。 以下是代码 #include &amp;lt;bits/stdc++.h&amp;gt; #defin">
+<meta name="twitter:image" content="http://b117.photo.store.qq.com/psb?/V137oTmC2F4y9l/rCZWGAv7jto.1koazTeSrgBU4uyU.JxZDsnZZbZdt74!/c/dHUAAAAAAAAA&bo=mwEtAZsBLQEBACc!">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/24/莫队/"/>
+
+
+
+
+
+  <title>莫队 | DimensionTripper</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DimensionTripper</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/莫队/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DimensionTripper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DimensionTripper">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">莫队</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-24T09:30:52+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/24/莫队/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/24/莫队/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先%一波莫涛队长orz</p>
+<h1 id="普通莫队"><a href="#普通莫队" class="headerlink" title="普通莫队"></a>普通莫队</h1><p>由于没有什么板子，这里放一道基础题。</p>
+<p>给定一个序列，其中有n个元素，有m次查询，每次查询要求输出区间[l,r]内出现次数不少于k的数字的个数。</p>
+<p>其实乍一看，好像就是可以用暴力做……但其实莫队本身也和暴力区别不大，基础思路就是将序列分成sqrt(n)个块，然后在每个块中进行操作。</p>
+<p>以下是代码</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 100000+100
+using namespace std;
+struct node
+{
+    int l,r,k,id,t;
+}ask[N];
+int n,m,blo,a[N],num[N],ans[N],cnt[N];
+inline bool cmp(node x,node y)
+{
+    if(x.t==y.t)
+        return x.r&lt;y.r;
+    return x.t&lt;y.t;
+}
+inline void add(int x)
+{
+    num[a[x]]++;
+    cnt[num[a[x]]]++;
+}
+inline void Minus(int x)
+{
+    num[a[x]]--;
+    cnt[num[a[x]]]--;
+}
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    blo=sqrt(n);
+    for(register int i=1;i&lt;=n;i++)
+        scanf(&quot;%d&quot;,&amp;a[i]);
+    for(register int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%d%d%d&quot;,&amp;ask[i].l,&amp;ask[i].r,&amp;ask[i].k);
+        ask[i].id=i;
+        ask[i].t=ask[i].l/blo;
+    }
+    sort(ask+1,ask+1+m,cmp);
+    for(register int i=ask[1].l;i&lt;=ask[1].r;i++)
+    {
+        num[a[i]]++;
+        cnt[num[a[i]]]++;
+    }
+    ans[ask[1].id]=cnt[ask[1].k];
+    int L=ask[1].l;
+    int R=ask[1].r;
+    for(register int i=2;i&lt;=m;i++)
+    {
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(L);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(R);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(L);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(R);
+            R--;
+        }
+        ans[ask[i].id]=cnt[ask[i].k];
+    }
+    for(register int i=1;i&lt;=m;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>在这个程序中，我们用num[j]来记录j的出现次数，用cnt[j]记录出现次数不小于j的数的个数，在离线操作的基础上，对每次查询依照左端点所在的块进行排序，如果所在块相同则按照右端点进行排序，可以保证L，R两个指针的跳动次数尽可能的小以降低复杂度。</p>
+<p>然后在对每次查询的更新中不断跳动L、R，拓宽区间的时候先拓宽再操作，缩小区间的时候则先操作再缩小，最终在记录下来的ans数组中查询答案。</p>
+<p>以下是几道题：</p>
+<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3809" target="_blank" rel="noopener">BZOJ 3809: Gty的二逼妹子序列</a></p>
+<p>手写AC（调了一下午的绝望）</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 1000000+1000
+using namespace std;
+int n,m,blo,cnt;
+int a[100005],ans[1000005];
+int bel[100005];
+int num[100005],bloans[1005];
+struct node
+{
+    int l,r,p,q,id;
+}ask[1000005];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+        return x.r&lt;y.r;
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add(int x)
+{
+    num[a[x]]++;
+    if(num[a[x]]==1)
+        bloans[bel[a[x]]]++;
+}
+inline void Minus(int x)
+{
+    num[a[x]]--;
+    if(!num[a[x]])
+        bloans[bel[a[x]]]--;
+}
+inline int query(int x,int y)
+{
+    int ret=0;
+    int L=bel[x];
+    int R=bel[y];
+    if(L==R)
+    {
+        for(register int i=x;i&lt;=y;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+    }
+    else
+    {
+        for(register int i=x;i&lt;(L+1)*blo;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+        for(register int i=R*blo;i&lt;=y;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+        for(register int i=L+1;i&lt;R;i++)
+            ret+=bloans[i];
+    }
+    return ret;
+}
+int main()
+{
+    n=read();
+    m=read();
+    blo=sqrt(n);
+    for(register int i=1;i&lt;=n;i++)
+    {
+        a[i]=read();
+        bel[i]=i/blo;
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        ask[i].l=read();
+        ask[i].r=read();
+        ask[i].p=read();
+        ask[i].q=read();
+        ask[i].id=i;
+    }
+    sort(ask+1,ask+1+m,cmp);
+    int L=1;
+    int R=0;
+    for(register int i=1;i&lt;=m;i++)
+    {
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(L);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(R);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(L);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(R);
+            R--;
+        }
+        ans[ask[i].id]=query(ask[i].p,ask[i].q);
+    }
+    for(register int i=1;i&lt;=m;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>这道题说起来难度其实不大，一个值域分块的莫队保证m√n的复杂度完全没压力，就是这个28Mb的空间稍微有点坑。</p>
+<p><a href="https://www.luogu.org/problemnew/show/P4137" target="_blank" rel="noopener"> P4137 Rmq Problem / mex</a></p>
+<p>手写AC（一遍A O2-1296ms）</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 200000+1000
+using namespace std;
+struct node
+{
+    int l,r,id;
+}ask[N];
+int n,m,blo,now,a[N],num[N],ans[N],bel[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+        return x.r&lt;y.r;
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add(int x)
+{
+    if(a[x]&gt;n)
+        return;
+    num[a[x]]++;
+    if(a[x]==now)
+    {
+        while(num[now])
+            now++;
+    }
+}
+inline void Minus(int x)
+{
+    if(a[x]&gt;n)
+        return;
+    num[a[x]]--;
+    if(a[x]&lt;now)
+        if(!num[a[x]])
+            now=a[x];
+}
+int main()
+{
+    n=read();
+    m=read();
+    blo=sqrt(n);
+    for(register int i=1;i&lt;=n;i++)
+    {
+        a[i]=read();
+        bel[i]=i/blo;
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        ask[i].l=read();
+        ask[i].r=read();
+        ask[i].id=i;
+    }
+    sort(ask+1,ask+1+m,cmp);
+    int L=1;
+    int R=0;
+    for(register int i=1;i&lt;=m;i++)
+    {
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(L);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(R);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(L);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(R);
+            R--;
+        }
+        ans[ask[i].id]=now;
+    }
+    for(register int i=1;i&lt;=m;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>仍旧是对0到n进行分块，因为最坏情况是a[1]~a[n]对应0~n-1。所以就在上一题的基础上修改一下更新操作，在每次更新的时候与当前的最小值进行比较，如果最小值数量增加就寻找新的最优解，如果有新的解出现并且优于最优解就更新最优解。</p>
+<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3236" target="_blank" rel="noopener">BZOJ 3236: [AHOI2013]作业</a></p>
+<p>手写AC</p>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 1000000+1000
+using namespace std;
+int n,m,blo,cnt;
+int a[100005],ans[1000005][2];
+int bel[100005];
+int num[100005],bloans[1005],bloans1[1005];
+struct node
+{
+    int l,r,p,q,id;
+}ask[1000005];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+        return x.r&lt;y.r;
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add(int x)
+{
+    num[a[x]]++;
+    bloans1[bel[a[x]]]++;
+    if(num[a[x]]==1)
+        bloans[bel[a[x]]]++;
+}
+inline void Minus(int x)
+{
+    num[a[x]]--;
+    bloans1[bel[a[x]]]--;
+    if(!num[a[x]])
+        bloans[bel[a[x]]]--;
+}
+inline int query(int x,int y)
+{
+    int ret=0;
+    int L=bel[x];
+    int R=bel[y];
+    if(L==R)
+    {
+        for(register int i=x;i&lt;=y;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+    }
+    else
+    {
+        for(register int i=x;i&lt;(L+1)*blo;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+        for(register int i=R*blo;i&lt;=y;i++)
+        {
+            if(num[i])
+                ret++;
+        }
+        for(register int i=L+1;i&lt;R;i++)
+            ret+=bloans[i];
+    }
+    return ret;
+}
+inline int Query(int x,int y)
+{
+    int ret=0;
+    int L=bel[x];
+    int R=bel[y];
+    if(L==R)
+    {
+        for(register int i=x;i&lt;=y;i++)
+            ret+=num[i];
+    }
+    else
+    {
+        for(register int i=x;i&lt;(L+1)*blo;i++)
+            ret+=num[i];
+        for(register int i=R*blo;i&lt;=y;i++)
+            ret+=num[i];
+        for(register int i=L+1;i&lt;R;i++)
+            ret+=bloans1[i];
+    }
+    return ret;
+}
+int main()
+{
+    n=read();
+    m=read();
+    blo=sqrt(n);
+    for(register int i=1;i&lt;=n;i++)
+    {
+        a[i]=read();
+        bel[i]=i/blo;
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        ask[i].l=read();
+        ask[i].r=read();
+        ask[i].p=read();
+        ask[i].q=read();
+        ask[i].id=i;
+    }
+    sort(ask+1,ask+1+m,cmp);
+    int L=1;
+    int R=0;
+    for(register int i=1;i&lt;=m;i++)
+    {
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(L);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(R);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(L);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(R);
+            R--;
+        }
+        ans[ask[i].id][0]=query(ask[i].p,ask[i].q);
+        ans[ask[i].id][1]=Query(ask[i].p,ask[i].q);
+    }
+    for(register int i=1;i&lt;=m;i++)
+        printf(&quot;%d %d\n&quot;,ans[i][1],ans[i][0]);
+    return 0;
+}
+</code></pre><p>几乎无思维难度，在BZOJ 3809的基础上加一个查询数量的函数就行了</p>
+<h1 id="带修莫队"><a href="#带修莫队" class="headerlink" title="带修莫队"></a>带修莫队</h1><p><a href="https://www.luogu.org/recordnew/show/6262891" target="_blank" rel="noopener">P1903 [国家集训队]数颜色</a></p>
+<p>手写AC</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 100000+100
+using namespace std;
+int n,m,blo,cnt,t,Time;
+int a[N],ans[N],bel[N],num[N],bloans[N],now[N];
+struct node
+{
+    int l,r,tim,id;
+}ask[N];
+struct change
+{
+    int pos,New,Old;
+}chg[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+    {
+        if(bel[x.r]==bel[y.r])
+            return x.tim&lt;y.tim;
+        return bel[x.r]&lt;bel[y.r];
+    }
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add(int x)
+{
+    num[x]++;
+    if(num[x]==1)
+        cnt++;
+}
+inline void Minus(int x)
+{
+    num[x]--;
+    if(!num[x])
+        cnt--;
+}
+inline void Change(int l,int r,int x,int d)
+{
+    if(l&lt;=x&amp;&amp;x&lt;=r)
+    {
+        add(d);
+        Minus(a[x]);
+    }
+    a[x]=d;
+}
+int main()
+{
+    n=read();
+    m=read();
+    blo=pow(n,2.0/3);
+    for(register int i=1;i&lt;=n;i++)
+    {
+        a[i]=read();
+        now[i]=a[i];
+        bel[i]=i/blo;
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        char ch;
+        cin&gt;&gt;ch;
+        if(ch==&#39;Q&#39;)
+        {
+            ask[++t].l=read();
+            ask[t].r=read();
+            ask[t].tim=Time;
+            ask[t].id=t;
+        }
+        else
+        {
+            chg[++Time].pos=read();
+            chg[Time].New=read();
+            chg[Time].Old=now[chg[Time].pos];
+            now[chg[Time].pos]=chg[Time].New;
+        }
+    }
+    sort(ask+1,ask+1+t,cmp);
+    int L=1;
+    int R=0;
+    int T=0;
+    for(register int i=1;i&lt;=t;i++)
+    {
+        while(T&lt;ask[i].tim)
+        {
+            T++;
+            Change(L,R,chg[T].pos,chg[T].New);
+        }
+        while(T&gt;ask[i].tim)
+        {
+            Change(L,R,chg[T].pos,chg[T].Old);
+            T--;
+        }
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            add(a[L]);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            add(a[R]);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Minus(a[L]);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Minus(a[R]);
+            R--;
+        }
+        ans[ask[i].id]=cnt;
+    }
+    for(register int i=1;i&lt;=t;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>就难度系数而言其实并不算高，作为带修莫队的板子题来说挺不错的。</p>
+<p>那么以下是带修莫队的思路。</p>
+<p>如果我们把每次修改当作一次时间的推移，然后就只需要在查询中加入一个新的关键字Tim，也就是时间，仅在两个询问的l和r都在同一分块中的情况才依照Tim进行排序。</p>
+<p>然后在操作中进行L和R的跳动之前先进行时间指针T的跳动，使时间到达当前查询的时间点。由于时间需要不停的跳动，所以对于每次修改操作要另开一个结构体记录修改位置（pos）、修改后的值（New）和修改前的值（Old），这个Old在后面时间倒流的时候会有用。</p>
+<p>对于每次T的跳动进行一次Change操作，时间增加就将指定位置的值修改为T++后的修改操作的New值，时间倒流就先将指定位置的值修改为T时修改操作的Old值（即还原），然后就没什么区别了。</p>
+<p>对于Change操作也比较简单，如果当前位置在[L,R]区间中就将修改后的值Add进去，然后将原位置上的值Minus掉，如果不在区间内就直接将原位置数据赋为修改后的值，因为以后指针跳动的时候会自行更新的。</p>
+<p>稍微扯两句，带修莫队的复杂度经过某些dalao的证明后确定为n^(5/3),此时分为n^(1/3)块，每块有n^(2/3)个元素，所以blo=pow(n,2.0/3)。</p>
+<h1 id="树上莫队"><a href="#树上莫队" class="headerlink" title="树上莫队"></a>树上莫队</h1><p>例题：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=4129" target="_blank" rel="noopener">BZOJ 4129: Haruna’s Breakfast</a><del>（小天使！！！！！！！！）</del></p>
+<p>什么，树上能跑莫队，还带修改？那岂不是要爆裂吗？</p>
+<p>这是我第一次听说树上莫队时的想法。</p>
+<p>不过我们知道对于一棵树，还有DFS序这种美妙的东西，这样的话树不就变成序列了吗？</p>
+<p>比如说对于下面一棵树：</p>
+<p><img src="http://b117.photo.store.qq.com/psb?/V137oTmC2F4y9l/rCZWGAv7jto.1koazTeSrgBU4uyU.JxZDsnZZbZdt74!/c/dHUAAAAAAAAA&amp;bo=mwEtAZsBLQEBACc!" alt=""></p>
+<p>它的DFS序就是：1 2 4 4 5 5 2 3 6 6 7 7 3 1</p>
+<p>然后求j,k两点之间的链上的mex值。我们用in[i]记录i第一次出现的位置，用out[i]记录i最后出现的位置。</p>
+<p>首先假设j是k的祖先，那么我们可以发现[j,k]间的信息就存在in[j],in[k]之间或out[j],out[k]之间，对于出现两次的数我们就忽略掉好了。</p>
+<p>那么如果j不是k的祖先呢？我们会发现[j,k]之间的信息存在了in[j],out[k]之间或者out[j],in[k]之间，同样我们忽略出现了两次的数。但是如果仔细看一下就会发现，j、k的LCA好像不见了，那么我们只要特殊处理一下LCA就OK了。</p>
+<p>然后就可以用序列上的莫队来处理了DA☆ZE！（不过代码比较长就是了）</p>
+<p>以下是AC代码（我可是自带大常数和大空间的男人）</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 500000+100
+using namespace std;
+int n,m,blo,cnt,Time,tot,cur;
+int a[N],in[N],dfn[N],ans[N],bel[N],num[N],out[N],now[N];
+int siz[N],deep[N],fa[N],son[N],p[N],top[N];
+short tag[N];
+struct node
+{
+    int l,r,tim,id,Lca;
+}ask[N];
+struct change
+{
+    int pos,New,Old;
+}chg[N];
+struct edge
+{
+    int to,nxt;
+}e[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+    {
+        if(bel[x.r]==bel[y.r])
+            return x.tim&lt;y.tim;
+        return bel[x.r]&lt;bel[y.r];
+    }
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add_edge(int u,int v)
+{
+    e[++tot]=(edge){v,p[u]};
+    p[u]=tot;
+}
+inline void dfs(int x)
+{
+    siz[x]++;
+    dfn[++dfn[0]]=x;
+    in[x]=dfn[0];
+    int f=-1;
+    for(int i=p[x];i;i=e[i].nxt)
+    {
+        int v=e[i].to;
+        if(v==fa[x])
+            continue;
+        deep[v]=deep[x]+1;
+        fa[v]=x;
+        dfs(v);
+        siz[x]+=siz[v];
+        if(siz[v]&gt;f)
+        {
+            son[x]=v;
+            f=siz[v];
+        }
+    }
+    if(f==-1)
+        son[x]=x;
+    dfn[++dfn[0]]=x;
+    out[x]=dfn[0];
+}
+inline int LCA(int x,int y)
+{
+    while(top[x]!=top[y])
+    {
+        if(deep[top[x]]&lt;deep[top[y]])
+            swap(x,y);
+        x=fa[top[x]];
+    }
+    if(deep[x]&gt;deep[y])
+        swap(x,y);
+    return x;
+}
+inline void choose(int x,int y,int cur)
+{
+    int l=0,r=0,lca=LCA(x,y);
+    if(x==lca||y==lca)
+    {
+        if(abs(in[x]-in[y])&lt;abs(out[x]-out[y]))
+            l=min(in[x],in[y]),r=max(in[x],in[y]);
+        else
+            l=min(out[x],out[y]),r=max(out[x],out[y]);
+        lca=0;
+    }
+    else
+    {
+        if(abs(in[x]-out[y])&lt;abs(out[x]-in[y]))
+            l=min(in[x],out[y]),r=max(in[x],out[y]);
+        else
+            l=min(out[x],in[y]),r=max(out[x],in[y]);
+    }
+    ask[cur]=(node){l,r,Time,cur,lca};
+}
+inline void add(int x)
+{
+    if(x&gt;n)
+        return;
+    num[x]++;
+    if(x==cnt)
+    {
+        while(num[cnt])
+            cnt++;
+    }
+}
+inline void Minus(int x)
+{
+    if(x&gt;n)
+        return;
+    num[x]--;
+    if(x&lt;cnt)
+        if(!num[x])
+            cnt=x;
+}
+inline void Work(int x)
+{
+    if(tag[x])
+        Minus(a[x]);
+    else
+        add(a[x]);
+    tag[x]^=1;
+}
+inline void Change(int pos,int x)
+{
+    if(tag[pos])
+    {
+        Work(pos);
+        a[pos]=x;
+        Work(pos);
+    }
+    else
+        a[pos]=x;
+}
+int main()
+{
+    n=read(),m=read();
+    blo=pow(n&lt;&lt;1,2.0/3)*0.7;
+    for(register int i=1;i&lt;=n;i++)
+        now[i]=a[i]=read();
+    for(register int i=1;i&lt;n;i++)
+    {
+        int x,y;
+        x=read(),y=read();
+        add_edge(x,y),add_edge(y,x);
+    }
+    dfs(1);
+    for(register int i=1;i&lt;=dfn[0];i++)
+    {
+        bel[i]=i/blo;
+        if(top[dfn[i]])
+            continue;
+        else if(dfn[i]==son[fa[dfn[i]]])
+            top[dfn[i]]=top[fa[dfn[i]]];
+        else
+            top[dfn[i]]=dfn[i];
+    }
+    for(register int i=1;i&lt;=m;i++)
+    {
+        int c=read();
+        if(c)
+        {
+            int x=read(),y=read();
+            choose(x,y,++cur);
+        }
+        else
+        {
+            int x=read(),y=read();
+            chg[++Time]=(change){x,y,now[x]};
+            now[x]=y;
+        }
+    }
+    sort(ask+1,ask+1+cur,cmp);
+    int L=1,R=0,T=0;
+    for(register int i=1;i&lt;=cur;i++)
+    {
+        while(T&lt;ask[i].tim)
+        {
+            T++;
+            Change(chg[T].pos,chg[T].New);
+        }
+        while(T&gt;ask[i].tim)
+        {
+            Change(chg[T].pos,chg[T].Old);
+            T--;
+        }
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            Work(dfn[L]);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            Work(dfn[R]);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Work(dfn[L]);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Work(dfn[R]);
+            R--;
+        }
+        if(ask[i].Lca)
+            Work(ask[i].Lca);
+        ans[ask[i].id]=cnt;
+        if(ask[i].Lca)
+            Work(ask[i].Lca);
+    }
+    for(register int i=1;i&lt;=cur;i++)
+        printf(&quot;%d\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>这里LCA我用的树剖（当然倍增也可以啦</p>
+<p>顺便注明一下，那个tag数组是用来记录某个位置在区间里出现了几次，因为不论是0次还是2次都是不计入答案的，所以只要把2次当0次看就可以避免很多复杂的讨论了。然后修改的时候tag是0就加，tag是1就减，最后要把tag进行变换（即0-&gt;1，1-&gt;0）。</p>
+<p>要说修改与mex这两个的话，还是看上面的讲解吧。</p>
+<p>再说起来，其实树上莫队可以在树上分块的基础上搞，但是我太蒻了，看不懂dalao的讲解。</p>
+<p>还有一题：<a href="https://www.luogu.org/problemnew/show/P4074#sub" target="_blank" rel="noopener">P4074 [WC2013]糖果公园</a></p>
+<p>几乎就是板子吧，具体自己看代码（其实没啥差别）</p>
+<p>手写AC（O2-6s，莫名其妙就Rank 5了）</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 500000+100
+using namespace std;
+int n,m,blo,Time,tot,cur,q;
+int a[N],in[N],dfn[N],bel[N],num[N],out[N],now[N];
+int siz[N],deep[N],fa[N],son[N],p[N],top[N];
+short tag[N];
+long long Ans,ans[N],W[N],V[N];
+struct node
+{
+    int l,r,tim,id,Lca;
+}ask[N];
+struct change
+{
+    int pos,New,Old;
+}chg[N];
+struct edge
+{
+    int to,nxt;
+}e[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)
+    {
+        if(f==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while (ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline bool cmp(node x,node y)
+{
+    if(bel[x.l]==bel[y.l])
+    {
+        if(bel[x.r]==bel[y.r])
+            return x.tim&lt;y.tim;
+        return bel[x.r]&lt;bel[y.r];
+    }
+    return bel[x.l]&lt;bel[y.l];
+}
+inline void add_edge(int u,int v)
+{
+    e[++tot]=(edge){v,p[u]};
+    p[u]=tot;
+}
+inline void dfs(int x)
+{
+    siz[x]++;
+    dfn[++dfn[0]]=x;
+    in[x]=dfn[0];
+    int f=-1;
+    for(int i=p[x];i;i=e[i].nxt)
+    {
+        int v=e[i].to;
+        if(v==fa[x])
+            continue;
+        deep[v]=deep[x]+1;
+        fa[v]=x;
+        dfs(v);
+        siz[x]+=siz[v];
+        if(siz[v]&gt;f)
+        {
+            son[x]=v;
+            f=siz[v];
+        }
+    }
+    if(f==-1)
+        son[x]=x;
+    dfn[++dfn[0]]=x;
+    out[x]=dfn[0];
+}
+inline int LCA(int x,int y)
+{
+    while(top[x]!=top[y])
+    {
+        if(deep[top[x]]&lt;deep[top[y]])
+            swap(x,y);
+        x=fa[top[x]];
+    }
+    if(deep[x]&gt;deep[y])
+        swap(x,y);
+    return x;
+}
+inline void choose(int x,int y,int cur)
+{
+    int l=0,r=0,lca=LCA(x,y);
+    if(x==lca||y==lca)
+    {
+        if(abs(in[x]-in[y])&lt;abs(out[x]-out[y]))
+            l=min(in[x],in[y]),r=max(in[x],in[y]);
+        else
+            l=min(out[x],out[y]),r=max(out[x],out[y]);
+        lca=0;
+    }
+    else
+    {
+        if(abs(in[x]-out[y])&lt;abs(out[x]-in[y]))
+            l=min(in[x],out[y]),r=max(in[x],out[y]);
+        else
+            l=min(out[x],in[y]),r=max(out[x],in[y]);
+    }
+    ask[cur]=(node){l,r,Time,cur,lca};
+}
+inline void add(int x)
+{
+    num[x]++;
+    Ans+=W[num[x]]*V[x];
+}
+inline void Minus(int x)
+{
+    Ans-=W[num[x]]*V[x];
+    num[x]--;
+}
+inline void Work(int x)
+{
+    if(tag[x])
+        Minus(a[x]);
+    else
+        add(a[x]);
+    tag[x]^=1;
+}
+inline void Change(int pos,int x)
+{
+    if(tag[pos])
+    {
+        Work(pos);
+        a[pos]=x;
+        Work(pos);
+    }
+    else
+        a[pos]=x;
+}
+int main()
+{
+    n=read(),m=read(),q=read();
+    blo=pow(n&lt;&lt;1,2.0/3)*0.7;
+    for(register int i=1;i&lt;=m;i++)
+        V[i]=read();
+    for(register int i=1;i&lt;=n;i++)
+        W[i]=read();
+    for(register int i=1;i&lt;n;i++)
+    {
+        int x,y;
+        x=read(),y=read();
+        add_edge(x,y),add_edge(y,x);
+    }
+    dfs(1);
+    for(register int i=1;i&lt;=n;i++)
+        now[i]=a[i]=read();
+    for(register int i=1;i&lt;=dfn[0];i++)
+    {
+        bel[i]=i/blo;
+        if(top[dfn[i]])
+            continue;
+        else if(dfn[i]==son[fa[dfn[i]]])
+            top[dfn[i]]=top[fa[dfn[i]]];
+        else
+            top[dfn[i]]=dfn[i];
+    }
+    for(register int i=1;i&lt;=q;i++)
+    {
+        int c=read();
+        if(c)
+        {
+            int x=read(),y=read();
+            choose(x,y,++cur);
+        }
+        else
+        {
+            int x=read(),y=read();
+            chg[++Time]=(change){x,y,now[x]};
+            now[x]=y;
+        }
+    }
+    sort(ask+1,ask+1+cur,cmp);
+    int L=1,R=0,T=0;
+    for(register int i=1;i&lt;=cur;i++)
+    {
+        while(T&lt;ask[i].tim)
+        {
+            T++;
+            Change(chg[T].pos,chg[T].New);
+        }
+        while(T&gt;ask[i].tim)
+        {
+            Change(chg[T].pos,chg[T].Old);
+            T--;
+        }
+        while(L&gt;ask[i].l)
+        {
+            L--;
+            Work(dfn[L]);
+        }
+        while(R&lt;ask[i].r)
+        {
+            R++;
+            Work(dfn[R]);
+        }
+        while(L&lt;ask[i].l)
+        {
+            Work(dfn[L]);
+            L++;
+        }
+        while(R&gt;ask[i].r)
+        {
+            Work(dfn[R]);
+            R--;
+        }
+        if(ask[i].Lca)
+            Work(ask[i].Lca);
+        ans[ask[i].id]=Ans;
+        if(ask[i].Lca)
+            Work(ask[i].Lca);
+    }
+    for(register int i=1;i&lt;=cur;i++)
+        printf(&quot;%lld\n&quot;,ans[i]);
+    return 0;
+}
+</code></pre>
+<p>以上就是莫队——一个优雅的暴力算法</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/分块/" rel="tag"># 分块</a>
+          
+            <a href="/tags/莫队/" rel="tag"># 莫队</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/24/可持久化线段树（主席树）/" rel="next" title="可持久化线段树（主席树）">
+                <i class="fa fa-chevron-left"></i> 可持久化线段树（主席树）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/24/网络最大流/" rel="prev" title="网络最大流">
+                网络最大流 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DimensionTripper</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vixbob-lwc.pw/" title="ViXbob" target="_blank">ViXbob</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zhongyic00.github.io/" title="Zhyic" target="_blank">Zhyic</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#普通莫队"><span class="nav-number">1.</span> <span class="nav-text">普通莫队</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#带修莫队"><span class="nav-number">2.</span> <span class="nav-text">带修莫队</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树上莫队"><span class="nav-number">3.</span> <span class="nav-text">树上莫队</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DimensionTripper</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/07/24/莫队/';
+          this.page.identifier = '2018/07/24/莫队/';
+          this.page.title = '莫队';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

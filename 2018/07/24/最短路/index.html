@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="图论,最短路," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="如标题所示，这一类的算法就是为了解决这一类的单源最短路径问题。 所谓的单源最短路径问题呢，就是指在一个有向图中，给定点S，要求从S点出发遍历全图的最短路径。 例题：P3371 【模板】单源最短路径 以下我来讲几种算法（如果有可能的话） 1、SPFA它被誉为“最快最好用的最短路算法”，但是被各种心狠手辣的出题人卡成了狗自有其优越性，毕竟像笔者这种蒟蒻都看了一遍就懂了。 SPFA用了一种动态逼近的方法">
+<meta name="keywords" content="图论,最短路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最短路">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/最短路/index.html">
+<meta property="og:site_name" content="DimensionTripper">
+<meta property="og:description" content="如标题所示，这一类的算法就是为了解决这一类的单源最短路径问题。 所谓的单源最短路径问题呢，就是指在一个有向图中，给定点S，要求从S点出发遍历全图的最短路径。 例题：P3371 【模板】单源最短路径 以下我来讲几种算法（如果有可能的话） 1、SPFA它被誉为“最快最好用的最短路算法”，但是被各种心狠手辣的出题人卡成了狗自有其优越性，毕竟像笔者这种蒟蒻都看了一遍就懂了。 SPFA用了一种动态逼近的方法">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://b289.photo.store.qq.com/psb?/V137oTmC2F4y9l/QzGubFdwvbb*zKqW6BSSa2aeEGzCTK0gQXF4f9iTYno!/c/dCEBAAAAAAAA&bo=WgHzAFoB8wABACc!">
+<meta property="og:image" content="http://b289.photo.store.qq.com/psb?/V137oTmC2F4y9l/ndvqtccKCoyRQveb9Xfz8RpBPNFaWOyO5ZbNSM4HsDM!/c/dCEBAAAAAAAA&bo=ZgI5AWYCOQEBACc!">
+<meta property="og:updated_time" content="2018-07-24T01:36:06.352Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最短路">
+<meta name="twitter:description" content="如标题所示，这一类的算法就是为了解决这一类的单源最短路径问题。 所谓的单源最短路径问题呢，就是指在一个有向图中，给定点S，要求从S点出发遍历全图的最短路径。 例题：P3371 【模板】单源最短路径 以下我来讲几种算法（如果有可能的话） 1、SPFA它被誉为“最快最好用的最短路算法”，但是被各种心狠手辣的出题人卡成了狗自有其优越性，毕竟像笔者这种蒟蒻都看了一遍就懂了。 SPFA用了一种动态逼近的方法">
+<meta name="twitter:image" content="http://b289.photo.store.qq.com/psb?/V137oTmC2F4y9l/QzGubFdwvbb*zKqW6BSSa2aeEGzCTK0gQXF4f9iTYno!/c/dCEBAAAAAAAA&bo=WgHzAFoB8wABACc!">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/24/最短路/"/>
+
+
+
+
+
+  <title>最短路 | DimensionTripper</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DimensionTripper</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/最短路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DimensionTripper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DimensionTripper">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">最短路</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-24T09:34:38+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/24/最短路/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/24/最短路/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>如标题所示，这一类的算法就是为了解决这一类的单源最短路径问题。</p>
+<p>所谓的单源最短路径问题呢，就是指在一个有向图中，给定点S，要求从S点出发遍历全图的最短路径。</p>
+<p>例题：<a href="https://www.luogu.org/problemnew/show/P3371#sub" target="_blank" rel="noopener">P3371 【模板】单源最短路径</a></p>
+<p>以下我来讲几种算法（如果有可能的话）</p>
+<h1 id="1、SPFA"><a href="#1、SPFA" class="headerlink" title="1、SPFA"></a>1、SPFA</h1><p>它被誉为“最快最好用的最短路算法”，<del>但是被各种心狠手辣的出题人卡成了狗</del>自有其优越性，毕竟像笔者这种蒟蒻都看了一遍就懂了。</p>
+<p>SPFA用了一种动态逼近的方法，设立一个先进先出的队列q来保存待优化的节点，每次取出队首的节点u，并用u点当前的最短路径的估计值对离开u指向的v节点进行松弛操作，如果v点的最短路径估计值有所调整，并且v不在当前队列中，就把它放入队列中如此不断从队列中取出节点进行松弛操作，直至队列空为止。</p>
+<p>那么说到松弛操作，原理就是十分著名的三角不等式，即我们数学中都用过的“两边之和大于第三边”，也就是v当前的最短路径估算值大于u当前的最短路径估算值与边[u,v]的长度之和，那么就更新v最短路径的估算值，也就是这样：</p>
+<pre><code class="lang-cpp">if(dist[v]&gt;dist[u]+e[i].weigh)
+    dist[v]=dist[u]+e[i].weigh;
+</code></pre>
+<p>当然，实际的代码中还要加上进队的操作。</p>
+<p>当然你也许会说，这个怎么这么像BFS呢？其实还真有点，区别就在于BFS中一个点不能重复进队，而这里是可以反复松弛的。</p>
+<h3 id="切记：每次取出队首节点的时候一定要清空标记！！"><a href="#切记：每次取出队首节点的时候一定要清空标记！！" class="headerlink" title="切记：每次取出队首节点的时候一定要清空标记！！"></a>切记：每次取出队首节点的时候一定要清空标记！！</h3><p>那么在贴代码之前，先来手玩一下样例。样例图如下：</p>
+<p><img src="http://b289.photo.store.qq.com/psb?/V137oTmC2F4y9l/QzGubFdwvbb*zKqW6BSSa2aeEGzCTK0gQXF4f9iTYno!/c/dCEBAAAAAAAA&amp;bo=WgHzAFoB8wABACc!" alt=""></p>
+<p>过程如下：</p>
+<h3 id="q-1"><a href="#q-1" class="headerlink" title="q:1"></a>q:1</h3><h3 id="dis-0-inf-inf-inf"><a href="#dis-0-inf-inf-inf" class="headerlink" title="dis:0,inf,inf,inf"></a>dis:0,inf,inf,inf</h3><p>源点1进队，更新最短距离</p>
+<h3 id="q-2-3-4"><a href="#q-2-3-4" class="headerlink" title="q:2,3,4"></a>q:2,3,4</h3><h3 id="dis-0-2-5-4"><a href="#dis-0-2-5-4" class="headerlink" title="dis:0,2,5,4"></a>dis:0,2,5,4</h3><p>1出队，2、3、4进队，2&lt;inf，5&lt;inf，4&lt;inf，更新2、3、4的最短路径</p>
+<h3 id="q-3-4"><a href="#q-3-4" class="headerlink" title="q:3,4"></a>q:3,4</h3><h3 id="dis-0-2-4-3"><a href="#dis-0-2-4-3" class="headerlink" title="dis:0,2,4,3"></a>dis:0,2,4,3</h3><p>2出队，5&gt;2+2，4&gt;2+1，更新3、4的最短路径</p>
+<h3 id="q-4"><a href="#q-4" class="headerlink" title="q:4"></a>q:4</h3><h3 id="dis-0-2-4-3-1"><a href="#dis-0-2-4-3-1" class="headerlink" title="dis:0,2,4,3"></a>dis:0,2,4,3</h3><p>3出队</p>
+<h3 id="q"><a href="#q" class="headerlink" title="q:"></a>q:</h3><h3 id="dis-0-2-4-3-2"><a href="#dis-0-2-4-3-2" class="headerlink" title="dis:0,2,4,3"></a>dis:0,2,4,3</h3><p>4出队，队列已空，此时已找到最短路径</p>
+<p>以下是代码：</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 1000000+110
+#define inf 0x7fffffff
+using namespace std;
+int n,m,S,cnt;
+int dist[N],head[N],q[N];
+bool vis[N];
+struct edge
+{
+    int to,nxt,weigh;
+}e[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&lt;&#39;0&#39;||ch&gt;&#39;9&#39;)
+    {
+        if(ch==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while(ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline void add(int u,int v,int w)
+{
+    e[++cnt]=(edge){v,head[u],w};
+    head[u]=cnt;
+}
+inline void SPFA(int s)
+{
+    int fr=1,tl=0;
+    for(int i=1;i&lt;=n;i++)
+        dist[i]=inf,vis[i]=0;
+    dist[s]=0;
+    q[1]=s;
+    vis[s]=1;
+    while(tl&lt;fr)
+    {
+        int u=q[++tl];
+        vis[u]=0;
+        for(register int i=head[u];i;i=e[i].nxt)
+        {
+            int v=e[i].to;
+            if(dist[v]&gt;dist[u]+e[i].weigh)
+            {
+                dist[v]=dist[u]+e[i].weigh;
+                if(!vis[v])
+                {
+                    q[++fr]=v;
+                    vis[v]=1;
+                }
+            }
+        }
+    }
+}
+int main()
+{
+    n=read(),m=read(),S=read();
+    for(register int i=1;i&lt;=m;i++)
+    {
+        int u=read(),v=read(),w=read();
+        add(u,v,w);
+    }
+    SPFA(S);
+    for(register int i=1;i&lt;=n;i++)
+        printf(&quot;%d &quot;,dist[i]);
+    return 0;
+}
+</code></pre>
+<p>虽然这样写基本正确，但如果面对这样一个图，SPFA就很绝望了：</p>
+<p><img src="http://b289.photo.store.qq.com/psb?/V137oTmC2F4y9l/ndvqtccKCoyRQveb9Xfz8RpBPNFaWOyO5ZbNSM4HsDM!/c/dCEBAAAAAAAA&amp;bo=ZgI5AWYCOQEBACc!" alt=""></p>
+<p>可以看到，1、2、4三点间形成了一个负环，也就是说这几个点间没有所谓的最短路，因此就会无限的跑下去。</p>
+<p>那么怎么办呢？我们可以对每个点入队的次数进行限制，如果超过所有点的总数，那么就可以判断出现了负环，就跳出函数。</p>
+<p>代码也没有太大的区别：</p>
+<pre><code class="lang-cpp">inline void SPFA(int s)
+{
+    int fr=1,tl=0;
+    for(int i=1;i&lt;=n;i++)
+        dist[i]=inf,vis[i]=0,c[i]=0;
+    dist[s]=0;
+    q[1]=s;
+    vis[s]=1;
+    while(tl&lt;fr)
+    {
+        int u=q[++tl];
+        vis[u]=0;
+        for(register int i=head[u];i;i=e[i].nxt)
+        {
+            int v=e[i].to;
+            if(dist[v]&gt;dist[u]+e[i].weigh)
+            {
+                dist[v]=dist[u]+e[i].weigh;
+                if(!vis[v])
+                {
+                    q[++fr]=v;
+                    c[v]++;
+                    vis[v]=1;
+                    if(c[v]&gt;n)
+                        do something,return;
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>还有另一种办法，就是使用DFS跑SPFA，但是会稍微慢一点……吧</p>
+<p>但是优点是负环的判断很简单，只要松弛了未清除标记的点就判定为出现负环。</p>
+<p>下面是<a href="https://www.luogu.org/problemnew/show/P3385" target="_blank" rel="noopener">P3385 【模板】负环</a>的代码（才不是跑P3371的时候T掉了呢，哼！</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 1000000+110
+#define inf 0x7fffffff
+using namespace std;
+int n,m,S,cnt;
+int dist[N],head[N],q[N];
+bool vis[N],flag;
+struct edge
+{
+    int to,nxt,weigh;
+}e[N];
+inline int read()
+{
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch&lt;&#39;0&#39;||ch&gt;&#39;9&#39;)
+    {
+        if(ch==&#39;-&#39;)
+            f=-1;
+        ch=getchar();
+    }
+    while(ch&gt;=&#39;0&#39;&amp;&amp;ch&lt;=&#39;9&#39;)
+    {
+        x=x*10+ch-&#39;0&#39;;
+        ch=getchar();
+    }
+    return x*f;
+}
+inline void add(int u,int v,int w)
+{
+    e[++cnt]=(edge){v,head[u],w};
+    head[u]=cnt;
+}
+inline void SPFA(int u)
+{
+    vis[u]=1;
+    for(register int i=head[u];i;i=e[i].nxt)
+    {
+        int v=e[i].to;
+        if(dist[v]&gt;dist[u]+e[i].weigh)
+        {
+            dist[v]=dist[u]+e[i].weigh;
+            if(vis[v]||flag)
+            {
+                flag=1;
+                break;
+            }
+            SPFA(v);
+        }
+    }
+    vis[u]=0;
+}
+int main()
+{
+    int T=read();
+    while(T--)
+    {
+        n=read(),m=read();
+        for(register int i=1;i&lt;=n;i++)
+            dist[i]=0,vis[i]=0,head[i]=0;
+        flag=0,cnt=0;
+        for(register int i=1;i&lt;=m;i++)
+        {
+            int u=read(),v=read(),w=read();
+            add(u,v,w);
+            if(w&gt;0)
+                add(v,u,w);
+        }
+        for(register int i=1;i&lt;=n;i++)
+        {
+            SPFA(i);
+            if(flag)
+                break;
+        }
+        if(flag)
+            printf(&quot;YE5\n&quot;);
+        else
+            printf(&quot;N0\n&quot;);
+    }
+    return 0;
+}
+</code></pre>
+<p>再放一道例题：<a href="https://www.luogu.org/problemnew/show/P1027" target="_blank" rel="noopener">P1027 Car的旅行路线</a></p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 400+10
+#define inf 0x7fffffff
+#define ri register int
+#define il inline
+using namespace std;
+int n,s,t,A,B,cnt,head[N],q[N];
+double dist[N];
+bool vis[N];
+struct Vector
+{
+    int x,y;
+    Vector(int X,int Y)
+    {
+        x=X,y=Y;
+    }
+    Vector()
+    {
+        x=0,y=0;
+    }
+    int operator * (const Vector &amp;v)
+    {
+        int ret;
+        ret=x*v.x+y*v.y;
+        return ret;
+    }
+    Vector operator - (const Vector &amp;v)
+    {
+        Vector ret;
+        ret.x=x-v.x;
+        ret.y=y-v.y;
+        return ret;
+    }
+};
+struct city
+{
+    Vector apt[5];
+    int T;
+    void add(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4,int t)
+    {
+        apt[1].x=x1,apt[1].y=y1,apt[2].x=x2,apt[2].y=y2,apt[3].x=x3,apt[3].y=y3,apt[4].x=x4,apt[4].y=y4;
+        T=t;
+    }
+};
+struct edge
+{
+    int to,nxt;
+    double weight;
+};
+city C[N];
+edge e[100000];
+il void work(int x1,int y1,int x2,int y2,int x3,int y3,int &amp;x4,int &amp;y4)
+{
+    Vector ab(x1-x2,y1-y2),bc(x2-x3,y2-y3),ac(x3-x1,y3-y1);
+    if(ab*bc==0)
+    {
+        x4=x3+x1-x2;
+        y4=y3+y1-y2;
+    }
+    else if(ab*ac==0)
+    {
+        x4=x3+x2-x1;
+        y4=y3+y2-y1;
+    }
+    else
+    {
+        x4=x1+x2-x3;
+        y4=y1+y2-y3;
+    }
+    return;
+}
+il double Vector_module(Vector v)
+{
+    return sqrt(v.x*v.x+v.y*v.y);
+}
+il void add_edge(int u,int v,double w)
+{
+    e[++cnt]=(edge){v,head[u],w};
+    head[u]=cnt;
+}
+il void SPFA(int S)
+{
+    int fr=4,tl=0;
+    for(ri i=1;i&lt;=s;i++)
+        for(ri j=1;j&lt;=4;j++)
+            dist[4*(i-1)+j]=inf;
+    for(ri i=0;i&lt;4;i++)
+        dist[S+i]=0,vis[S+i]=1,q[i+1]=S+i;
+    while(tl&lt;fr)
+    {
+        int u=q[++tl];
+        vis[u]=0;
+        for(ri i=head[u];i;i=e[i].nxt)
+        {
+            int v=e[i].to;
+            if(dist[v]&gt;dist[u]+e[i].weight)
+            {
+                dist[v]=dist[u]+e[i].weight;
+                if(!vis[v])
+                {
+                    q[++fr]=v;
+                    vis[v]=1;
+                }
+            }
+        }
+    }
+}
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;n);
+    while(n--)
+    {
+        memset(vis,0,sizeof(vis));
+        memset(e,0,sizeof(e));
+        memset(C,0,sizeof(C));
+        memset(head,0,sizeof(head));
+        cnt=0;
+        scanf(&quot;%d %d %d %d&quot;,&amp;s,&amp;t,&amp;A,&amp;B);
+        for(ri i=1;i&lt;=s;i++)
+        {
+            int x1,x2,x3,x4;
+            int y1,y2,y3,y4;
+            int T;
+            scanf(&quot;%d %d %d %d %d %d %d&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2,&amp;x3,&amp;y3,&amp;T);
+            work(x1,y1,x2,y2,x3,y3,x4,y4);
+            C[i].add(x1,y1,x2,y2,x3,y3,x4,y4,T);
+        }
+        for(ri i=1;i&lt;=s;i++)
+        {
+            for(ri j=1;j&lt;=3;j++)
+                for(ri k=j+1;k&lt;=4;k++)
+                {
+                    double w=Vector_module(C[i].apt[j]-C[i].apt[k])*C[i].T;
+                    add_edge(4*(i-1)+j,4*(i-1)+k,w);
+                    add_edge(4*(i-1)+k,4*(i-1)+j,w);
+                }
+            for(ri j=i+1;j&lt;=s;j++)
+                for(ri k=1;k&lt;=4;k++)
+                    for(ri l=1;l&lt;=4;l++)
+                    {
+                        double w=Vector_module(C[i].apt[k]-C[j].apt[l])*t;
+                        add_edge(4*(i-1)+k,4*(j-1)+l,w);
+                        add_edge(4*(j-1)+l,4*(i-1)+k,w);
+                    }
+        }
+        SPFA(4*(A-1)+1);
+        double ans=inf;
+        for(ri i=1;i&lt;=4;i++)
+            ans=min(ans,dist[4*(B-1)+i]);
+        printf(&quot;%.1lf\n&quot;,ans);
+    }
+    return 0;
+}
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图论/" rel="tag"># 图论</a>
+          
+            <a href="/tags/最短路/" rel="tag"># 最短路</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/24/网络最大流/" rel="next" title="网络最大流">
+                <i class="fa fa-chevron-left"></i> 网络最大流
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/24/费用流/" rel="prev" title="费用流">
+                费用流 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DimensionTripper</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vixbob-lwc.pw/" title="ViXbob" target="_blank">ViXbob</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zhongyic00.github.io/" title="Zhyic" target="_blank">Zhyic</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、SPFA"><span class="nav-number">1.</span> <span class="nav-text">1、SPFA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#切记：每次取出队首节点的时候一定要清空标记！！"><span class="nav-number">1.0.1.</span> <span class="nav-text">切记：每次取出队首节点的时候一定要清空标记！！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-1"><span class="nav-number">1.0.2.</span> <span class="nav-text">q:1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dis-0-inf-inf-inf"><span class="nav-number">1.0.3.</span> <span class="nav-text">dis:0,inf,inf,inf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-2-3-4"><span class="nav-number">1.0.4.</span> <span class="nav-text">q:2,3,4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dis-0-2-5-4"><span class="nav-number">1.0.5.</span> <span class="nav-text">dis:0,2,5,4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-3-4"><span class="nav-number">1.0.6.</span> <span class="nav-text">q:3,4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dis-0-2-4-3"><span class="nav-number">1.0.7.</span> <span class="nav-text">dis:0,2,4,3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-4"><span class="nav-number">1.0.8.</span> <span class="nav-text">q:4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dis-0-2-4-3-1"><span class="nav-number">1.0.9.</span> <span class="nav-text">dis:0,2,4,3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q"><span class="nav-number">1.0.10.</span> <span class="nav-text">q:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dis-0-2-4-3-2"><span class="nav-number">1.0.11.</span> <span class="nav-text">dis:0,2,4,3</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DimensionTripper</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/07/24/最短路/';
+          this.page.identifier = '2018/07/24/最短路/';
+          this.page.title = '最短路';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

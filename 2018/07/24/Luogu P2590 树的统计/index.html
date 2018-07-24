@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="线段树,树链剖分，树剖," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基础树剖（从P3178的代码稍作修改便可A掉这里和3178差别在于线段树的过程不同和一个deep数组，具体看代码 #include &amp;lt;bits/stdc++.h&amp;gt; #pragma GCC optimize(3)//手开O3の日常 #define N 100010 using namespace std; int n,m,fr,t,a,c,data[N],Size[N],num,p[2*">
+<meta name="keywords" content="线段树,树链剖分，树剖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Luogu P2590 树的统计">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/Luogu P2590 树的统计/index.html">
+<meta property="og:site_name" content="DimensionTripper">
+<meta property="og:description" content="基础树剖（从P3178的代码稍作修改便可A掉这里和3178差别在于线段树的过程不同和一个deep数组，具体看代码 #include &amp;lt;bits/stdc++.h&amp;gt; #pragma GCC optimize(3)//手开O3の日常 #define N 100010 using namespace std; int n,m,fr,t,a,c,data[N],Size[N],num,p[2*">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-24T01:16:55.388Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Luogu P2590 树的统计">
+<meta name="twitter:description" content="基础树剖（从P3178的代码稍作修改便可A掉这里和3178差别在于线段树的过程不同和一个deep数组，具体看代码 #include &amp;lt;bits/stdc++.h&amp;gt; #pragma GCC optimize(3)//手开O3の日常 #define N 100010 using namespace std; int n,m,fr,t,a,c,data[N],Size[N],num,p[2*">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/24/Luogu P2590 树的统计/"/>
+
+
+
+
+
+  <title>Luogu P2590 树的统计 | DimensionTripper</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DimensionTripper</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/Luogu P2590 树的统计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DimensionTripper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DimensionTripper">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Luogu P2590 树的统计</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-24T09:14:26+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题解/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/24/Luogu P2590 树的统计/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/24/Luogu P2590 树的统计/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>基础树剖（从<a href="https://www.luogu.org/problemnew/show/P3178" target="_blank" rel="noopener">P3178</a>的代码稍作修改便可A掉<br>这里和3178差别在于线段树的过程不同和一个deep数组，具体看代码</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#pragma GCC optimize(3)//手开O3の日常
+#define N 100010
+using namespace std;
+int n,m,fr,t,a,c,data[N],Size[N],num,p[2*N],fa[N],id,out[2*N],pos[2*N],h[2*N],belong[2*N],b[2*N],nt[2*N],son[N*2],deep[2*N];
+char s[10];
+struct node
+{
+    int left,right,mx;
+    long long sum,val;
+};struct node tree[4*N];//线段树
+void pushdown(int p)
+{
+    if(tree[p].val!=0)
+    {
+        tree[2*p].val=tree[p].val;
+        tree[2*p+1].val=tree[p].val;
+        tree[2*p].sum=(tree[2*p].right-tree[2*p].left+1)*tree[p].val;
+        tree[2*p+1].sum=(tree[2*p+1].right-tree[2*p+1].left+1)*tree[p].val;
+        tree[p].val=0;
+    }
+}//lazy tag的下放
+void dfs(int x,int dep)
+{
+    deep[x]=dep;
+    Size[x]=1;
+    int e=p[x];
+    while(e&gt;0)
+    {
+        int k=b[e];
+        if(fa[x]!=k)
+        {
+            fa[k]=x;//记录每个节点的父节点，方便向上跳
+            dfs(k,dep+1);
+            if(Size[k]&gt;Size[son[x]])
+                son[x]=k;//不断更新该节点的重儿子
+            Size[x]+=Size[k];//更新该节点下方的节点数
+        }
+        e=nt[e];
+    }
+}//搜索确定每个节点的深度与其下的结点个数
+void DFS(int x,int bh)//bh为该节点所属重链的编号(编号为该重链起点编号
+{
+    id++;
+    pos[x]=id;//搜索序记录
+    out[x]=id;//这个数组请忽视(做3178后忘了改QAQ
+    h[id]=x;//线段树上的位置
+    int e=p[x];
+    int k=0;
+    belong[x]=bh;//记录每个节点所属的重链编号
+    if(son[x])
+    {
+        DFS(son[x],bh);//优先搜索重儿子可得到重链
+        out[x]=max(out[x],out[son[x]]);
+    }
+    e=p[x];
+    while(e&gt;0)
+    {
+        int kk=b[e];
+        if(fa[x]!=kk&amp;&amp;kk!=son[x])
+        {
+            DFS(kk,kk);
+            out[x]=max(out[x],out[kk]);
+        }
+        e=nt[e];
+    }//搜索轻链
+}
+void add(int u,int v)
+{
+    ++num;
+    b[num]=v;
+    nt[num]=p[u];
+    p[u]=num;
+}//前向星存图
+void build(int p,int l,int r)
+{
+    tree[p].left=l;
+    tree[p].right=r;
+    if(l==r)
+    {
+        tree[p].sum=data[h[l]];
+        tree[p].mx=data[h[l]];
+        return;
+    }
+    int mid=(l+r)/2;
+    build(2*p,l,mid);
+    build(2*p+1,mid+1,r);
+    tree[p].sum=tree[2*p].sum+tree[2*p+1].sum;
+    tree[p].mx=max(tree[2*p].mx,tree[2*p+1].mx);
+}//建树
+void change(int p,int l,int r,long long d)
+{
+    if(tree[p].left==l&amp;&amp;tree[p].right==r)
+    {
+        tree[p].sum=(r-l+1)*d;
+        tree[p].mx=d;
+        tree[p].val=d;
+        return;
+    }
+    pushdown(p);
+    int mid=(tree[p].left+tree[p].right)/2;
+    if(r&lt;=mid)
+        change(2*p,l,r,d);
+    else if(l&gt;mid)
+        change(2*p+1,l,r,d);
+    else
+    {
+        change(2*p,l,mid,d);
+        change(2*p+1,mid+1,r,d);
+    }
+    tree[p].sum=tree[2*p].sum+tree[2*p+1].sum;
+    tree[p].mx=max(tree[2*p].mx,tree[2*p+1].mx);
+}//线段树修改操作(注意此处要同时维护区间最大值与区间和
+long long query(int p,int l,int r)
+{
+    if(tree[p].left==l&amp;&amp;tree[p].right==r)
+        return tree[p].sum;
+    pushdown(p);
+    int mid=(tree[p].left+tree[p].right)/2;
+    if(r&lt;=mid)
+        return query(2*p,l,r);
+    else if(l&gt;mid)
+        return query(2*p+1,l,r);
+    else
+        return query(2*p,l,mid)+query(2*p+1,mid+1,r);
+}//查询区间和
+int Query(int p,int l,int r)
+{
+    if(tree[p].left==l&amp;&amp;tree[p].right==r)
+        return tree[p].mx;
+    pushdown(p);
+    int mid=(tree[p].left+tree[p].right)/2;
+    if(r&lt;=mid)
+        return Query(2*p,l,r);
+    else if(l&gt;mid)
+        return Query(2*p+1,l,r);
+    else
+        return max(Query(2*p,l,mid),Query(2*p+1,mid+1,r));
+}//查询区间最大值
+long long work(int x,int y)
+{
+    long long sum=0;
+    while(belong[x]!=belong[y])
+    {
+        if(deep[belong[x]]&lt;deep[belong[y]])
+            swap(x,y);
+        sum+=query(1,pos[belong[x]],pos[x]);
+        x=fa[belong[x]];
+    }
+    if(deep[x]&gt;deep[y])
+        swap(x,y);
+    sum+=query(1,pos[x],pos[y]);
+    return sum;
+}//QSUM的操作（解释见下）
+int Work(int x,int y)
+{
+    int ans=-214748;
+    while(belong[x]!=belong[y])
+    {
+        if(deep[belong[x]]&lt;deep[belong[y]])
+            swap(x,y);//比较x和y所属重链起点的深浅，将较浅的向上跳
+        ans=max(ans,Query(1,pos[belong[x]],pos[x]));
+        x=fa[belong[x]];
+    }//如果x与y不在同一重链中，就重复执行操作
+    if(deep[x]&gt;deep[y])
+        swap(x,y);
+    ans=max(ans,Query(1,pos[x],pos[y]));//x与y在同一重链中最后进行一次操作
+    return ans;
+}//QMAX的操作
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;n;i++)
+    {
+        scanf(&quot;%d%d&quot;,&amp;fr,&amp;t);
+        add(fr,t);
+        add(t,fr);
+    }
+    for(int i=1;i&lt;=n;i++)
+        scanf(&quot;%d&quot;,&amp;data[i]);
+    dfs(1,1);
+    DFS(1,1);//先进行搜索确定了线段树上的编号再建树
+    build(1,1,n);
+    scanf(&quot;%d&quot;,&amp;m);
+    for(int i=1;i&lt;=m;i++)
+    {
+        scanf(&quot;%s&quot;,s);
+        if(s[1]==&#39;H&#39;)
+        {
+            scanf(&quot;%d%d&quot;,&amp;a,&amp;c);
+            change(1,pos[a],pos[a],c);
+        }
+        else if(s[1]==&#39;M&#39;)
+        {
+            scanf(&quot;%d%d&quot;,&amp;a,&amp;c);
+            printf(&quot;%d\n&quot;,Work(a,c));
+        }
+        else
+        {
+            scanf(&quot;%d%d&quot;,&amp;a,&amp;c);
+            printf(&quot;%lld\n&quot;,work(a,c));
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>然而跑的很慢<br><a href="https://www.luogu.org/record/show?rid=5654505" target="_blank" rel="noopener">1208ms 7.92Mb</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/树链剖分，树剖/" rel="tag"># 树链剖分，树剖</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/24/Luogu P1120 小木棍【数据加强版】/" rel="next" title="Luogu P1120 小木棍【数据加强版】">
+                <i class="fa fa-chevron-left"></i> Luogu P1120 小木棍【数据加强版】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/24/Luogu P2900 土地征用 斜率优化dp 题解/" rel="prev" title="Luogu P2900 土地征用 斜率优化dp 题解">
+                Luogu P2900 土地征用 斜率优化dp 题解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DimensionTripper</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vixbob-lwc.pw/" title="ViXbob" target="_blank">ViXbob</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zhongyic00.github.io/" title="Zhyic" target="_blank">Zhyic</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DimensionTripper</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/07/24/Luogu P2590 树的统计/';
+          this.page.identifier = '2018/07/24/Luogu P2590 树的统计/';
+          this.page.title = 'Luogu P2590 树的统计';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构,平衡树," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这里讲两种解法：Splay和FHQ Treap 首先是Splay我们知道，Splay是一种树形结构，它具有二叉搜索树的性质，维护树上的节点有序，即对于某一节点，它的左子树中所有节点的值都小于这个点，它的右子树中所有点的值都大于这个点。 然后就是Splay中的重点操作，Rotate。我们都知道Splay的复杂度之所以维持在logn级别与旋转操作有着很大的关系，旋转分为两种：左旋和右旋。旋转见图示（感">
+<meta name="keywords" content="数据结构,平衡树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="平衡树">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/平衡树/index.html">
+<meta property="og:site_name" content="DimensionTripper">
+<meta property="og:description" content="这里讲两种解法：Splay和FHQ Treap 首先是Splay我们知道，Splay是一种树形结构，它具有二叉搜索树的性质，维护树上的节点有序，即对于某一节点，它的左子树中所有节点的值都小于这个点，它的右子树中所有点的值都大于这个点。 然后就是Splay中的重点操作，Rotate。我们都知道Splay的复杂度之所以维持在logn级别与旋转操作有着很大的关系，旋转分为两种：左旋和右旋。旋转见图示（感">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201210/10/1349877565_2986.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201210/10/1349877709_4105.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201210/10/1349877744_7090.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201210/10/1349877779_5253.png">
+<meta property="og:updated_time" content="2018-07-24T01:30:36.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="平衡树">
+<meta name="twitter:description" content="这里讲两种解法：Splay和FHQ Treap 首先是Splay我们知道，Splay是一种树形结构，它具有二叉搜索树的性质，维护树上的节点有序，即对于某一节点，它的左子树中所有节点的值都小于这个点，它的右子树中所有点的值都大于这个点。 然后就是Splay中的重点操作，Rotate。我们都知道Splay的复杂度之所以维持在logn级别与旋转操作有着很大的关系，旋转分为两种：左旋和右旋。旋转见图示（感">
+<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201210/10/1349877565_2986.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/24/平衡树/"/>
+
+
+
+
+
+  <title>平衡树 | DimensionTripper</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DimensionTripper</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/平衡树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DimensionTripper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DimensionTripper">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">平衡树</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-24T09:25:21+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/24/平衡树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/24/平衡树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这里讲两种解法：Splay和FHQ Treap</p>
+<h3 id="首先是Splay"><a href="#首先是Splay" class="headerlink" title="首先是Splay"></a>首先是Splay</h3><p>我们知道，Splay是一种树形结构，它具有二叉搜索树的性质，维护树上的节点有序，即对于某一节点，它的左子树中所有节点的值都小于这个点，它的右子树中所有点的值都大于这个点。</p>
+<p>然后就是Splay中的重点操作，Rotate。我们都知道Splay的复杂度之所以维持在logn级别与旋转操作有着很大的关系，旋转分为两种：左旋和右旋。旋转见图示（感谢<a href="https://www.cnblogs.com/yousiki/p/6147455.html" target="_blank" rel="noopener">You Siki</a>的图片）<br><img src="http://img.my.csdn.net/uploads/201210/10/1349877565_2986.png" alt=""></p>
+<p>然后为了将某个值旋转至树根便于操作，又有了3种操作：Zig、Zig-Zig、Zig-Zag。具体见图示<br><img src="http://img.my.csdn.net/uploads/201210/10/1349877709_4105.png" alt=""><img src="http://img.my.csdn.net/uploads/201210/10/1349877744_7090.png" alt=""><img src="http://img.my.csdn.net/uploads/201210/10/1349877779_5253.png" alt=""></p>
+<p>然后是各种简单操作（Search等较简单的，人人都会的我就不讲了）</p>
+<pre><code class="lang-cpp">void Rotate(int x)
+{
+    int y=fa[x];
+    int z=fa[y];
+    if(child[z][0]==y)
+        child[z][0]=x;
+    else
+        child[z][1]=x;
+    fa[x]=z;
+    int w;
+    if(child[y][0]==x)
+        w=0;
+    else
+        w=1;
+    child[y][w]=child[x][w^1];
+    fa[child[x][w^1]]=y;
+    child[x][w^1]=y;
+    fa[y]=x;
+    ct[y]=ct[child[y][0]]+ct[child[y][1]]+num[y];
+    ct[x]=ct[child[x][0]]+ct[child[x][1]]+num[x];
+}
+void splay(int x)
+{
+    while(fa[x])
+    {
+        int y=fa[x];
+        int z=fa[y];
+        if(z==0)
+            Rotate(x);
+        else
+        {
+            if((child[z][0]==y)^(child[y][0]==x))
+                Rotate(x);
+            else
+                Rotate(y);
+            Rotate(x);
+        }
+    }
+    root=x;
+}
+</code></pre>
+<p>Splay和Rotate，这两个是整个Splay的核心函数，请自行参照图示去理解（注：splay函数里的if语句用于判定Zig还是Zag</p>
+<pre><code class="lang-cpp">void Insert(int x)
+{
+    if(tot==0)
+    {
+        tot=1;
+        a[1]=x;
+        num[1]=1;
+        root=1;
+        ct[1]=1;
+        fa[1]=0;
+        return;
+    }
+    int k=Search(root,x);
+    int node=0;
+    if(a[k]==x)
+    {
+        num[k]++;
+        node=k;
+    }
+    else
+    {
+        ++tot;
+        a[tot]=x;
+        num[tot]=1;
+        ct[tot]=1;
+        fa[tot]=k;
+        if(x&lt;a[k])
+            child[k][0]=tot;
+        else
+            child[k][1]=tot;
+    }
+    while(k)
+    {
+        ct[k]++;
+        k=fa[k];
+    }
+    if(node)
+        splay(node);
+    else
+        splay(tot);
+}
+</code></pre>
+<p>Insert其实比较规矩，就是找到一个与这个值相近的点（一定是叶子节点），然后判断一下x与a[k]的大小关系，如果比a[k]大就接到右子树，比a[k]小就接到左子树。</p>
+<pre><code>void Delete(int x)
+{
+    int k=Search(root,x);
+    if(a[k]!=x)
+        splay(k);
+    else
+    {
+        splay(k);
+        if(num[k]&gt;1)
+        {
+            num[k]--;
+            ct[k]--;
+        }
+        else
+        {
+            if(child[k][0]==0)
+            {
+                root=child[k][1];
+                fa[root]=0;
+                a[k]=MIN;
+                num[k]=0;
+                ct[k]=0;
+                child[k][0]=0;
+                child[k][1]=0;
+            }
+            else
+            {
+                fa[child[k][0]]=0;
+                int kk=Search(child[k][0],2147483647);
+                splay(kk);
+                ct[root]+=ct[child[k][1]];
+                child[root][1]=child[k][1];
+                fa[child[k][1]]=root;
+                a[k]=MIN;
+                num[k]=0;
+                ct[k]=0;
+                child[k][0]=0;
+                child[k][1]=0;
+            }
+        }
+    }
+}
+</code></pre><p>Delete其实算是比较烦的了，分了四种情况，前两种比较简单，主要是后两种。如果要删除的节点没有左子树，就直接把该节点删除，根节点变为右儿子；如果有，就先切断该节点与左儿子的连接，然后将左子树中的最大值旋转到左子树的根，然后将右子树接到左子树的右边。</p>
+<p>Rank和Find比较简单，这里不讲</p>
+<pre><code class="lang-cpp">int pre(int x)
+{
+    int k=Search(root,x);
+    splay(k);
+    if(a[k]&lt;x)
+        return a[k];
+    int kk=Search(child[k][0],2147483647);
+    splay(kk);
+    return a[kk];
+}
+int succ(int x)
+{
+    int k=Search(root,x);
+    splay(k);
+    if(a[k]&gt;x)
+        return a[k];
+    int kk=Search(child[k][1],-2147483647);
+    splay(kk);
+    return a[kk];
+}
+</code></pre>
+<p>pre（前驱）和succ（后缀）的思路基本相同，都是先将要找的值（如果有的话）旋转到根，然后pre是在左子树中找最大值，succ是在右子树中找最小值</p>
+<p>以下是合代码</p>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define N 100000+110
+#define MIN -1e8
+using namespace std;
+int child[N][2],fa[N],a[N],ct[N],num[N];
+int n,tot,root;
+int Search(int x,int w)
+{
+    if(a[x]==w)
+        return x;
+    while(a[x]!=w)
+    {
+        if(a[x]&gt;w)
+        {
+            if(child[x][0])
+                x=child[x][0];
+            else
+                break;
+        }
+        else if(a[x]==w)
+            return x;
+        else
+        {
+            if(child[x][1])
+                x=child[x][1];
+            else
+                break;
+        }
+    }
+    return x;
+}
+void Rotate(int x)
+{
+    int y=fa[x];
+    int z=fa[y];
+    if(child[z][0]==y)
+        child[z][0]=x;
+    else
+        child[z][1]=x;
+    fa[x]=z;
+    int w;
+    if(child[y][0]==x)
+        w=0;
+    else
+        w=1;
+    child[y][w]=child[x][w^1];
+    fa[child[x][w^1]]=y;
+    child[x][w^1]=y;
+    fa[y]=x;
+    ct[y]=ct[child[y][0]]+ct[child[y][1]]+num[y];
+    ct[x]=ct[child[x][0]]+ct[child[x][1]]+num[x];
+}
+void splay(int x)
+{
+    while(fa[x])
+    {
+        int y=fa[x];
+        int z=fa[y];
+        if(z==0)
+            Rotate(x);
+        else
+        {
+            if((child[z][0]==y)^(child[y][0]==x))
+                Rotate(x);
+            else
+                Rotate(y);
+            Rotate(x);
+        }
+    }
+    root=x;
+}
+void Insert(int x)
+{
+    if(tot==0)
+    {
+        tot=1;
+        a[1]=x;
+        num[1]=1;
+        root=1;
+        ct[1]=1;
+        fa[1]=0;
+        return;
+    }
+    int k=Search(root,x);
+    int node=0;
+    if(a[k]==x)
+    {
+        num[k]++;
+        node=k;
+    }
+    else
+    {
+        ++tot;
+        a[tot]=x;
+        num[tot]=1;
+        ct[tot]=1;
+        fa[tot]=k;
+        if(x&lt;a[k])
+            child[k][0]=tot;
+        else
+            child[k][1]=tot;
+    }
+    while(k)
+    {
+        ct[k]++;
+        k=fa[k];
+    }
+    if(node)
+        splay(node);
+    else
+        splay(tot);
+}
+void Delete(int x)
+{
+    int k=Search(root,x);
+    if(a[k]!=x)
+        splay(k);
+    else
+    {
+        splay(k);
+        if(num[k]&gt;1)
+        {
+            num[k]--;
+            ct[k]--;
+        }
+        else
+        {
+            if(child[k][0]==0)
+            {
+                root=child[k][1];
+                fa[root]=0;
+                a[k]=MIN;
+                num[k]=0;
+                ct[k]=0;
+                child[k][0]=0;
+                child[k][1]=0;
+            }
+            else
+            {
+                fa[child[k][0]]=0;
+                int kk=Search(child[k][0],2147483647);
+                splay(kk);
+                ct[root]+=ct[child[k][1]];
+                child[root][1]=child[k][1];
+                fa[child[k][1]]=root;
+                a[k]=MIN;
+                num[k]=0;
+                ct[k]=0;
+                child[k][0]=0;
+                child[k][1]=0;
+            }
+        }
+    }
+}
+int Rank(int x)
+{
+    int k=Search(root,x);
+    splay(k);
+    return ct[child[k][0]]+1;
+}
+int Find(int x)
+{
+    int k=root;
+    while(!(x&gt;=ct[child[k][0]]+1&amp;&amp;x&lt;=ct[child[k][0]]+num[k])&amp;&amp;k!=0)
+    {
+        if(x&gt;ct[child[k][0]]+num[k])
+        {
+            x-=ct[child[k][0]]+num[k];
+            k=child[k][1];
+        }
+        else
+            k=child[k][0];
+    }
+    return a[k];
+}
+int pre(int x)
+{
+    int k=Search(root,x);
+    splay(k);
+    if(a[k]&lt;x)
+        return a[k];
+    int kk=Search(child[k][0],2147483647);
+    splay(kk);
+    return a[kk];
+}
+int succ(int x)
+{
+    int k=Search(root,x);
+    splay(k);
+    if(a[k]&gt;x)
+        return a[k];
+    int kk=Search(child[k][1],-2147483647);
+    splay(kk);
+    return a[kk];
+}
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;n);
+    memset(a,MIN,sizeof(a));
+    for(int i=1;i&lt;=n;i++)
+    {
+        int x,z;
+        scanf(&quot;%d%d&quot;,&amp;z,&amp;x);
+        switch(z)
+        {
+            case 1:Insert(x);break;
+            case 2:Delete(x);break;
+            case 3:printf(&quot;%d\n&quot;,Rank(x));break;
+            case 4:printf(&quot;%d\n&quot;,Find(x));break;
+            case 5:printf(&quot;%d\n&quot;,pre(x));break;
+            case 6:printf(&quot;%d\n&quot;,succ(x));break;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>AC记录</p>
+<p><a href="https://www.luogu.org/record/show?rid=5888411" target="_blank" rel="noopener">用时: 380ms / 内存: 3488KB</a></p>
+<h3 id="然后是FHQ-Treap"><a href="#然后是FHQ-Treap" class="headerlink" title="然后是FHQ Treap"></a>然后是FHQ Treap</h3><p>由于省去了Rotate的操作，非旋的Treap就显得极为简洁（鄙人Splay代码200+，FHQ Treap代码仅130+）。再加上它几乎可以实现Splay的全部功能（LCT除外），所以当然是选择FHQ Treap啦。（开讲之前先%一波FHQ</p>
+<p>是不是觉得Splay也好，Treap也好，转来转去的很烦人呢？那么如果我们可以暴力的把区间切成两段（或三段），然后对其中某一段操作完后再合起来是不是会简单的多呢？来学FHQ Treap吧，这东西绝对对你胃口！</p>
+<p>那么既然这个东西要把一个区间切成数段，就需要一个split，实际上它有两种分法：一种是把权值比k小的放入一颗树，比k大的放入另一颗树；另一种是把前k个点放入一棵树，其他的放入另一棵树。这里给出第一种的讲解。</p>
+<pre><code class="lang-cpp">void split(int now,int k,int &amp;l,int &amp;r)
+{
+    if(!now)
+        l=r=0;
+    else
+    {
+        if(a[now]&lt;=k)
+        {
+            l=now;
+            split(child[now][1],k,child[now][1],r);
+        }
+        else
+        {
+            r=now;
+            split(child[now][0],k,l,child[now][0]);
+        }
+        pushup(now);
+    }
+}
+</code></pre>
+<p>对于我们遍历到每一个点，假如它的权值小于k，那么它的所有左子树，都要分到左边的树里，然后遍历它的右儿子。假如大于k，把它的所有右子树分到右边的树里，遍历左儿子。</p>
+<p>因为它的最多操作次数就是一直分到底，效率就是O(logn)</p>
+<p>接下来是合并的操作</p>
+<pre><code class="lang-cpp">int Merge(int x,int y)
+{
+    if(!x||!y)
+        return x+y;
+    if(pri[x]&lt;pri[y])
+    {
+        child[x][1]=Merge(child[x][1],y);
+        pushup(x);
+        return x;
+    }
+    else
+    {
+        child[y][0]=Merge(x,child[y][0]);
+        pushup(y);
+        return y;
+    }
+}
+</code></pre>
+<p>因为第一个Treap的权值都比较小，我们比较一下它的tar(附加权值)，假如第一个的tar小，我们就可以直接保留它的所有左子树，接着把第一个Treap变成它的右儿子。反之，我们可以保留第二棵的所有右子树，指针指向左儿子。</p>
+<p>你可以把这个过程形象的理解为在第一个Treap的左子树上插入第二个树，也可以理解为在第二个树的左子树上插入第一棵树。因为第一棵树都满足小于第二个树，所以就变成了比较tar来确定树的形态。</p>
+<p>也就是说，我们其实是遍历了第一个Treap的根-&gt;最大节点，第二个Treap的根-&gt;最小节点，也就是O(logn)</p>
+<p>然后对于Insert，就不过是一个按照x的权值分开，插入后再合并的的过程罢了，Delete就是把树按照x分成l和r,再把l按照x-1分成c,d。把c的两个子儿子合并起来，再和r合并。</p>
+<p>找前驱的话把root按x-1分成l,r，在l里面找最大值；找后继的话把root按x分成l,r，在r里找最小值。</p>
+<p>Rank就是把root按x-1分成l,r，排名就是ct[l]；Find的过程和Splay差别并不大，都不细讲。</p>
+<p>值得注意的是，FHQ Treap的本质还是一个Treap，是将树上的值按rand值排序的，r值小的在上面，r值大的在下面。这也是为什么Treap（树堆）成为Treap。</p>
+<p>部分搬运某dalao博客，详细讲解和split,Merge的GIF演示可参见<a href="http://www.yhzq-blog.cc/fhq-treap总结/" target="_blank" rel="noopener">远航之曲</a></p>
+<p>（实际上第二个GIF最后一步合错了，9应该挂在8右边的）</p>
+<p>以下是合代码</p>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 100010
+#define inf 2147483647
+using namespace std;
+int n,tot,root;
+int child[N][2],ct[N],a[N],pri[N];
+void pushup(int x)
+{
+    ct[x]=1+ct[child[x][0]]+ct[child[x][1]];
+}
+int new_node(int x)
+{
+    ct[++tot]=1;
+    a[tot]=x;
+    pri[tot]=rand();
+    return tot;
+}
+int Merge(int x,int y)
+{
+    if(!x||!y)
+        return x+y;
+    if(pri[x]&lt;pri[y])
+    {
+        child[x][1]=Merge(child[x][1],y);
+        pushup(x);
+        return x;
+    }
+    else
+    {
+        child[y][0]=Merge(x,child[y][0]);
+        pushup(y);
+        return y;
+    }
+}
+void split(int now,int k,int &amp;l,int &amp;r)
+{
+    if(!now)
+        l=r=0;
+    else
+    {
+        if(a[now]&lt;=k)
+        {
+            l=now;
+            split(child[now][1],k,child[now][1],r);
+        }
+        else
+        {
+            r=now;
+            split(child[now][0],k,l,child[now][0]);
+        }
+        pushup(now);
+    }
+}
+void Insert(int x)
+{
+    int l,r;
+    split(root,x,l,r);
+    root=Merge(Merge(l,new_node(x)),r);
+}
+void Delete(int x)
+{
+    int l,r,p;
+    split(root,x,l,p);
+    split(l,x-1,l,r);
+    r=Merge(child[r][0],child[r][1]);
+    root=Merge(Merge(l,r),p);
+}
+int Rank(int x)
+{
+    int l,r;
+    split(root,x-1,l,r);
+    int ans=ct[l]+1;
+    root=Merge(l,r);
+    return ans;
+}
+int Find(int now,int k)
+{
+    while(1)
+    {
+        if(k&lt;=ct[child[now][0]])
+            now=child[now][0];
+        else if(k==ct[child[now][0]]+1)
+            return a[now];
+        else
+        {
+            k-=ct[child[now][0]]+1;
+            now=child[now][1];
+        }
+    }
+}
+int pre(int x)
+{
+    int l,r;
+    split(root,x-1,l,r);
+    int ans=Find(l,ct[l]);
+    root=Merge(l,r);
+    return ans;
+}
+int suc(int x)
+{
+    int l,r;
+    split(root,x,l,r);
+    int ans=Find(r,1);
+    root=Merge(l,r);
+    return ans;
+}
+int main()
+{
+    srand(19260817);
+    //srand(998244353);
+    //srand(1e9+7);
+    //srand((unsigned)time(NULL));
+    //以上是常用随机种子
+    scanf(&quot;%d&quot;,&amp;n);
+    memset(a,-inf,sizeof(a));
+    for(int i=1;i&lt;=n;i++)
+    {
+        int z,x;
+        scanf(&quot;%d%d&quot;,&amp;z,&amp;x);
+        switch(z)
+        {
+            case 1:Insert(x);break;
+            case 2:Delete(x);break;
+            case 3:printf(&quot;%d\n&quot;,Rank(x));break;
+            case 4:printf(&quot;%d\n&quot;,Find(root,x));break;
+            case 5:printf(&quot;%d\n&quot;,pre(x));break;
+            case 6:printf(&quot;%d\n&quot;,suc(x));break;
+        }
+    }
+    return 0;
+}
+</code></pre><p>AC记录</p>
+<p><a href="https://www.luogu.org/record/show?rid=6024959" target="_blank" rel="noopener">用时: 316ms / 内存: 3265KB</a></p>
+<p>事实上可以看出Treap比Splay跑的要快一点（说不定是我的Splay太弱了呢？</p>
+<p>然而由于我太蒻了，还是有点懵逼，有dalao能指出我的不足的话感激不尽，也欢迎各位找我讨论</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/平衡树/" rel="tag"># 平衡树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/24/Luogu P2900 土地征用 斜率优化dp 题解/" rel="next" title="Luogu P2900 土地征用 斜率优化dp 题解">
+                <i class="fa fa-chevron-left"></i> Luogu P2900 土地征用 斜率优化dp 题解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/24/可持久化线段树（主席树）/" rel="prev" title="可持久化线段树（主席树）">
+                可持久化线段树（主席树） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DimensionTripper</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vixbob-lwc.pw/" title="ViXbob" target="_blank">ViXbob</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zhongyic00.github.io/" title="Zhyic" target="_blank">Zhyic</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先是Splay"><span class="nav-number">1.</span> <span class="nav-text">首先是Splay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#然后是FHQ-Treap"><span class="nav-number">2.</span> <span class="nav-text">然后是FHQ Treap</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DimensionTripper</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/07/24/平衡树/';
+          this.page.identifier = '2018/07/24/平衡树/';
+          this.page.title = '平衡树';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
