@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="DimensionTripper">
 <meta property="og:description" content="如题所述，这类问题让我们求一个二分图的最大匹配，不知道二分图的同学请参考百度百科 看着那些术语让人头大对吧，那么来通俗一点的：给定若干个男生和若干个女生，每个男生都可以和一定数量的女生互相有好感，假定不存在同性恋和后宫，求最多能凑多少对CP（然后再统统烧了）。 对于这类问题通常有两种做法：匈牙利和网络流。 匈牙利算法在我讲之前，我建议读者先去读一下Dark_Scope的这篇趣写算法系列之—匈牙利算">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-24T08:15:48.475Z">
+<meta property="og:updated_time" content="2018-07-24T10:30:05.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二分图匹配">
 <meta name="twitter:description" content="如题所述，这类问题让我们求一个二分图的最大匹配，不知道二分图的同学请参考百度百科 看着那些术语让人头大对吧，那么来通俗一点的：给定若干个男生和若干个女生，每个男生都可以和一定数量的女生互相有好感，假定不存在同性恋和后宫，求最多能凑多少对CP（然后再统统烧了）。 对于这类问题通常有两种做法：匈牙利和网络流。 匈牙利算法在我讲之前，我建议读者先去读一下Dark_Scope的这篇趣写算法系列之—匈牙利算">
@@ -464,7 +464,7 @@ int main()
 </code></pre>
 <h1 id="网络流"><a href="#网络流" class="headerlink" title="网络流"></a>网络流</h1><p>很容易想到如果额外增加一个源点和一个汇点，然后就可以直接跑网络最大流了。</p>
 <p>对于无权图，我们需要设置边权，很容易想到正向边为1，反向边为0，这样就可以很顺利的用Dinic跑出最大匹配了。</p>
-<p>可以看出比匈牙利快多了<del>（虽然没有<script type="math/tex">min(a,b)-1</script>算法快）</del></p>
+<p>可以看出比匈牙利快多了<del>（虽然没有$min(a,b)-1$算法快）</del></p>
 <pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define ri register int
 #define il inline
