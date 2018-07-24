@@ -522,7 +522,7 @@
 <p>那么这样为什么是对的呢？很简单，走2-1的时候就相当于把1-2这条边已经走的退了回去，这样就又变成了S-1-T和S-2-T两条路了。这样就给了程序一个反悔的机会。</p>
 <p>然后就完了DA☆ZE！</p>
 <p>贴代码（236ms）：</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 200000+110
 using namespace std;
 int n,m,S,T,cnt,ans;
@@ -634,7 +634,7 @@ int main()
 <p>至于BFS过程本身的变化其实不是特别大，对于一个点v进队的条件，不过是从EK的“当前边的残量大于0”变成了“当前边的残量大于0且v点未分配深度”而已，如果v没有分配深度，就把它的深度赋为u的深度+1。</p>
 <p>然后在Dinic的主过程中就只需要不停的寻找增广路知道再也找不到为止。</p>
 <p>以下是代码（手写520ms）：</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 200000+110
 #define inf 0x7fffffff
 using namespace std;
@@ -738,7 +738,7 @@ int main()
 <p>对，就是这样，只要多开一个cur数组记录一下就行了，然后在DFS的循环中i改变的时候也同时改变cur来记录当前弧，但是不要忘记每一次建立完分层图后都要把cur置为每一个点的第一条边。</p>
 <p>然后就可以跑的很快了DA☆ZE！</p>
 <p>贴代码（手写132ms）：</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 200000+110
 #define inf 0x7fffffff
 using namespace std;

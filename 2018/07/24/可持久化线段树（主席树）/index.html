@@ -534,7 +534,7 @@
 <p>上述利用前缀和的思想只是解决了时间复杂度的问题，并没有解决空间复杂度的问题，要解决空间复杂度问题。我们需要用到线段树的性质，我们每次更新一个数，那么与更新之前相比，这颗线段树改变只是一条链（从根节点到某一叶节点），那么我们可以充分利用这个特点，因为第i颗树与第i- 1颗树相比，只是更新了第i个元素，所以这两棵树有很多相同的节点，所以这两棵树可以共用很多节点（这也是为什么主席树的中节点编号不满足儿子节点编号是父节点编号的两倍和两倍加一的原因），于是这样就解决空间复杂度问题。</p>
 <p><a href="https://www.luogu.org/problemnew/show/P3919" target="_blank" rel="noopener"> P3919 【模板】可持久化数组（可持久化线段树/平衡树）</a></p>
 <p>手写AC（O2-1016ms）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 200000+110
 using namespace std;
 int a[N],Hash[N],t[N],tot,n,m;
@@ -606,7 +606,7 @@ int main()
 </code></pre>
 <p><a href="https://www.luogu.org/problemnew/show/P3567" target="_blank" rel="noopener">P3567 [POI2014]KUR-Couriers</a></p>
 <p>手写AC（O2-1032ms）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 500000+110
 using namespace std;
 int a[N],Hash[N],t[N],tot,n,m;
@@ -682,7 +682,7 @@ int main()
 </code></pre>
 <p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=4417" target="_blank" rel="noopener">HDU 4417 Super Mario</a></p>
 <p>纯手写AC（140ms）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 500000+110
 #define inf 2147483647
 using namespace std;
@@ -788,7 +788,7 @@ int main()
 <p>C 2 6</p>
 <p>Q 2 5 3</p>
 <p>先将序列以及要更新的数(C操作)离散化  </p>
-<p>即3 2 1 4 7 、 6  —-&gt;(排序) —-&gt; 1 2 3 4 6 7  </p>
+<p>即3 2 1 4 7 、 6  ——&gt;(排序) ——&gt; 1 2 3 4 6 7  </p>
 <p>那么我们就需要建一棵这样的树：</p>
 <p><img src="https://qqadapt.qpic.cn/txdocpic/0/f2402af8499c21a706cefa1d4f0a81b4/0" alt=""></p>
 <p>(圈里的都是结点的编号， 4、5、6、9、10、11号结点代表的分别是1、2、3、4、6、7)</p>
@@ -813,7 +813,7 @@ int main()
 <p> <img src="https://qqadapt.qpic.cn/txdocpic/0/31b1e6754c984e4ae70179d0b02dacdd/0" alt=""></p>
 <p> 当查询的时候， 对树T的操作与静态的一致，另外再加上S树的值就好了</p>
 <p>教练的模板</p>
-<pre><code class="cpp">#include &lt;iostream&gt;
+<pre><code class="lang-cpp">#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 #include &lt;cstdlib&gt;
 #include &lt;cstdio&gt;
@@ -950,7 +950,7 @@ int main()
 }
 </code></pre>
 <p>手写AC（对拍O2-96ms）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 60010
 using namespace std;
 struct node
@@ -1092,7 +1092,7 @@ int main()
 </code></pre>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a href="https://www.luogu.org/problemnew/show/P1383" target="_blank" rel="noopener">P1383 高级打字机</a></p>
 <p>手写AC</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 500010
 using namespace std;
 int a[N*32],L[32*N],R[32*N],sum[32*N],T[32*N],n,m,tot,cnt,use[32*N],root[32*N];

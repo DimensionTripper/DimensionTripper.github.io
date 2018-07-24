@@ -499,10 +499,10 @@
         <p>如题所述，这类问题让我们求一个二分图的最大匹配，不知道二分图的同学请参考<a href="https://baike.baidu.com/item/二分图/9089095?fr=aladdin" target="_blank" rel="noopener">百度百科</a></p>
 <p>看着那些术语让人头大对吧，那么来通俗一点的：给定若干个男生和若干个女生，每个男生都可以和一定数量的女生互相有好感，假定不存在同性恋和后宫，求最多能凑多少对CP<del>（然后再统统烧了）</del>。</p>
 <p>对于这类问题通常有两种做法：匈牙利和网络流。</p>
-<h1 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h1><p>在我讲之前，我建议读者先去读一下Dark_Scope的这篇<a href="https://blog.csdn.net/dark_scope/article/details/8880547" target="_blank" rel="noopener">趣写算法系列之–匈牙利算法</a>，相当的简单易懂。</p>
+<h1 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h1><p>在我讲之前，我建议读者先去读一下Dark_Scope的这篇<a href="https://blog.csdn.net/dark_scope/article/details/8880547" target="_blank" rel="noopener">趣写算法系列之—匈牙利算法</a>，相当的简单易懂。</p>
 <p>那么我来用正经的话把他（她？）的语言翻译一遍：对于点集M中的每一个点u，找到与它配对的点v，如果点v尚未配对就把u、v配对，否则就试图给v的“原配”寻找新的配对点，找到后就把u、v配对。实际就是一个寻找增广路的过程。</p>
 <p>相信有这些已经够清楚的了，以下是代码：</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 500000+110
 using namespace std;
 int n,m,s,cnt,ans;
@@ -574,7 +574,7 @@ int main()
 <h1 id="网络流"><a href="#网络流" class="headerlink" title="网络流"></a>网络流</h1><p>很容易想到如果额外增加一个源点和一个汇点，然后就可以直接跑网络最大流了。</p>
 <p>对于无权图，我们需要设置边权，很容易想到正向边为1，反向边为0，这样就可以很顺利的用Dinic跑出最大匹配了。</p>
 <p>可以看出比匈牙利快多了<del>（虽然没有$min(a,b)-1$算法快）</del></p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define ri register int
 #define il inline
 #define ll long long

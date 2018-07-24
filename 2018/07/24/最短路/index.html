@@ -503,7 +503,7 @@
 <h1 id="1、SPFA"><a href="#1、SPFA" class="headerlink" title="1、SPFA"></a>1、SPFA</h1><p>它被誉为“最快最好用的最短路算法”，<del>但是被各种心狠手辣的出题人卡成了狗</del>自有其优越性，毕竟像笔者这种蒟蒻都看了一遍就懂了。</p>
 <p>SPFA用了一种动态逼近的方法，设立一个先进先出的队列q来保存待优化的节点，每次取出队首的节点u，并用u点当前的最短路径的估计值对离开u指向的v节点进行松弛操作，如果v点的最短路径估计值有所调整，并且v不在当前队列中，就把它放入队列中如此不断从队列中取出节点进行松弛操作，直至队列空为止。</p>
 <p>那么说到松弛操作，原理就是十分著名的三角不等式，即我们数学中都用过的“两边之和大于第三边”，也就是v当前的最短路径估算值大于u当前的最短路径估算值与边[u,v]的长度之和，那么就更新v最短路径的估算值，也就是这样：</p>
-<pre><code class="cpp">if(dist[v]&gt;dist[u]+e[i].weigh)
+<pre><code class="lang-cpp">if(dist[v]&gt;dist[u]+e[i].weigh)
     dist[v]=dist[u]+e[i].weigh;
 </code></pre>
 <p>当然，实际的代码中还要加上进队的操作。</p>
@@ -517,7 +517,7 @@
 <h3 id="q-4"><a href="#q-4" class="headerlink" title="q:4"></a>q:4</h3><h3 id="dis-0-2-4-3-1"><a href="#dis-0-2-4-3-1" class="headerlink" title="dis:0,2,4,3"></a>dis:0,2,4,3</h3><p>3出队</p>
 <h3 id="q"><a href="#q" class="headerlink" title="q:"></a>q:</h3><h3 id="dis-0-2-4-3-2"><a href="#dis-0-2-4-3-2" class="headerlink" title="dis:0,2,4,3"></a>dis:0,2,4,3</h3><p>4出队，队列已空，此时已找到最短路径</p>
 <p>以下是代码：</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 1000000+110
 #define inf 0x7fffffff
 using namespace std;
@@ -596,7 +596,7 @@ int main()
 <p>可以看到，1、2、4三点间形成了一个负环，也就是说这几个点间没有所谓的最短路，因此就会无限的跑下去。</p>
 <p>那么怎么办呢？我们可以对每个点入队的次数进行限制，如果超过所有点的总数，那么就可以判断出现了负环，就跳出函数。</p>
 <p>代码也没有太大的区别：</p>
-<pre><code class="cpp">inline void SPFA(int s)
+<pre><code class="lang-cpp">inline void SPFA(int s)
 {
     int fr=1,tl=0;
     for(int i=1;i&lt;=n;i++)
@@ -630,7 +630,7 @@ int main()
 <p>还有另一种办法，就是使用DFS跑SPFA，但是会稍微慢一点……吧</p>
 <p>但是优点是负环的判断很简单，只要松弛了未清除标记的点就判定为出现负环。</p>
 <p>下面是<a href="https://www.luogu.org/problemnew/show/P3385" target="_blank" rel="noopener">P3385 【模板】负环</a>的代码（才不是跑P3371的时候T掉了呢，哼！</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 1000000+110
 #define inf 0x7fffffff
 using namespace std;
@@ -713,7 +713,7 @@ int main()
 }
 </code></pre>
 <p>再放一道例题：<a href="https://www.luogu.org/problemnew/show/P1027" target="_blank" rel="noopener">P1027 Car的旅行路线</a></p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 400+10
 #define inf 0x7fffffff
 #define ri register int

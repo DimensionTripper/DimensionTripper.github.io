@@ -501,7 +501,7 @@
 <p>然后就是Splay中的重点操作，Rotate。我们都知道Splay的复杂度之所以维持在logn级别与旋转操作有着很大的关系，旋转分为两种：左旋和右旋。旋转见图示（感谢<a href="https://www.cnblogs.com/yousiki/p/6147455.html" target="_blank" rel="noopener">You Siki</a>的图片）<br><img src="http://img.my.csdn.net/uploads/201210/10/1349877565_2986.png" alt=""></p>
 <p>然后为了将某个值旋转至树根便于操作，又有了3种操作：Zig、Zig-Zig、Zig-Zag。具体见图示<br><img src="http://img.my.csdn.net/uploads/201210/10/1349877709_4105.png" alt=""><img src="http://img.my.csdn.net/uploads/201210/10/1349877744_7090.png" alt=""><img src="http://img.my.csdn.net/uploads/201210/10/1349877779_5253.png" alt=""></p>
 <p>然后是各种简单操作（Search等较简单的，人人都会的我就不讲了）</p>
-<pre><code class="cpp">void Rotate(int x)
+<pre><code class="lang-cpp">void Rotate(int x)
 {
     int y=fa[x];
     int z=fa[y];
@@ -543,7 +543,7 @@ void splay(int x)
 }
 </code></pre>
 <p>Splay和Rotate，这两个是整个Splay的核心函数，请自行参照图示去理解（注：splay函数里的if语句用于判定Zig还是Zag</p>
-<pre><code class="cpp">void Insert(int x)
+<pre><code class="lang-cpp">void Insert(int x)
 {
     if(tot==0)
     {
@@ -630,7 +630,7 @@ void splay(int x)
 }
 </code></pre><p>Delete其实算是比较烦的了，分了四种情况，前两种比较简单，主要是后两种。如果要删除的节点没有左子树，就直接把该节点删除，根节点变为右儿子；如果有，就先切断该节点与左儿子的连接，然后将左子树中的最大值旋转到左子树的根，然后将右子树接到左子树的右边。</p>
 <p>Rank和Find比较简单，这里不讲</p>
-<pre><code class="cpp">int pre(int x)
+<pre><code class="lang-cpp">int pre(int x)
 {
     int k=Search(root,x);
     splay(k);
@@ -653,7 +653,7 @@ int succ(int x)
 </code></pre>
 <p>pre（前驱）和succ（后缀）的思路基本相同，都是先将要找的值（如果有的话）旋转到根，然后pre是在左子树中找最大值，succ是在右子树中找最小值</p>
 <p>以下是合代码</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 100000+110
 #define MIN -1e8
 using namespace std;
@@ -874,7 +874,7 @@ int main()
 <h3 id="然后是FHQ-Treap"><a href="#然后是FHQ-Treap" class="headerlink" title="然后是FHQ Treap"></a>然后是FHQ Treap</h3><p>由于省去了Rotate的操作，非旋的Treap就显得极为简洁（鄙人Splay代码200+，FHQ Treap代码仅130+）。再加上它几乎可以实现Splay的全部功能（LCT除外），所以当然是选择FHQ Treap啦。（开讲之前先%一波FHQ</p>
 <p>是不是觉得Splay也好，Treap也好，转来转去的很烦人呢？那么如果我们可以暴力的把区间切成两段（或三段），然后对其中某一段操作完后再合起来是不是会简单的多呢？来学FHQ Treap吧，这东西绝对对你胃口！</p>
 <p>那么既然这个东西要把一个区间切成数段，就需要一个split，实际上它有两种分法：一种是把权值比k小的放入一颗树，比k大的放入另一颗树；另一种是把前k个点放入一棵树，其他的放入另一棵树。这里给出第一种的讲解。</p>
-<pre><code class="cpp">void split(int now,int k,int &amp;l,int &amp;r)
+<pre><code class="lang-cpp">void split(int now,int k,int &amp;l,int &amp;r)
 {
     if(!now)
         l=r=0;
@@ -897,7 +897,7 @@ int main()
 <p>对于我们遍历到每一个点，假如它的权值小于k，那么它的所有左子树，都要分到左边的树里，然后遍历它的右儿子。假如大于k，把它的所有右子树分到右边的树里，遍历左儿子。</p>
 <p>因为它的最多操作次数就是一直分到底，效率就是O(logn)</p>
 <p>接下来是合并的操作</p>
-<pre><code class="cpp">int Merge(int x,int y)
+<pre><code class="lang-cpp">int Merge(int x,int y)
 {
     if(!x||!y)
         return x+y;

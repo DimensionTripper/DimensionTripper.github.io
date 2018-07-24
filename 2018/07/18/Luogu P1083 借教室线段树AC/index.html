@@ -488,7 +488,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>首先我们说这道题是线段树<del>（其实只是不会二分而已）</del><br>既然是线段树，那么我们首先当然是最简单的建树<br>建树代码如下</p>
-<pre><code class="cpp">void build(int p,int l,int r)
+<pre><code class="lang-cpp">void build(int p,int l,int r)
 {
     a[p].left=l;
     a[p].right=r;
@@ -504,7 +504,7 @@
 }
 </code></pre>
 <p>此处只需要查询区间最小值，所以建树是很基础的，就不多赘述了。<br>接下来是更新</p>
-<pre><code class="cpp">void add(int p,int l,int r,long long d)
+<pre><code class="lang-cpp">void add(int p,int l,int r,long long d)
 {
     if(f==1)
         return;
@@ -531,7 +531,7 @@
 }
 </code></pre>
 <p>值得注意的是此处的标记是为了优化，如果不加就会T掉一个点<br>最后查询的时候只需查询根节点的区间最小值，只需查标记就可以了（但是先要更新）<br>总代码如下：</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 1000010
 using namespace std;
 struct node

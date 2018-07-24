@@ -501,7 +501,7 @@
 <p>给定一个序列，其中有n个元素，有m次查询，每次查询要求输出区间[l,r]内出现次数不少于k的数字的个数。</p>
 <p>其实乍一看，好像就是可以用暴力做……但其实莫队本身也和暴力区别不大，基础思路就是将序列分成sqrt(n)个块，然后在每个块中进行操作。</p>
 <p>以下是代码</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 100000+100
 using namespace std;
 struct node
@@ -580,7 +580,7 @@ int main()
 <p>以下是几道题：</p>
 <p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3809" target="_blank" rel="noopener">BZOJ 3809: Gty的二逼妹子序列</a></p>
 <p>手写AC（调了一下午的绝望）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 1000000+1000
 using namespace std;
 int n,m,blo,cnt;
@@ -709,7 +709,7 @@ int main()
 <p>这道题说起来难度其实不大，一个值域分块的莫队保证m√n的复杂度完全没压力，就是这个28Mb的空间稍微有点坑。</p>
 <p><a href="https://www.luogu.org/problemnew/show/P4137" target="_blank" rel="noopener"> P4137 Rmq Problem / mex</a></p>
 <p>手写AC（一遍A O2-1296ms）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 200000+1000
 using namespace std;
 struct node
@@ -963,7 +963,7 @@ int main()
 </code></pre><p>几乎无思维难度，在BZOJ 3809的基础上加一个查询数量的函数就行了</p>
 <h1 id="带修莫队"><a href="#带修莫队" class="headerlink" title="带修莫队"></a>带修莫队</h1><p><a href="https://www.luogu.org/recordnew/show/6262891" target="_blank" rel="noopener">P1903 [国家集训队]数颜色</a></p>
 <p>手写AC</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 100000+100
 using namespace std;
 int n,m,blo,cnt,t,Time;
@@ -1116,7 +1116,7 @@ int main()
 <p>那么如果j不是k的祖先呢？我们会发现[j,k]之间的信息存在了in[j],out[k]之间或者out[j],in[k]之间，同样我们忽略出现了两次的数。但是如果仔细看一下就会发现，j、k的LCA好像不见了，那么我们只要特殊处理一下LCA就OK了。</p>
 <p>然后就可以用序列上的莫队来处理了DA☆ZE！（不过代码比较长就是了）</p>
 <p>以下是AC代码（我可是自带大常数和大空间的男人）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 500000+100
 using namespace std;
 int n,m,blo,cnt,Time,tot,cur;
@@ -1354,7 +1354,7 @@ int main()
 <p>还有一题：<a href="https://www.luogu.org/problemnew/show/P4074#sub" target="_blank" rel="noopener">P4074 [WC2013]糖果公园</a></p>
 <p>几乎就是板子吧，具体自己看代码（其实没啥差别）</p>
 <p>手写AC（O2-6s，莫名其妙就Rank 5了）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 500000+100
 using namespace std;
 int n,m,blo,Time,tot,cur,q;

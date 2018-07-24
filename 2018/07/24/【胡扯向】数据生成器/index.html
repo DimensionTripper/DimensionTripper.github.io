@@ -501,7 +501,7 @@
 <h1 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h1><p>首先因为基础的大家都会，这里就不讲了，从全排列开始吧。</p>
 <p>当然比较暴力的做法是多次rand，对每个数打标，如果rand到打了标的数就重做，直到生成全排列为止，但面对$10^6$甚至更大的数据的时候这样就基本不可能输出了。</p>
 <p>所以我们根据抽牌的原理写出了以下这段程序：</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 1000000+110
 using namespace std;
 int n,a[N];
@@ -526,7 +526,7 @@ int main()
 <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>对于树，而且是比较规矩的，画出来真正有树的形状的树，我们也可以用类似的思想生成。</p>
 <p>在这里，我们把所有用过的点放在后i个位置，每次从未用过的点中随机取出一个点v，从用过的点中随机取出一个点u，就相当于生成了一条由u到v的边，然后将v点放入已使用点集。</p>
 <p>代码如下：</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 1000000+110
 using namespace std;
 int n,a[N];

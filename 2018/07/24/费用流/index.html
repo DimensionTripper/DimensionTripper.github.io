@@ -501,7 +501,7 @@
 <p>所以在这里我给出2种解法：（例题：<a href="https://www.luogu.org/problemnew/show/P3381" target="_blank" rel="noopener"> P3381 【模板】最小费用最大流</a>）</p>
 <h1 id="1、EK-改"><a href="#1、EK-改" class="headerlink" title="1、EK-改"></a>1、EK-改</h1><p>当然这也是目前的主流写法，在EK中，将BFS过程换成SPFA的过程，松弛与增广一起进行，当然是很美妙的写法。当然整体的代码和EK没有什么特别大的区别，就不多讲了。</p>
 <p>下面是代码（1604ms）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 200000+110
 #define inf 0x7fffffff
 using namespace std;
@@ -597,7 +597,7 @@ int main()
 <p>是不是觉得EK实在是慢得惊人呢？那么我们来看一下ZKW神犇发明的“ZKW算法”。当然，按照ZKW本人的意思，我下面贴的这段代码并不是“ZKW费用流”，因为它用到了SPFA。ZKW本人的代码可以在上面的链接里找到，以下是我个人的见解（因为我不会KM啊）</p>
 <p>这里呢，我们用了一个DFS，它的用处就在于多路增广，可以降低某些图上的复杂度。有这个基础的话就可以接受SPFA的复杂度了，而且也可以在有负权的图上跑了。</p>
 <p>以下是代码（932ms）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 200000+110
 #define inf 0x7fffffff
 using namespace std;
@@ -721,7 +721,7 @@ int main()
 <h2 id="SLF优化"><a href="#SLF优化" class="headerlink" title="SLF优化"></a>SLF优化</h2><p>那么如果对这个效率还不满意呢？</p>
 <p>对了，向标题所说的那样，进行SLF优化吧（虽然我不懂）</p>
 <p>代码如下（860ms）</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #define N 200000+110
 #define inf 0x7fffffff
 using namespace std;

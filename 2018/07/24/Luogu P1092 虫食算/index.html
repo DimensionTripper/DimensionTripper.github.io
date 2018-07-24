@@ -340,6 +340,15 @@
     <!-- Left aligned menu below button -->
     
     
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#从0到n-1"><span class="post-toc-number">1.</span> <span class="post-toc-text">从0到n-1</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#从n-1到0"><span class="post-toc-number">2.</span> <span class="post-toc-text">从n-1到0</span></a></li></ol>
+    </ul>
+    
 
 
 
@@ -495,7 +504,7 @@
 <p>那么这样就能过了吗？不是，还需要剪枝。</p>
 <p>在这样一个搜索顺序的基础上，搜完一条加一次判定，虽然会用一些时间，但和它省下来的时间比简直不值一提。</p>
 <p>废话不多说，看代码注释</p>
-<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 #pragma GCC optimize(3)//手开O3优化
 #define N 30
 using namespace std;
@@ -617,10 +626,8 @@ int main()
 }
 </code></pre>
 <p>注：<br>搜索顺序从0到n-1跑的要慢一些，建议学我，从n-1到0去搜</p>
-<p>#从0到n-1</p>
-<p><a href="https://www.luogu.org/record/show?rid=5303961" target="_blank" rel="noopener">844ms</a></p>
-<p>#从n-1到0</p>
-<p><a href="https://www.luogu.org/record/show?rid=5304076" target="_blank" rel="noopener">16ms</a></p>
+<h1 id="从0到n-1"><a href="#从0到n-1" class="headerlink" title="从0到n-1"></a>从0到n-1</h1><p><a href="https://www.luogu.org/record/show?rid=5303961" target="_blank" rel="noopener">844ms</a></p>
+<h1 id="从n-1到0"><a href="#从n-1到0" class="headerlink" title="从n-1到0"></a>从n-1到0</h1><p><a href="https://www.luogu.org/record/show?rid=5304076" target="_blank" rel="noopener">16ms</a></p>
 <p>其实也就是这样不是</p>
 <p>我的代码还有些地方可以优化，我也懒得改了orz（躺</p>
 
