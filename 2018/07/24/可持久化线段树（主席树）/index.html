@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="不支持修改读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了” 主席树可以用来解决如下问题：“给出一列数,a1,a2…an,每次询问其中连续的一段区间ai到aj其中的第K大的数是多少？” 建那么多的线段树显然会MLE！！但是为了便于理解，这里先把这个岔放下。我们">
+<meta name="description" content="读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了” 主席树可以用来解决如下问题：“给出一列数,a1,a2…an,每次询问其中连续的一段区间ai到aj其中的第K大的数是多少？”">
 <meta name="keywords" content="数据结构,主席树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="可持久化线段树（主席树）">
 <meta property="og:url" content="http://yoursite.com/2018/07/24/可持久化线段树（主席树）/index.html">
 <meta property="og:site_name" content="DimensionTripper">
-<meta property="og:description" content="不支持修改读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了” 主席树可以用来解决如下问题：“给出一列数,a1,a2…an,每次询问其中连续的一段区间ai到aj其中的第K大的数是多少？” 建那么多的线段树显然会MLE！！但是为了便于理解，这里先把这个岔放下。我们">
+<meta property="og:description" content="读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了” 主席树可以用来解决如下问题：“给出一列数,a1,a2…an,每次询问其中连续的一段区间ai到aj其中的第K大的数是多少？”">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V137oTmC2F4y9l/2S3fUDKdnVKID0gupBH2P.rYvp02fQ93VsDePDGXLRY!/m/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=0wFRAdMBUQEBACc!&vuin=1013006824&tm=1520676000&sce=60-4-3&rf=0-0">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V137oTmC2F4y9l/2S3fUDKdnVKID0gupBH2P.rYvp02fQ93VsDePDGXLRY!/m/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=0wFRAdMBUQEBACc!&vuin=1013006824&tm=1520676000&sce=60-4-3&rf=0-0">
@@ -98,10 +98,10 @@
 <meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/543df959260eef02bae09abae5a3d88a/0">
 <meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/e095409f1ad1dc184f7c2e530eb56dda/0">
 <meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/31b1e6754c984e4ae70179d0b02dacdd/0">
-<meta property="og:updated_time" content="2018-07-24T01:30:13.990Z">
+<meta property="og:updated_time" content="2018-07-25T05:03:49.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="可持久化线段树（主席树）">
-<meta name="twitter:description" content="不支持修改读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了” 主席树可以用来解决如下问题：“给出一列数,a1,a2…an,每次询问其中连续的一段区间ai到aj其中的第K大的数是多少？” 建那么多的线段树显然会MLE！！但是为了便于理解，这里先把这个岔放下。我们">
+<meta name="twitter:description" content="读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了” 主席树可以用来解决如下问题：“给出一列数,a1,a2…an,每次询问其中连续的一段区间ai到aj其中的第K大的数是多少？”">
 <meta name="twitter:image" content="http://a3.qpic.cn/psb?/V137oTmC2F4y9l/2S3fUDKdnVKID0gupBH2P.rYvp02fQ93VsDePDGXLRY!/m/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=0wFRAdMBUQEBACc!&vuin=1013006824&tm=1520676000&sce=60-4-3&rf=0-0">
 
 
@@ -399,8 +399,9 @@
       
 
       
-        <h1 id="不支持修改"><a href="#不支持修改" class="headerlink" title="不支持修改"></a>不支持修改</h1><p>读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了”</p>
+        <p>读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了”</p>
 <p>主席树可以用来解决如下问题：“给出一列数,a1,a2…an,每次询问其中连续的一段区间ai到aj其中的第K大的数是多少？”</p>
+<a id="more"></a>
 <p>建那么多的线段树显然会MLE！！但是为了便于理解，这里先把这个岔放下。我们先新开一个数组t[n]，其中存着an排序并去重的值。</p>
 <p>那么每棵线段树维护的内容是什么呢？是a1到ai这段区间中的数在t[n]中出现的次数。这段话的内容也许有点抽象，举个例子 </p>
 <p>an：4 1 1 2 8 9 4 4 3</p>
@@ -422,8 +423,7 @@
 <p>这是我们能够压缩的空间。例如以a[1..9]为前缀建的树的右子树与以a[1..8]为前缀建的树的右子树是相同的！！因此在建树a[1..9]的时候（建树是从1到9的顺序）根节点可以直接向a[1..8]的右子树连一条边。同理，对于根节点的左儿子来说（现在把这个点看做根节点），它的左子树和a[1..8]的相应部分也是相同的，因此也连一条边，如下图所示</p>
 <p> <img src="http://b290.photo.store.qq.com/psb?/V137oTmC2F4y9l/1dG0ZdwBCVWhD.OSkmHQMKFOrQJIPIpz.BAOfgBD8ss!/c/dCIBAAAAAAAA&amp;bo=9wDTAPcA0wABACc!&amp;rf=mood_app" alt=""></p>
 <p>这样我们只增加了三个点却保存了两棵树的所有信息！！像这样在前面树的基础上建树，我们只需要开一个数组储存图示两个箭头所指的根的位置就够了，顺着根向下遍历便是如前所述一棵完整的线段树</p>
-<hr>
-<h2 id="以下是瞎扯"><a href="#以下是瞎扯" class="headerlink" title="以下是瞎扯"></a>以下是瞎扯</h2><p>首先我们来了解什么叫做主席树，下面是从其他大佬的博客中复制过来的了解一下就行</p>
+<h1 id="不支持修改"><a href="#不支持修改" class="headerlink" title="不支持修改"></a>不支持修改</h1><p>首先我们来了解什么叫做主席树，下面是从其他大佬的博客中复制过来的了解一下就行</p>
 <p>所谓主席树呢，就是对原来的数列[1..n]的每一个前缀[1..i]（1≤i≤n）建立一棵线段树，线段树的每一个节点存某个前缀[1..i]中属于区间[L..R]的数一共有多少个（比如根节点是[1..n]，一共i个数，sum[root] = i；根节点的左儿子是[1..(L+R)/2]，若不大于(L+R)/2的数有x个，那么sum[root.left] = x）。若要查找[i..j]中第k大数时，设某结点x，那么x.sum[j] - x.sum[i - 1]就是[i..j]中在结点x内的数字总数。而对每一个前缀都建一棵树，会MLE，观察到每个[1..i]和[1..i-1]只有一条路是不一样的，那么其他的结点只要用回前一棵树的结点即可，时空复杂度为O(nlogn)。</p>
 <hr>
 <p>看了什么的介绍，感觉并没有什么卵用，还是一脸懵逼，下面我一点一点来讲解主席树的原理以及实现过程和代码。</p>
@@ -694,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#不支持修改"><span class="nav-number">1.</span> <span class="nav-text">不支持修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#以下是瞎扯"><span class="nav-number">1.1.</span> <span class="nav-text">以下是瞎扯</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#带修改（主席树-树状数组）"><span class="nav-number">2.</span> <span class="nav-text">带修改（主席树+树状数组）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-number">3.</span> <span class="nav-text">例题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#不支持修改"><span class="nav-number">1.</span> <span class="nav-text">不支持修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#带修改（主席树-树状数组）"><span class="nav-number">2.</span> <span class="nav-text">带修改（主席树+树状数组）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-number">3.</span> <span class="nav-text">例题</span></a></li></ol></div>
             
 
           </div>
@@ -1229,7 +1229,30 @@
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1246,28 +1269,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

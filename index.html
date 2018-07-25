@@ -386,11 +386,9 @@
 
       
         
-          
-          如题所述，这类问题让我们求一个二分图的最大匹配，不知道二分图的同学请参考百度百科
-看着那些术语让人头大对吧，那么来通俗一点的：给定若干个男生和若干个女生，每个男生都可以和一定数量的女生互相有好感，假定不存在同性恋和后宫，求最多能凑多少对CP（然后再统统烧了）。
-对于这类问题通常有两种做法：匈牙利和网
-          ...
+          <p>如题所述，这类问题让我们求一个二分图的最大匹配，不知道二分图的同学请参考<a href="https://baike.baidu.com/item/二分图/9089095?fr=aladdin" target="_blank" rel="noopener">百度百科</a></p>
+<p>看着那些术语让人头大对吧，那么来通俗一点的：给定若干个男生和若干个女生，每个男生都可以和一定数量的女生互相有好感，假定不存在同性恋和后宫，求最多能凑多少对CP<del>（然后再统统烧了）</del>。</p>
+<p>对于这类问题通常有两种做法：匈牙利和网络流。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/二分图匹配/#more" rel="contents">
@@ -547,12 +545,7 @@
 
       
         
-          
-          作为一名OIER，我们会时不时的需要生成几组比较大的数据来进行测试，但是这种东西手玩肯定是不可能实现的，所以就需要用到数据生成器了。
-&lt;!-- more --&gt;
-这种东西呢，大家都知道是基于rand函数随机生成的数据，由于笔者极其的蒟蒻，所以决定先从比较基础的数据结构讲起。
-全排列首先因
-          ...
+          <p>作为一名OIER，我们会时不时的需要生成几组比较大的数据来进行测试，但是这种东西手玩肯定是不可能实现的，所以就需要用到数据生成器了。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/【胡扯向】数据生成器/#more" rel="contents">
@@ -709,12 +702,9 @@
 
       
         
-          
-          费用流，就是在网络流的基础上加入了每条边单位流量的费用，求最大流量和在最大流量的情况下费用的最小值的问题。
-对于这种问题，基本思路当然还是在最大流问题的基础上修改啊
-所以在这里我给出2种解法：（例题： P3381 【模板】最小费用最大流）
-1、EK-改当然这也是目前的主流写法，在EK中，将BFS过程
-          ...
+          <p>费用流，就是在网络流的基础上加入了每条边单位流量的费用，求最大流量和在最大流量的情况下费用的最小值的问题。</p>
+<p>对于这种问题，基本思路当然还是在最大流问题的基础上修改啊</p>
+<p>所以在这里我给出2种解法：（例题：<a href="https://www.luogu.org/problemnew/show/P3381" target="_blank" rel="noopener"> P3381 【模板】最小费用最大流</a>）</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/费用流/#more" rel="contents">
@@ -871,13 +861,10 @@
 
       
         
-          
-          如标题所示，这一类的算法就是为了解决这一类的单源最短路径问题。
-所谓的单源最短路径问题呢，就是指在一个有向图中，给定点S，要求从S点出发遍历全图的最短路径。
-例题：P3371 【模板】单源最短路径
-以下我来讲几种算法（如果有可能的话）
-1、SPFA它被誉为“最快最好用的最短路算法”，但是被各种心狠手
-          ...
+          <p>如标题所示，这一类的算法就是为了解决这一类的单源最短路径问题。</p>
+<p>所谓的单源最短路径问题呢，就是指在一个有向图中，给定点S，要求从S点出发遍历全图的最短路径。</p>
+<p>例题：<a href="https://www.luogu.org/problemnew/show/P3371#sub" target="_blank" rel="noopener">P3371 【模板】单源最短路径</a></p>
+<p>以下我来讲几种算法（如果有可能的话）</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/最短路/#more" rel="contents">
@@ -1034,11 +1021,9 @@
 
       
         
-          
-          在图中，有这样一类问题：在一张有向图中，指定源点S和汇点T，每条边的最大容量已知，求从S到T的最大流量。
-这就是网络最大流问题，我们可以说的具体一点：一个自来水管道网，你家是汇点，自来水厂是源点，每根管道的粗细是一定的，求能流到你家的水最多有多少。
-这个问题的关键在于，当有找到一条路径的时候，这条路
-          ...
+          <p>在图中，有这样一类问题：在一张有向图中，指定源点S和汇点T，每条边的最大容量已知，求从S到T的最大流量。</p>
+<p>这就是网络最大流问题，我们可以说的具体一点：一个自来水管道网，你家是汇点，自来水厂是源点，每根管道的粗细是一定的，求能流到你家的水最多有多少。</p>
+<p>这个问题的关键在于，当有找到一条路径的时候，这条路径所经过的边的容量就会被占用一部分。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/网络最大流/#more" rel="contents">
@@ -1195,12 +1180,7 @@
 
       
         
-          
-          首先%一波莫涛队长orz
-普通莫队由于没有什么板子，这里放一道基础题。
-给定一个序列，其中有n个元素，有m次查询，每次查询要求输出区间[l,r]内出现次数不少于k的数字的个数。
-其实乍一看，好像就是可以用暴力做……但其实莫队本身也和暴力区别不大，基础思路就是将序列分成sqrt(n)个块，然后在每个块
-          ...
+          <p>%一波莫涛队长orz</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/莫队/#more" rel="contents">
@@ -1357,10 +1337,8 @@
 
       
         
-          
-          不支持修改读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了”
-主席树可以用来解决如下问题：“给出一列数,a1,a2…an,每次询问其中连续的一段区间ai到aj其
-          ...
+          <p>读以下文字时最好有些线段树的预备知识，毕竟根据发明者的原话：“想法是对原序列的每一个前缀[1..i]建立出一颗线段树维护值域上每个数的出现次数，然后发现这样的树是可以减的，然后就没有然后了”</p>
+<p>主席树可以用来解决如下问题：“给出一列数,a1,a2…an,每次询问其中连续的一段区间ai到aj其中的第K大的数是多少？”</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/可持久化线段树（主席树）/#more" rel="contents">
@@ -1517,11 +1495,7 @@
 
       
         
-          
-          这里讲两种解法：Splay和FHQ Treap
-首先是Splay我们知道，Splay是一种树形结构，它具有二叉搜索树的性质，维护树上的节点有序，即对于某一节点，它的左子树中所有节点的值都小于这个点，它的右子树中所有点的值都大于这个点。
-然后就是Splay中的重点操作，Rotate。我们都知道Spla
-          ...
+          <p>这里讲两种解法：Splay和FHQ Treap</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/平衡树/#more" rel="contents">
@@ -1678,10 +1652,8 @@
 
       
         
-          
-          一道裸的斜率优化dp
-首先对于i,j，若存在a[i].len(以下简写为l[i])&gt;=a[j].len&amp;&amp;a[i].wid(以下简写为w[i])&gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果
-          ...
+          <p>一道裸的斜率优化dp</p>
+<p>首先对于i,j，若存在a[i].len(以下简写为l[i])&gt;=a[j].len&amp;&amp;a[i].wid(以下简写为w[i])&gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/Luogu P2900 土地征用 斜率优化dp 题解/#more" rel="contents">
@@ -1838,11 +1810,7 @@
 
       
         
-          
-          基础树剖（从P3178的代码稍作修改便可A掉这里和3178差别在于线段树的过程不同和一个deep数组，具体看代码
-&lt;!-- more --&gt;
-1234567891011121314151617181920212223242526272829303132333435363738394041
-          ...
+          <p>基础树剖（从<a href="https://www.luogu.org/problemnew/show/P3178" target="_blank" rel="noopener">P3178</a>的代码稍作修改便可A掉<br>这里和3178差别在于线段树的过程不同和一个deep数组，具体看代码</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/24/Luogu P2590 树的统计/#more" rel="contents">
@@ -2548,7 +2516,15 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -2565,13 +2541,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

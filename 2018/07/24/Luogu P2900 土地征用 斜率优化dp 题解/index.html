@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="一道裸的斜率优化dp 首先对于i,j，若存在a[i].len(以下简写为l[i])&amp;gt;=a[j].len&amp;amp;&amp;amp;a[i].wid(以下简写为w[i])&amp;gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。 &amp;lt;!-- mor">
+<meta name="description" content="一道裸的斜率优化dp 首先对于i,j，若存在a[i].len(以下简写为l[i])&amp;gt;=a[j].len&amp;amp;&amp;amp;a[i].wid(以下简写为w[i])&amp;gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。">
 <meta name="keywords" content="动态规划，dp,斜率优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Luogu P2900 土地征用 斜率优化dp 题解">
 <meta property="og:url" content="http://yoursite.com/2018/07/24/Luogu P2900 土地征用 斜率优化dp 题解/index.html">
 <meta property="og:site_name" content="DimensionTripper">
-<meta property="og:description" content="一道裸的斜率优化dp 首先对于i,j，若存在a[i].len(以下简写为l[i])&amp;gt;=a[j].len&amp;amp;&amp;amp;a[i].wid(以下简写为w[i])&amp;gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。 &amp;lt;!-- mor">
+<meta property="og:description" content="一道裸的斜率优化dp 首先对于i,j，若存在a[i].len(以下简写为l[i])&amp;gt;=a[j].len&amp;amp;&amp;amp;a[i].wid(以下简写为w[i])&amp;gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.blog.csdn.net/20170122191654269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQmlsbF9ZYW5nXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-07-25T04:17:08.197Z">
+<meta property="og:updated_time" content="2018-07-25T05:01:11.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luogu P2900 土地征用 斜率优化dp 题解">
-<meta name="twitter:description" content="一道裸的斜率优化dp 首先对于i,j，若存在a[i].len(以下简写为l[i])&amp;gt;=a[j].len&amp;amp;&amp;amp;a[i].wid(以下简写为w[i])&amp;gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。 &amp;lt;!-- mor">
+<meta name="twitter:description" content="一道裸的斜率优化dp 首先对于i,j，若存在a[i].len(以下简写为l[i])&amp;gt;=a[j].len&amp;amp;&amp;amp;a[i].wid(以下简写为w[i])&amp;gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20170122191654269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQmlsbF9ZYW5nXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
@@ -391,7 +391,7 @@
       
         <p>一道裸的斜率优化dp</p>
 <p>首先对于i,j，若存在a[i].len(以下简写为l[i])&gt;=a[j].len&amp;&amp;a[i].wid(以下简写为w[i])&gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。</p>
-<p><code>&lt;!-- more --&gt;</code></p>
+<a id="more"></a>
 <p>然后就是对着数据手推状转方程了（建议先自己推一遍），可知假设用f[i]表示前i块土地的最小价值，则有<strong>f[i]=min{f[j]+l[j+1]w[i]}</strong>。</p>
 <p>然后对数据化简可知假设j比k优，则有<strong>f[j]+l[j+1]w[i]&lt;f[k]+l[k+1]w[i]</strong>,然后就可以得到<strong>(f[k]-f[j])/(l[j+1]-l[k+1])&gt;w[i]</strong></p>
 <p>接着就是一个数形结合的思想了</p>
@@ -1120,7 +1120,30 @@
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1137,28 +1160,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

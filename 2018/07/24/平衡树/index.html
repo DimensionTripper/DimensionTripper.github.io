@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="这里讲两种解法：Splay和FHQ Treap 首先是Splay我们知道，Splay是一种树形结构，它具有二叉搜索树的性质，维护树上的节点有序，即对于某一节点，它的左子树中所有节点的值都小于这个点，它的右子树中所有点的值都大于这个点。 然后就是Splay中的重点操作，Rotate。我们都知道Splay的复杂度之所以维持在logn级别与旋转操作有着很大的关系，旋转分为两种：左旋和右旋。旋转见图示（感">
+<meta name="description" content="这里讲两种解法：Splay和FHQ Treap">
 <meta name="keywords" content="数据结构,平衡树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="平衡树">
 <meta property="og:url" content="http://yoursite.com/2018/07/24/平衡树/index.html">
 <meta property="og:site_name" content="DimensionTripper">
-<meta property="og:description" content="这里讲两种解法：Splay和FHQ Treap 首先是Splay我们知道，Splay是一种树形结构，它具有二叉搜索树的性质，维护树上的节点有序，即对于某一节点，它的左子树中所有节点的值都小于这个点，它的右子树中所有点的值都大于这个点。 然后就是Splay中的重点操作，Rotate。我们都知道Splay的复杂度之所以维持在logn级别与旋转操作有着很大的关系，旋转分为两种：左旋和右旋。旋转见图示（感">
+<meta property="og:description" content="这里讲两种解法：Splay和FHQ Treap">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201210/10/1349877565_2986.png">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201210/10/1349877709_4105.png">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201210/10/1349877744_7090.png">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201210/10/1349877779_5253.png">
-<meta property="og:updated_time" content="2018-07-24T01:30:36.722Z">
+<meta property="og:updated_time" content="2018-07-25T05:04:12.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="平衡树">
-<meta name="twitter:description" content="这里讲两种解法：Splay和FHQ Treap 首先是Splay我们知道，Splay是一种树形结构，它具有二叉搜索树的性质，维护树上的节点有序，即对于某一节点，它的左子树中所有节点的值都小于这个点，它的右子树中所有点的值都大于这个点。 然后就是Splay中的重点操作，Rotate。我们都知道Splay的复杂度之所以维持在logn级别与旋转操作有着很大的关系，旋转分为两种：左旋和右旋。旋转见图示（感">
+<meta name="twitter:description" content="这里讲两种解法：Splay和FHQ Treap">
 <meta name="twitter:image" content="http://img.my.csdn.net/uploads/201210/10/1349877565_2986.png">
 
 
@@ -393,6 +393,7 @@
 
       
         <p>这里讲两种解法：Splay和FHQ Treap</p>
+<a id="more"></a>
 <h3 id="首先是Splay"><a href="#首先是Splay" class="headerlink" title="首先是Splay"></a>首先是Splay</h3><p>我们知道，Splay是一种树形结构，它具有二叉搜索树的性质，维护树上的节点有序，即对于某一节点，它的左子树中所有节点的值都小于这个点，它的右子树中所有点的值都大于这个点。</p>
 <p>然后就是Splay中的重点操作，Rotate。我们都知道Splay的复杂度之所以维持在logn级别与旋转操作有着很大的关系，旋转分为两种：左旋和右旋。旋转见图示（感谢<a href="https://www.cnblogs.com/yousiki/p/6147455.html" target="_blank" rel="noopener">You Siki</a>的图片）<br><img src="http://img.my.csdn.net/uploads/201210/10/1349877565_2986.png" alt=""></p>
 <p>然后为了将某个值旋转至树根便于操作，又有了3种操作：Zig、Zig-Zig、Zig-Zag。具体见图示<br><img src="http://img.my.csdn.net/uploads/201210/10/1349877709_4105.png" alt=""><img src="http://img.my.csdn.net/uploads/201210/10/1349877744_7090.png" alt=""><img src="http://img.my.csdn.net/uploads/201210/10/1349877779_5253.png" alt=""></p>
@@ -1168,7 +1169,30 @@
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1185,28 +1209,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
