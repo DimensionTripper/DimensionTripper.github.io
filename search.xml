@@ -109,6 +109,8 @@
       
         <tags>
             
+            <tag> 图论 </tag>
+            
             <tag> 二分图 </tag>
             
         </tags>
@@ -150,6 +152,8 @@
       
       
         <tags>
+            
+            <tag> 图论 </tag>
             
             <tag> 网络流 </tag>
             
@@ -196,6 +200,8 @@
       
       
         <tags>
+            
+            <tag> 图论 </tag>
             
             <tag> 网络流 </tag>
             
@@ -402,6 +408,8 @@
             
             <tag> 线段树 </tag>
             
+            <tag> 数据结构 </tag>
+            
         </tags>
       
     </entry>
@@ -422,6 +430,8 @@
         <tags>
             
             <tag> 线段树 </tag>
+            
+            <tag> 数据结构 </tag>
             
         </tags>
       
@@ -484,9 +494,9 @@
   
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>links</title>
+      <link href="/links/index.html"/>
+      <url>/links/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
@@ -498,9 +508,9 @@
     </entry>
     
     <entry>
-      <title>links</title>
-      <link href="/links/index.html"/>
-      <url>/links/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
