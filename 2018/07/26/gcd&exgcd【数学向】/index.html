@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="自己选择的路，跪着也要走完" />
+  <meta name="keywords" content="数论,最大公约数，GCD,扩展欧几里得，扩欧," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="博客搭建成功啦，纪念一波QwQ">
+<meta name="description" content="最近笔者这个蒟蒻学习了扩欧，但是我并不懂得gcd，于是奋发图强，终于，我大概明白了吧 gcd于是我们从朴素的gcd开始，这是一个求最大公约数的算法，最初由古希腊数学家欧几里得提出，因此得名为欧几里得算法。 下面是正文： 已知$a,b$，求$a,b$的最大公约数。 我们知道，gcd的基础是这个式子：gcd(a,b)=gcd(b,a%b)，那么怎么证呢？ 对于$a,b$，我们假设$a=kb+r$则r=">
+<meta name="keywords" content="数论,最大公约数，GCD,扩展欧几里得，扩欧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客建成祭">
-<meta property="og:url" content="http://yoursite.com/2018/07/18/博客搭建成功祭/index.html">
+<meta property="og:title" content="gcd&amp;exgcd【数学向】">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/gcd&exgcd【数学向】/index.html">
 <meta property="og:site_name" content="DimensionTripper">
-<meta property="og:description" content="博客搭建成功啦，纪念一波QwQ">
+<meta property="og:description" content="最近笔者这个蒟蒻学习了扩欧，但是我并不懂得gcd，于是奋发图强，终于，我大概明白了吧 gcd于是我们从朴素的gcd开始，这是一个求最大公约数的算法，最初由古希腊数学家欧几里得提出，因此得名为欧几里得算法。 下面是正文： 已知$a,b$，求$a,b$的最大公约数。 我们知道，gcd的基础是这个式子：gcd(a,b)=gcd(b,a%b)，那么怎么证呢？ 对于$a,b$，我们假设$a=kb+r$则r=">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-19T05:23:33.734Z">
+<meta property="og:updated_time" content="2018-07-26T00:28:11.239Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客建成祭">
-<meta name="twitter:description" content="博客搭建成功啦，纪念一波QwQ">
+<meta name="twitter:title" content="gcd&amp;exgcd【数学向】">
+<meta name="twitter:description" content="最近笔者这个蒟蒻学习了扩欧，但是我并不懂得gcd，于是奋发图强，终于，我大概明白了吧 gcd于是我们从朴素的gcd开始，这是一个求最大公约数的算法，最初由古希腊数学家欧几里得提出，因此得名为欧几里得算法。 下面是正文： 已知$a,b$，求$a,b$的最大公约数。 我们知道，gcd的基础是这个式子：gcd(a,b)=gcd(b,a%b)，那么怎么证呢？ 对于$a,b$，我们假设$a=kb+r$则r=">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/18/博客搭建成功祭/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/26/gcd&exgcd【数学向】/"/>
 
 
 
 
 
-  <title>博客建成祭 | DimensionTripper</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>gcd&exgcd【数学向】 | DimensionTripper</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -286,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/博客搭建成功祭/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/gcd&exgcd【数学向】/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DimensionTripper">
@@ -303,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">博客建成祭</h1>
+          <h1 class="post-title" itemprop="name headline">gcd&exgcd【数学向】</h1>
         
 
         <div class="post-meta">
@@ -315,8 +316,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-18T17:19:53+08:00">
-                2018-07-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-26T08:25:37+08:00">
+                2018-07-26
               </time>
             
 
@@ -338,8 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/祭/" itemprop="url" rel="index">
-                    <span itemprop="name">祭</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -356,9 +357,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/18/博客搭建成功祭/#comments" itemprop="discussionUrl">
+                <a href="/2018/07/26/gcd&exgcd【数学向】/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/07/18/博客搭建成功祭/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/07/26/gcd&exgcd【数学向】/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,7 +387,29 @@
       
 
       
-        <p>博客搭建成功啦，纪念一波QwQ</p>
+        <p>最近笔者这个蒟蒻学习了扩欧，但是我并不懂得gcd，于是奋发图强，终于，我<del>大概</del>明白了吧</p>
+<h1 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h1><p>于是我们从朴素的gcd开始，这是一个求最大公约数的算法，最初由古希腊数学家欧几里得提出，因此得名为欧几里得算法。</p>
+<p>下面是正文：</p>
+<p>已知$a,b$，求$a,b$的最大公约数。</p>
+<p>我们知道，gcd的基础是这个式子：gcd(a,b)=gcd(b,a%b)，那么怎么证呢？</p>
+<p>对于$a,b$，我们假设$a=kb+r$则r=a%b，再假设d是(a,b)的公约数，则有$d|a$，$d|b$（“$|$”，意为整除），我们可以再假设$a=q_1d$，$b=q_2d$，又$a=kb+r$，则可知$r=(q_1-q_2)d$，则有$d|r$，则d为(b,a%b)的公约数。</p>
+<p>那么反过来，假设$d$为(b,a%b)的公约数，同样假设$a=kb+r$，则r=a%b，那么有$d|b$，$d|r$，继续假设$b=q_1d$，$r=q_2d$，则$a=(kq_1+q_2)d$，可知$d|a$,那么d也为(a,b)的公约数。</p>
+<p>可知(a,b)，(b,a%b)的公约数都是相等的，所以其最大公约数也必然相等，那么d是(a,b)的最大公约数为d是(b,a%b)的最大公约数的充要条件，也就是说gcd(a,b)=gcd(b,a%b)，得证。</p>
+<p>那么代码就很简单了<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">    	<span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">return</span> gcd(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="exgcd"><a href="#exgcd" class="headerlink" title="exgcd"></a>exgcd</h1><p>这是让我们求$ax+by=gcd(a,b)$的解的过程</p>
+<p>我们知道，gcd是一个靠递归实现的过程，其实exgcd也是一样的东西。那么边界在哪里呢？</p>
+<p>毫无疑问，我们知道当$b=0$时，$gcd(a,b)=a$，则必有一组解为$x=1$，$y=0$，那么问题就简单了，只要不断的递归，直到出现$b=0$为止。</p>
+<p>那么再怎么反推回去呢？别急，我们来好好分析一下。</p>
+<p>还是假设</p>
+<p>设$x_1a+y_1b=gcd(a,b)$，$x_2b+y_2(a$%$b)=gcd(b,a$%$b)$</p>
+<p>根据上文我们知道$gcd(a,b)=gcd(b,a$%$b)$</p>
+<p>所以我们有$x_1a+y_1b=x_2b+y_2(a$%$b)$</p>
+<p>所以我们可以写成$x_1a+y_1b=x_2b+y_2(a-[a/b]*b)$</p>
+<p>进一步写成$x_1a+y_1b=x_2b+y_2a-y_2[a/b]*b$</p>
+<p>在合并一下同类项$x_1a+y_1b=y_2a+(x_2-y_2[a/b])b$</p>
+<p>那么比较一下可得$x_1=y_2$，$y_1=x_2-y_2[a/b]$</p>
+<p>【注】此处“$[$”、“$]$”意为对$a/b$的下取整。</p>
+<p>然后就可以写出代码了：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> d=exgcd(b,a%b,y,x);</span><br><span class="line">    y-=a/b*x;</span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -402,6 +425,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/数论/" rel="tag"><i class="fa fa-tag"></i> 数论</a>
+          
+            <a href="/tags/最大公约数，GCD/" rel="tag"><i class="fa fa-tag"></i> 最大公约数，GCD</a>
+          
+            <a href="/tags/扩展欧几里得，扩欧/" rel="tag"><i class="fa fa-tag"></i> 扩展欧几里得，扩欧</a>
+          
+        </div>
+      
 
       
       
@@ -411,15 +444,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/07/24/二分图匹配/" rel="next" title="二分图匹配">
+                <i class="fa fa-chevron-left"></i> 二分图匹配
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/18/可读性极差的A+B/" rel="prev" title="可读性极差的A+B">
-                可读性极差的A+B <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -481,8 +514,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -564,6 +606,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gcd"><span class="nav-number">1.</span> <span class="nav-text">gcd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exgcd"><span class="nav-number">2.</span> <span class="nav-text">exgcd</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -735,9 +793,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/07/18/博客搭建成功祭/';
-          this.page.identifier = '2018/07/18/博客搭建成功祭/';
-          this.page.title = '博客建成祭';
+          this.page.url = 'http://yoursite.com/2018/07/26/gcd&exgcd【数学向】/';
+          this.page.identifier = '2018/07/26/gcd&exgcd【数学向】/';
+          this.page.title = 'gcd&exgcd【数学向】';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
@@ -1124,6 +1182,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

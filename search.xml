@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>gcd&amp;exgcd【数学向】</title>
+      <link href="/2018/07/26/gcd&amp;exgcd%E3%80%90%E6%95%B0%E5%AD%A6%E5%90%91%E3%80%91/"/>
+      <url>/2018/07/26/gcd&amp;exgcd%E3%80%90%E6%95%B0%E5%AD%A6%E5%90%91%E3%80%91/</url>
+      <content type="html"><![CDATA[<p>最近笔者这个蒟蒻学习了扩欧，但是我并不懂得gcd，于是奋发图强，终于，我<del>大概</del>明白了吧</p><h1 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h1><p>于是我们从朴素的gcd开始，这是一个求最大公约数的算法，最初由古希腊数学家欧几里得提出，因此得名为欧几里得算法。</p><p>下面是正文：</p><p>已知$a,b$，求$a,b$的最大公约数。</p><p>我们知道，gcd的基础是这个式子：gcd(a,b)=gcd(b,a%b)，那么怎么证呢？</p><p>对于$a,b$，我们假设$a=kb+r$则r=a%b，再假设d是(a,b)的公约数，则有$d|a$，$d|b$（“$|$”，意为整除），我们可以再假设$a=q_1d$，$b=q_2d$，又$a=kb+r$，则可知$r=(q_1-q_2)d$，则有$d|r$，则d为(b,a%b)的公约数。</p><p>那么反过来，假设$d$为(b,a%b)的公约数，同样假设$a=kb+r$，则r=a%b，那么有$d|b$，$d|r$，继续假设$b=q_1d$，$r=q_2d$，则$a=(kq_1+q_2)d$，可知$d|a$,那么d也为(a,b)的公约数。</p><p>可知(a,b)，(b,a%b)的公约数都是相等的，所以其最大公约数也必然相等，那么d是(a,b)的最大公约数为d是(b,a%b)的最大公约数的充要条件，也就是说gcd(a,b)=gcd(b,a%b)，得证。</p><p>那么代码就很简单了<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line"><span class="keyword">return</span> gcd(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h1 id="exgcd"><a href="#exgcd" class="headerlink" title="exgcd"></a>exgcd</h1><p>这是让我们求$ax+by=gcd(a,b)$的解的过程</p><p>我们知道，gcd是一个靠递归实现的过程，其实exgcd也是一样的东西。那么边界在哪里呢？</p><p>毫无疑问，我们知道当$b=0$时，$gcd(a,b)=a$，则必有一组解为$x=1$，$y=0$，那么问题就简单了，只要不断的递归，直到出现$b=0$为止。</p><p>那么再怎么反推回去呢？别急，我们来好好分析一下。</p><p>还是假设</p><p>设$x_1a+y_1b=gcd(a,b)$，$x_2b+y_2(a$%$b)=gcd(b,a$%$b)$</p><p>根据上文我们知道$gcd(a,b)=gcd(b,a$%$b)$</p><p>所以我们有$x_1a+y_1b=x_2b+y_2(a$%$b)$</p><p>所以我们可以写成$x_1a+y_1b=x_2b+y_2(a-[a/b]*b)$</p><p>进一步写成$x_1a+y_1b=x_2b+y_2a-y_2[a/b]*b$</p><p>在合并一下同类项$x_1a+y_1b=y_2a+(x_2-y_2[a/b])b$</p><p>那么比较一下可得$x_1=y_2$，$y_1=x_2-y_2[a/b]$</p><p>【注】此处“$[$”、“$]$”意为对$a/b$的下取整。</p><p>然后就可以写出代码了：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> d=exgcd(b,a%b,y,x);</span><br><span class="line">    y-=a/b*x;</span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数论 </tag>
+            
+            <tag> 最大公约数，GCD </tag>
+            
+            <tag> 扩展欧几里得，扩欧 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>二分图匹配</title>
       <link href="/2018/07/24/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/"/>
       <url>/2018/07/24/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/</url>
@@ -392,16 +417,16 @@
   
     
     <entry>
-      <title>文章分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>links</title>
+      <link href="/links/index.html"/>
+      <url>/links/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
     <entry>
-      <title>links</title>
-      <link href="/links/index.html"/>
-      <url>/links/index.html</url>
+      <title>文章分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
