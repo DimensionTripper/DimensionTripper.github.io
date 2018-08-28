@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="话说同步赛因为没打爆零了QwQ 这道Day1T1……个人觉得它领着我自学了一波Kruskal重构树，然后再加上出题人恶意卡SPFA，所以导致我不得不学了一波堆优化（对，差不多就是Dijkstra） 然后其实思维难度就并不算太大了（？）首先求出1号节点到其他点的最短路长度，然后把边按海拔从大到小排序后建一棵Kruskal重构树，这样就只需要找到一个节点u的海拔高于水位线，它的子树的叶子节点就都可以乘">
 <meta name="keywords" content="Kruskal重构树,最短路,倍增">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【NOI2018】归程">
 <meta property="og:url" content="http://yoursite.com/2018/08/28/【NOI2018】归程/index.html">
 <meta property="og:site_name" content="DimensionTripper">
-<meta property="og:description" content="话说同步赛因为没打爆零了QwQ 这道Day1T1……个人觉得它领着我自学了一波Kruskal重构树，然后再加上出题人恶意卡SPFA，所以导致我不得不学了一波堆优化（对，差不多就是Dijkstra） 然后其实思维难度就并不算太大了（？）首先求出1号节点到其他点的最短路长度，然后把边按海拔从大到小排序后建一棵Kruskal重构树，这样就只需要找到一个节点u的海拔高于水位线，它的子树的叶子节点就都可以乘">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-28T11:14:59.229Z">
+<meta property="og:image" content="c:/Users/dell/Pictures/2017-07-16.jpeg">
+<meta property="og:updated_time" content="2018-08-28T11:19:46.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【NOI2018】归程">
-<meta name="twitter:description" content="话说同步赛因为没打爆零了QwQ 这道Day1T1……个人觉得它领着我自学了一波Kruskal重构树，然后再加上出题人恶意卡SPFA，所以导致我不得不学了一波堆优化（对，差不多就是Dijkstra） 然后其实思维难度就并不算太大了（？）首先求出1号节点到其他点的最短路长度，然后把边按海拔从大到小排序后建一棵Kruskal重构树，这样就只需要找到一个节点u的海拔高于水位线，它的子树的叶子节点就都可以乘">
+<meta name="twitter:image" content="c:/Users/dell/Pictures/2017-07-16.jpeg">
 
 
 
@@ -387,7 +386,9 @@
       
 
       
-        <p>话说同步赛因为没打爆零了QwQ</p>
+        <p><img src="C:\Users\dell\Pictures\2017-07-16.jpeg" alt="2017-07-16"></p>
+<a id="more"></a>
+<p>话说同步赛因为没打爆零了QwQ</p>
 <p>这道Day1T1……个人觉得它领着我自学了一波Kruskal重构树，然后再加上出题人恶意卡SPFA，所以导致我不得不学了一波堆优化（对，差不多就是Dijkstra）</p>
 <p>然后其实思维难度就并不算太大了（？）首先求出1号节点到其他点的最短路长度，然后把边按海拔从大到小排序后建一棵Kruskal重构树，这样就只需要找到一个节点u的海拔高于水位线，它的子树的叶子节点就都可以乘车相互到达，在这些点中找到到1号点距离最短的那个就行了。</p>
 <p>接下来有一个严肃的问题就是如何找到这个u，我们知道Kruskal重构树是满足堆的性质的，越往上的节点海拔越低，也就是说我们可以用倍增解决这个问题。</p>
@@ -1137,7 +1138,7 @@
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
 })();
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</script>
 
 
   
@@ -1151,5 +1152,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
