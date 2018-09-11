@@ -88,7 +88,7 @@
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fupna3edmsj30xc0jwn27.jpeg">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fupndw1hdyj30m80gowev.jpg">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fupnf9pwqzj30m80gowf0.jpg">
-<meta property="og:updated_time" content="2018-08-28T11:39:46.820Z">
+<meta property="og:updated_time" content="2018-09-11T10:31:12.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kruskal重构树">
 <meta name="twitter:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fupna3edmsj30xc0jwn27.jpeg">
@@ -403,7 +403,7 @@
 <p>看到NOI2018Day1T1要用到Kruskal重构树，蒟蒻就学习了一下。</p>
 <p>看到这个名字，大家一定会想起Kruskal，对，没错，可以说这个重构树就是稍微改动了一点的Kruskal。它的基本思想就是将一个图的最小生成树中的边转成点建一棵新树，边权也就转换成了点权。</p>
 <p>做法依然是每次取出一条最短的边，如果它所连接的两个节点不在一个集合里，那么就加入一个新的节点，它的两个儿子节点为所连节点的最远祖先，并将这两个节点以及新点合并。</p>
-<p>可知这样新建的树共有$2<em>n-1$个节点以及$2</em>n-2$条边，它还满足以下几个性质：</p>
+<p>可知这样新建的树共有$2 \times n-1$个节点以及$2 \times n-2$条边，它还满足以下几个性质：</p>
 <ol>
 <li>二叉树</li>
 <li>原树与新树两点间路径上边权（点权）值相等</li>
@@ -551,7 +551,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -573,7 +573,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
