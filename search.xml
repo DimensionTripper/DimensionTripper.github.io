@@ -333,9 +333,9 @@
       
         <tags>
             
-            <tag> 最短路 </tag>
-            
             <tag> 图论 </tag>
+            
+            <tag> 最短路 </tag>
             
         </tags>
       
@@ -471,9 +471,9 @@
       
         <tags>
             
-            <tag> 树链剖分，树剖 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 树链剖分，树剖 </tag>
             
         </tags>
       
@@ -649,9 +649,9 @@
   
     
     <entry>
-      <title>文章分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
@@ -663,9 +663,9 @@
     </entry>
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>文章分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
