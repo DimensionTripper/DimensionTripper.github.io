@@ -438,7 +438,7 @@
 <a id="more"></a>
 <h1 id="1、SPFA"><a href="#1、SPFA" class="headerlink" title="1、SPFA"></a>1、SPFA</h1><p>它被誉为“最快最好用的最短路算法”，<del>但是被各种心狠手辣的出题人卡成了狗</del>自有其优越性，毕竟像笔者这种蒟蒻都看了一遍就懂了。</p>
 <p>SPFA用了一种动态逼近的方法，设立一个先进先出的队列q来保存待优化的节点，每次取出队首的节点u，并用u点当前的最短路径的估计值对离开u指向的v节点进行松弛操作，如果v点的最短路径估计值有所调整，并且v不在当前队列中，就把它放入队列中如此不断从队列中取出节点进行松弛操作，直至队列空为止。</p>
-<p>那么说到松弛操作，原理就是十分著名的三角不等式，即我们数学中都用过的“两边之和大于第三边”，也就是v当前的最短路径估算值大于u当前的最短路径估算值与边[u,v]的长度之和，那么就更新v最短路径的估算值，也就是这样：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(dist[v]&gt;dist[u]+e[i].weigh)</span><br><span class="line">    dist[v]=dist[u]+e[i].weigh;</span><br></pre></td></tr></table></figure></p>
+<p>那么说到松弛操作，原理就是十分著名的三角不等式，即我们数学中都用过的“两边之和大于第三边”，也就是v当前的最短路径估算值大于u当前的最短路径估算值与边[u,v]的长度之和，那么就更新v最短路径的估算值，也就是这样：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(dist[v]&gt;dist[u]+e[i].weigh)</span><br><span class="line">	dist[v]=dist[u]+e[i].weigh;</span><br></pre></td></tr></table></figure></p>
 <p>当然，实际的代码中还要加上进队的操作。</p>
 <p>当然你也许会说，这个怎么这么像BFS呢？其实还真有点，区别就在于BFS中一个点不能重复进队，而这里是可以反复松弛的。</p>
 <h3 id="切记：每次取出队首节点的时候一定要清空标记！！"><a href="#切记：每次取出队首节点的时候一定要清空标记！！" class="headerlink" title="切记：每次取出队首节点的时候一定要清空标记！！"></a>切记：每次取出队首节点的时候一定要清空标记！！</h3><p>那么在贴代码之前，先来手玩一下样例。样例图如下：</p>
@@ -1297,7 +1297,7 @@
     mc.src = '//embed.widgetpack.com/widget.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
   })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
   
@@ -1308,5 +1308,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 </html>
