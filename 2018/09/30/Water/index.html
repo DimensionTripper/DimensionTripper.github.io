@@ -88,7 +88,7 @@
 <meta property="og:description" content="4/5">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvroxjn5vdj30m80efe42.jpg">
-<meta property="og:updated_time" content="2018-09-30T09:29:07.813Z">
+<meta property="og:updated_time" content="2018-09-30T09:34:44.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="水题记录">
 <meta name="twitter:description" content="4/5">
@@ -490,7 +490,7 @@ dp[i][j] = max\{dp[i][j], dp[i - 1][j] + d[s[i]][0], dp[i][j - 1] + d[0][t[j]], 
 
 <p>题意：给出一张 $n$ 个点 $m$ 条边的无向图，对于边的序列，如果一个区间内存在环，那么称该区间为一个“加强区间”，问每条边在几个加强区间内出现过。</p>
 <hr>
-<p>思路：考虑 $O(m)$ 地枚举区间的左右端点，每次向右移动区间右端点，如果出现环则进行一次统计，然后向右移动区间左端点至没有环为止。使用 $LCT$ ，每次扩展区间就 $Link$ ，缩小区间就 $Cut$ ，然后用 $Find_Root$ 判断连通性，很显然可以知道当要连一条边的时候，如果这条边所连的两个节点已经联通，那么连上这条边就会出现环。</p>
+<p>思路：考虑 $O(m)$ 地枚举区间的左右端点，每次向右移动区间右端点，如果出现环则进行一次统计，然后向右移动区间左端点至没有环为止。使用 $LCT$ ，每次扩展区间就 $Link$ ，缩小区间就 $Cut$ ，然后用 $FindRoot$ 判断连通性，很显然可以知道当要连一条边的时候，如果这条边所连的两个节点已经联通，那么连上这条边就会出现环。</p>
 <p>重复的进行上述操作即可完成统计。</p>
 <p>统计答案的时候涉及到等差数列的问题，可以参考 <a href="https://www.luogu.org/problemnew/show/P4231" target="_blank" rel="noopener">三步必杀</a> ，使用两个差分完成。</p>
 <hr>
