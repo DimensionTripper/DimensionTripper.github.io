@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  18
+                  16
                 </span>
               
 
@@ -463,7 +463,7 @@
 <div id="decryptionError" style="display: none;">Incorrect Password!</div>
 <div id="noContentError" style="display: none;">No content to display!</div>
 <div id="encrypt-blog" style="display:none">
-U2FsdGVkX19gfYb/L2hBCOkCF3ujritS1NXj5bRn3i+bq2exLi3deUqeK6w2qXuedZ1pmgKKnKcGefLoEbjxg8jruB+czHvb0oTR/cr3av4gayde7Ql99kOcPVMwhD1xreAemwmsmeK34Ei+UJVHtKzy6p/prR0jCDNnTA90sAzL2hVVkYg7CjR1UN3k2q9Lep40YpFh8nYDo3DJE1S5oRbozj8uNU9OcWs6ONJF3224JWnxBRMzxOmlAlpGjKpa/WmTQZM8qQxVhiVc60d3mw==
+U2FsdGVkX19OG9VcMG3IRCc3lJWG5DdGj4CIc8f2mZ8NTlFU6jlU9CIX+ZFAy7OhALWiuS0PQs8nQkzavgU8Zic2GEc9FXTPFopcQSrANlQRLafViVAwXe0v5e0+xofIocToHagIndUfKD2pS2chB0EN6fuxlRL/pcPCnxHLdCAfqbxvYYEFSll32JzGjR3KXxtBkeIHN3uPkaspq+ts6wVDziGgqSUy1Vw8kSMSbGqNblJfcg2w+N0KjCXLeoPbN3KBzMtaRjp8rDwBTp0qjQ==
 </div>
 <script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
@@ -882,6 +882,28 @@ U2FsdGVkX19gfYb/L2hBCOkCF3ujritS1NXj5bRn3i+bq2exLi3deUqeK6w2qXuedZ1pmgKKnKcGefLo
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'iQyQ8P0MBqxNOyJLAWHmLQ4Q-gzGzoHsz',
+        appKey: '8KrSrYSDgOR54l9BRYhALvDm',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
