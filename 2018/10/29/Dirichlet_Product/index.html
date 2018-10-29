@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="动态规划，dp,斜率优化," />
+  <meta name="keywords" content="数论," />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="一道裸的斜率优化dp 首先对于i,j，若存在a[i].len(以下简写为l[i])&amp;gt;=a[j].len&amp;amp;&amp;amp;a[i].wid(以下简写为w[i])&amp;gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。">
-<meta name="keywords" content="动态规划，dp,斜率优化">
+<meta name="keywords" content="数论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Luogu P2900 土地征用 斜率优化dp 题解">
-<meta property="og:url" content="http://yoursite.com/2018/02/11/Luogu P2900/index.html">
+<meta property="og:title" content="狄利克雷卷积学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/10/29/Dirichlet_Product/index.html">
 <meta property="og:site_name" content="DimensionTripper">
-<meta property="og:description" content="一道裸的斜率优化dp 首先对于i,j，若存在a[i].len(以下简写为l[i])&amp;gt;=a[j].len&amp;amp;&amp;amp;a[i].wid(以下简写为w[i])&amp;gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-19T05:39:09.326Z">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwp7r702r3j30xc0a6792.jpg">
+<meta property="og:updated_time" content="2018-10-29T12:26:21.992Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luogu P2900 土地征用 斜率优化dp 题解">
-<meta name="twitter:description" content="一道裸的斜率优化dp 首先对于i,j，若存在a[i].len(以下简写为l[i])&amp;gt;=a[j].len&amp;amp;&amp;amp;a[i].wid(以下简写为w[i])&amp;gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。">
+<meta name="twitter:title" content="狄利克雷卷积学习笔记">
+<meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwp7r702r3j30xc0a6792.jpg">
 
 
 
@@ -120,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/11/Luogu P2900/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/29/Dirichlet_Product/"/>
 
 
 
@@ -136,7 +135,7 @@
 
 
 
-  <title>Luogu P2900 土地征用 斜率优化dp 题解 | DimensionTripper</title>
+  <title>狄利克雷卷积学习笔记 | DimensionTripper</title>
   
 
 
@@ -321,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/Luogu P2900/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/29/Dirichlet_Product/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DimensionTripper">
@@ -338,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Luogu P2900 土地征用 斜率优化dp 题解</h1>
+          <h1 class="post-title" itemprop="name headline">狄利克雷卷积学习笔记</h1>
         
 
         <div class="post-meta">
@@ -351,8 +350,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-11T23:19:17+08:00">
-                2018-02-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-29T20:26:00+08:00">
+                2018-10-29
               </time>
             
             
@@ -373,8 +372,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/题解/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -391,8 +390,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/02/11/Luogu P2900/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/11/Luogu P2900/" itemprop="commentCount"></span>
+                <a href="/2018/10/29/Dirichlet_Product/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/29/Dirichlet_Product/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -414,7 +413,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  758
+                  1.4k
                 </span>
               
 
@@ -430,7 +429,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  5
                 </span>
               
             </div>
@@ -451,19 +450,89 @@
       
 
       
-        <p>一道裸的斜率优化dp</p>
-<p>首先对于i,j，若存在a[i].len(以下简写为l[i])&gt;=a[j].len&amp;&amp;a[i].wid(以下简写为w[i])&gt;=a[j].wid,则j这块土地是无用的，在预处理时应去掉这些无用的土地。同时在预处理时可以将数据按l降序排列，同时产生的结果是w必然按升序排列（有兴趣的dalao可以自己证明），这样可方便后面的过程。</p>
+        <p><img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwp7r702r3j30xc0a6792.jpg" alt=""></p>
 <a id="more"></a>
-<p>然后就是对着数据手推状转方程了（建议先自己推一遍），可知假设用f[i]表示前i块土地的最小价值，则有<strong>f[i]=min{f[j]+l[j+1]w[i]}</strong>。</p>
-<p>然后对数据化简可知假设j比k优，则有<strong>f[j]+l[j+1]w[i]&lt;f[k]+l[k+1]w[i]</strong>,然后就可以得到<strong>(f[k]-f[j])/(l[j+1]-l[k+1])&gt;w[i]</strong></p>
-<p>接着就是一个数形结合的思想了</p>
-<pre><code>一些试题中繁杂的代数关系身后往往隐藏着丰富的几何背景，而借助背景图形的性质，可以使那些原本复杂的数量关系和抽象的概念，显得直观，从而找到设计算法的捷径。——周源
-</code></pre><p>有兴趣的dalao可以阅读<a href="https://wenku.baidu.com/view/b97cd22d0066f5335a8121a3.html" target="_blank" rel="noopener">浅谈数形结合思想在信息学竞赛中的应用</a></p>
-<p>总之这里将关系式抽象为形如y=kx+b的式子，只要维护组成图形的下凸性就行了，要弹出队尾的情况中节点的插入破坏了图形的下凸性</p>
-<p>这里就要用到单调队列了，维护队列中的元素单调（然而我不会，所以请各位懂的大神指点</p>
-<p>不多说见代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 50010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> n,tot,q[N],head=<span class="number">1</span>,tail=<span class="number">1</span>,f[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> len,wid;</span><br><span class="line">&#125;;<span class="class"><span class="keyword">struct</span> <span class="title">node</span> <span class="title">a</span>[<span class="title">N</span>];</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node1</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> lent,wide;</span><br><span class="line">&#125;;<span class="class"><span class="keyword">struct</span> <span class="title">node1</span> <span class="title">b</span>[<span class="title">N</span>];</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mmp</span><span class="params">(node xx,node yy)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> xx.len&gt;yy.len||(xx.len==yy.len&amp;&amp;xx.wid&gt;yy.wid);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">slope</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">double</span>)(f[y]-f[x])/(<span class="keyword">double</span>)(b[x+<span class="number">1</span>].lent-b[y+<span class="number">1</span>].lent);</span><br><span class="line">&#125;<span class="comment">//slope 斜率，来自金山词霸</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;a[i].len,&amp;a[i].wid);</span><br><span class="line">    sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n,mmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">if</span>(a[i].wid&gt;b[tot].wide)<span class="comment">//注意！一定要这样维护b中w的升序排列</span></span><br><span class="line">        &#123;</span><br><span class="line">            b[++tot].lent=a[i].len;</span><br><span class="line">            b[tot].wide=a[i].wid;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)<span class="comment">//1~tot动规</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(head&lt;tail&amp;&amp;slope(q[head],q[head+<span class="number">1</span>])&lt;=b[i].wide)</span><br><span class="line">            head++;<span class="comment">//如果队首不是最优，就弹出队首</span></span><br><span class="line">        f[i]=f[q[head]]+b[i].wide*b[q[head]+<span class="number">1</span>].lent;</span><br><span class="line">        <span class="keyword">while</span>(head&lt;tail&amp;&amp;slope(q[tail<span class="number">-1</span>],q[tail])&gt;=slope(q[tail],i))</span><br><span class="line">            tail--;<span class="comment">//维护一个下凸包</span></span><br><span class="line">        q[++tail]=i;<span class="comment">//进队</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,f[tot]);<span class="comment">//这里也要用tot</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>望各位dalao谅解QWQ</p>
-<p>[注] 图片、引文来源<a href="http://blog.csdn.net/bill_yang_2016/article/details/54864284" target="_blank" rel="noopener">[模板] 斜率优化Dp详解</a></p>
+<p>蒟蒻我在莫比乌斯反演学习笔记里留下了几个坑，于是开始漫长的填坑路。</p>
+<h1 id="狄利克雷卷积学习笔记"><a href="#狄利克雷卷积学习笔记" class="headerlink" title="狄利克雷卷积学习笔记"></a>狄利克雷卷积学习笔记</h1><h2 id="前置知识1：数论函数"><a href="#前置知识1：数论函数" class="headerlink" title="前置知识1：数论函数"></a>前置知识1：数论函数</h2><p>什么是数论函数呢？数论函数指定义域为正整数，陪域为复数的函数。</p>
+<p><strong>以下知识中涉及到的函数大部分为数论函数</strong></p>
+<h2 id="前置知识2：积性函数"><a href="#前置知识2：积性函数" class="headerlink" title="前置知识2：积性函数"></a>前置知识2：积性函数</h2><p>积性函数是数论函数中很重要的一类。</p>
+<p>对于函数 $f$ ，若 $\forall a, b\ (gcd(a,b) = 1)$ 都有 $f(ab) = f(a) \times f(b)$ ，则函数 $f$ 为<strong>积性函数</strong>。</p>
+<p>另外的，若 $\forall a, b$ 都有 $f(ab) = f(a) \times f(b)$ ，则函数 $f$ 为<strong>完全积性函数</strong>。</p>
+<p>常见的积性函数：</p>
+<ol>
+<li>$\mu(x)$ ，莫比乌斯函数。这个函数我在 <a href="https://dimensiontripper.github.io/2018/10/29/Mobius_Inversion/" target="_blank" rel="noopener">莫比乌斯反演学习笔记</a>中讲的挺清楚的（；</li>
+<li>$\varphi(x)$ ，欧拉函数。表示不大于 $x$ 且与 $x$ 互质的正整数个数，即 $\varphi(x) = \sum \limits_{i = 1}^{n} {[gcd(n, i) = 1]}$ ；</li>
+<li>$d(x)$ ，约数个数。表示 $x$ 的约数的个数，即 $d(x) = \sum \limits_{d|n} {1}$ ；</li>
+<li>$\sigma(x)$ ，约数和函数。表示 $x$ 的各个约数之和，即 $\sigma(x) = \sum \limits_{d|n} d$ 。</li>
+</ol>
+<p>常见的完全积性函数：</p>
+<ol>
+<li>$\epsilon(x)$ ，元函数。 $\epsilon(x) = [x = 1]$ ；</li>
+<li>$I(x)$ ，恒等函数。 $I(x) = 1$ ；</li>
+<li>$N(x)$ ，单位函数。$N(x) = x$ 。</li>
+</ol>
+<h2 id="什么是狄利克雷卷积"><a href="#什么是狄利克雷卷积" class="headerlink" title="什么是狄利克雷卷积"></a>什么是狄利克雷卷积</h2><p>我们定义 $f$ ， $g$ 两个函数的狄利克雷卷积 $(*)$ 运算为：</p>
+<script type="math/tex; mode=display">
+(f*g)(n) = \sum \limits_{d|n} {f(d)g(\frac{n}{d})}</script><p>我们把 $(f*g)$ 称为“ $f$ 卷 $g$ ”， $(n)$ 为范围（不写时默认范围为 $n$ ）。</p>
+<p>很<del>不</del>显然，狄利克雷卷积满足一下运算规律：</p>
+<ol>
+<li>交换律：即 $f <em> g = g </em> f$ ；</li>
+<li>结合律：即 $(f <em> g) </em> h = f <em> (g </em> h)$ ；</li>
+<li>分配律：即 $(f + g) <em> h = f </em> h + g * h$ ；</li>
+</ol>
+<p>总之就和乘法是类似的，所以记忆方面并没有什么困难，然而这些运算律是可以证明的</p>
+<ol>
+<li>交换律：很显然我们交换 $f$ 和 $g$ 仅仅是交换了枚举元素的顺序，对结果并没有影响；</li>
+<li>结合律：很显然 $(f <em> g </em> h)(n)$ 就是三个函数所有 $n$ 的约数项的和的乘积，那么无论先卷哪两个函数对结果都没有影响；</li>
+<li>交换律：同样很显然，我们可以得到以下式子：</li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{align*}
+(f + g) * h &= \sum \limits_{d | n} {(f + g)(d)h(\frac{n}{d})}\\
+&= \sum \limits_{d | n} {(f(d) + g(d))h(\frac{n}{d})}\\
+&= \sum \limits_{d | n} {f(d)h(\frac{n}{d}) + g(d)h(\frac{n}{d})}\\
+&= \sum \limits_{d | n} {f(d)h(\frac{n}{d})} + \sum \limits_{d | n} {g(d)h(\frac{n}{d})}\\
+&= f * h + g * h
+\end{align*}</script><p>解决完运算律之后，我们来看一下之前讲过的积性函数。</p>
+<p>首先是元函数 $\epsilon$ ，所谓元函数，指的就是在狄利克雷卷积中充当单位元的作用，即有 $f * \epsilon = f$ 。</p>
+<p>然后，狄利克雷卷积有一个非常重要的性质：<strong>如果 $f$ 和 $g$ 均为积性函数，那么 $f * g$ 一定也为积性函数</strong>。</p>
+<h2 id="用卷积的眼光看其他函数"><a href="#用卷积的眼光看其他函数" class="headerlink" title="用卷积的眼光看其他函数"></a>用卷积的眼光看其他函数</h2><h3 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h3><p>（开始填坑）</p>
+<p>在莫比乌斯反演笔记中，我们提到了莫比乌斯函数的几个性质，现在我们再来看一下它们。</p>
+<h4 id="关于莫比乌斯函数的重要等式"><a href="#关于莫比乌斯函数的重要等式" class="headerlink" title="关于莫比乌斯函数的重要等式"></a>关于莫比乌斯函数的重要等式</h4><p>对于 $\forall n$ ， $\sum \limits_{d|n} {\mu(d)} = [n =1]$ ；</p>
+<p>我们将这个式子写成卷积的形式可以得到在卷积中的一个重要等式：</p>
+<script type="math/tex; mode=display">
+\mu * I = \epsilon</script><p>利用这个式子，我们可以证明其他的东西。</p>
+<h4 id="莫比乌斯反演定理的证明"><a href="#莫比乌斯反演定理的证明" class="headerlink" title="莫比乌斯反演定理的证明"></a>莫比乌斯反演定理的证明</h4><p>是不是觉得用定义证明莫比乌斯反演定理的时候的和式变换相当的麻烦呐？这里就给出一种相当简单的证明方法：</p>
+<script type="math/tex; mode=display">
+f(n) = \sum \limits_{d | n} {g(d)}</script><p>将上式写成卷积的形式：</p>
+<script type="math/tex; mode=display">
+f = g * I</script><p>两边同时卷上 $\mu$ ：</p>
+<script type="math/tex; mode=display">
+f * \mu = g * I * \mu</script><p>又因为有 $\mu * I = \epsilon$ 所以有：</p>
+<script type="math/tex; mode=display">
+f * \mu = g * \epsilon = g</script><p>即：</p>
+<script type="math/tex; mode=display">
+g(n) = \sum \limits_{d | n} {\mu(d)f(\frac{n}{d})}</script><h3 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h3><h4 id="欧拉函数的性质"><a href="#欧拉函数的性质" class="headerlink" title="欧拉函数的性质"></a>欧拉函数的性质</h4><p>欧拉函数有一个相当美妙的性质：</p>
+<script type="math/tex; mode=display">
+\sum \limits_{d | n} {\varphi(d) = n}</script><p>证明过程如下：</p>
+<p>设 $n = \prod \limits_{i = 1}^{m} {p_i^{a_i}}$ ，由于欧拉函数是积性函数，有</p>
+<script type="math/tex; mode=display">
+\sum \limits_{d | n} {\varphi(d)} = \sum \prod \limits_{i = 1}^{m} {\varphi(p_i^j)} (0 \leq j \leq a_i)</script><p>因式分解，上式等价于</p>
+<script type="math/tex; mode=display">
+\prod \limits_{i = 1}^{m} {(\sum \limits_{j = 0}^{a_i} {\varphi(p_i^j)})} = \prod \limits_{i = 1}^{m} {(\sum \limits_{j = 0}^{a_i} {(p_i^j - p_i^{j - 1}) + 1})} = \prod \limits_{i = 1}^{m} {p_i^{a_i}} = n</script><p>命题得证。</p>
+<h4 id="莫比乌斯函数与欧拉函数的关系"><a href="#莫比乌斯函数与欧拉函数的关系" class="headerlink" title="莫比乌斯函数与欧拉函数的关系"></a>莫比乌斯函数与欧拉函数的关系</h4><p>将欧拉函数的性质写成卷积形式：</p>
+<script type="math/tex; mode=display">
+\varphi * I = N</script><p>同样的，将等式两边同时卷上一个 $\mu$ ，得到：</p>
+<script type="math/tex; mode=display">
+\varphi * I * \mu = N * \mu</script><p>同样得到 $\varphi = N * \mu$ ，展开：</p>
+<script type="math/tex; mode=display">
+\varphi(n) = \sum \limits_{d | n} {\mu(d) \times \frac{n}{d}}</script><p>将两边同时除以 $n$ </p>
+<script type="math/tex; mode=display">
+\frac{\varphi(n)}{n} = \sum \limits_{d | n} {\frac{\mu(d)}{d}}</script><p>于是得证。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>坑终于填的差不多了，累死本鸽子了咕咕咕（</p>
+<p>然后，老师也说得好：数学是<del>物理</del>OI的工具，狄利克雷卷积也充当了一种工具的作用，在解决许多实际问题的时候有这工具总比没有要简单许多。</p>
+<p>实际上可以看出来，有的时候利用好了数学的工具会使得本来相当麻烦的证明过程变得很简单，所以说还是要熟悉它们。</p>
+<p>然后，下一个坑是：杜教筛！（立flag.jpg）</p>
 
       
     </div>
@@ -481,9 +550,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/动态规划，dp/" rel="tag"><i class="fa fa-tag"></i> 动态规划，dp</a>
-          
-            <a href="/tags/斜率优化/" rel="tag"><i class="fa fa-tag"></i> 斜率优化</a>
+            <a href="/tags/数论/" rel="tag"><i class="fa fa-tag"></i> 数论</a>
           
         </div>
       
@@ -508,8 +575,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/07/Luogu P2590/" rel="next" title="Luogu P2590 树的统计">
-                <i class="fa fa-chevron-left"></i> Luogu P2590 树的统计
+              <a href="/2018/10/29/Mobius_Inversion/" rel="next" title="莫比乌斯反演学习笔记">
+                <i class="fa fa-chevron-left"></i> 莫比乌斯反演学习笔记
               </a>
             
           </div>
@@ -517,10 +584,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/03/平衡树/" rel="prev" title="平衡树">
-                平衡树 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -575,8 +638,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -661,6 +733,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#狄利克雷卷积学习笔记"><span class="nav-number">1.</span> <span class="nav-text">狄利克雷卷积学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前置知识1：数论函数"><span class="nav-number">1.1.</span> <span class="nav-text">前置知识1：数论函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前置知识2：积性函数"><span class="nav-number">1.2.</span> <span class="nav-text">前置知识2：积性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是狄利克雷卷积"><span class="nav-number">1.3.</span> <span class="nav-text">什么是狄利克雷卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用卷积的眼光看其他函数"><span class="nav-number">1.4.</span> <span class="nav-text">用卷积的眼光看其他函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#莫比乌斯函数"><span class="nav-number">1.4.1.</span> <span class="nav-text">莫比乌斯函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于莫比乌斯函数的重要等式"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">关于莫比乌斯函数的重要等式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#莫比乌斯反演定理的证明"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">莫比乌斯反演定理的证明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉函数"><span class="nav-number">1.4.2.</span> <span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#欧拉函数的性质"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">欧拉函数的性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#莫比乌斯函数与欧拉函数的关系"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">莫比乌斯函数与欧拉函数的关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1251,6 +1339,26 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

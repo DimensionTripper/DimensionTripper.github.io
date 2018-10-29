@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="莫比乌斯反演,数论," />
+  <meta name="keywords" content="数论,莫比乌斯反演," />
 
 
 
@@ -79,14 +79,14 @@
 
 
 
-<meta name="keywords" content="莫比乌斯反演,数论">
+<meta name="keywords" content="数论,莫比乌斯反演">
 <meta property="og:type" content="article">
 <meta property="og:title" content="莫比乌斯反演学习笔记">
 <meta property="og:url" content="http://yoursite.com/2018/10/29/Mobius_Inversion/index.html">
 <meta property="og:site_name" content="DimensionTripper">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwox20us35j30xc0nmhdg.jpg">
-<meta property="og:updated_time" content="2018-10-29T09:02:35.196Z">
+<meta property="og:updated_time" content="2018-10-29T12:26:31.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="莫比乌斯反演学习笔记">
 <meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwox20us35j30xc0nmhdg.jpg">
@@ -458,15 +458,24 @@
 <p>$\mu (x)$ 的定义为：</p>
 <ol>
 <li>当 $x = 1$ 时， $\mu (x) = 1$ ；</li>
-<li>当 $x = \prod\limits_{i = 1}^{k}{p_i}$ 且 $p_i$ 为互异质数是， $\mu (x) = (-1)^k$ ；（说人话：将 $x$ 分解质因数后每个质因子的次数都是1，此时函数值由质因子个数决定）</li>
+<li>当 $x = \prod\limits_{i = 1}^{k}{p_i}$ 且 $p_i$ 为互异质数时， $\mu (x) = (-1)^k$ ；（说人话：将 $x$ 分解质因数后每个质因子的次数都是1，此时函数值由质因子个数决定）</li>
 <li>若 $x$ 有任意一个质因子的次数大于1，则 $\mu (x) = 0$ 。</li>
 </ol>
 <p>可以看出莫比乌斯函数有以下几个性质：</p>
 <ol>
 <li>莫比乌斯函数为积性函数，即有 $\mu(ab) = \mu(a) \times \mu(b)$ 。这个比较容易证明，就不证了（懒得打了.jpg）</li>
-<li>对于 $\forall n$ ， $\sum \limits_{d|n} {\mu(d)} = [n =1]$ 。（ $d|n$ 表示 $d$ 整除 $n$ ， $[n = 1]$ 表示 $n = 1$ 这个布尔式的值。）证明……等我学了狄利克雷卷积再放吧。</li>
-<li>对于 $\forall n$ ， $\sum \limits_{d|n} {\frac{\mu(d)} {n}} = \frac{\varphi(n)}{n}$ 。同样我也暂时先不给出证明，等以后学狄利克雷卷积的时候再回来填坑。（当然还是我不会）</li>
+<li>对于 $\forall n$ ， $\sum \limits_{d|n} {\mu(d)} = [n =1]$ 。（ $d|n$ 表示 $d$ 整除 $n$ ， $[n = 1]$ 表示 $n = 1$ 这个布尔式的值。）证明……等我冷静分析清楚再放吧。</li>
+<li>对于 $\forall n$ ， $\sum \limits_{d|n} {\frac{\mu(d)} {d}} = \frac{\varphi(n)}{n}$ 。证明如下：</li>
 </ol>
+<p>将欧拉函数的性质写成卷积形式：</p>
+<script type="math/tex; mode=display">
+\varphi * I = N</script><p>同样的，将等式两边同时卷上一个 $\mu$ ，得到：</p>
+<script type="math/tex; mode=display">
+\varphi * I * \mu = N * \mu</script><p>同样得到 $\varphi = N * \mu$ ，展开：</p>
+<script type="math/tex; mode=display">
+\varphi(n) = \sum \limits_{d | n} {\mu(d) \times \frac{n}{d}}</script><p>将两边同时除以 $n$ </p>
+<script type="math/tex; mode=display">
+\frac{\varphi(n)}{n} = \sum \limits_{d | n} {\frac{\mu(d)}{d}}</script><p>于是得证。</p>
 <p>然后你就会发现程序实现其实并不是特别困难，只要在线性筛的程序上稍作修改就可以写出了。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">il <span class="keyword">void</span> <span class="title">Get_mu</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (ri i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i])</span><br><span class="line">        &#123;</span><br><span class="line">            prime[++cnt] = i;</span><br><span class="line">            mu[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (ri j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; prime[j] * i &lt;= n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            vis[prime[j] * i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prime[j])</span><br><span class="line">                mu[i * prime[j]] = -mu[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>那么，莫比乌斯函数的讲解就先到这里了，毕竟接下来的才是重点</p>
@@ -476,8 +485,17 @@
 <script type="math/tex; mode=display">
 g(n) = \sum \limits_{d|n} {\mu(d)f(\frac{n}{d})}</script><p>这个定理就称作<strong>莫比乌斯反演定理</strong>。（由于已知 $d|n$ 所以没必要加下取整符号）</p>
 <p>莫比乌斯反演定理主要有两种证明方式：狄利克雷卷积和定义。</p>
-<p>关于狄利克雷卷积的证明方式，我会在后面和莫比乌斯函数的性质一起放出，于是这里就讲另一种方法。</p>
+<h3 id="狄利克雷卷积法"><a href="#狄利克雷卷积法" class="headerlink" title="狄利克雷卷积法"></a>狄利克雷卷积法</h3><p>已知</p>
 <script type="math/tex; mode=display">
+f(n) = \sum \limits_{d | n} {g(d)}</script><p>将上式写成卷积的形式：</p>
+<script type="math/tex; mode=display">
+f = g * I</script><p>两边同时卷上 $\mu$ ：</p>
+<script type="math/tex; mode=display">
+f * \mu = g * I * \mu</script><p>又因为有 $\mu * I = \epsilon$ 所以有：</p>
+<script type="math/tex; mode=display">
+f * \mu = g * \epsilon = g</script><p>即：</p>
+<script type="math/tex; mode=display">
+g(n) = \sum \limits_{d | n} {\mu(d)f(\frac{n}{d})}</script><h3 id="定义法"><a href="#定义法" class="headerlink" title="定义法"></a>定义法</h3><script type="math/tex; mode=display">
 由 f(n) 的定义有\\
 \sum \limits_{d|n} {\mu(d)f(\frac{n}{d})} = \sum \limits_{d|n} {\mu(d) \sum \limits_{i|\frac{n}{d}}g(i)} = \sum \limits_{d|n} \sum \limits_{i|\frac{n}{d}} {\mu(d)g(i)}\\
 变形得\\
@@ -510,9 +528,9 @@ f(n) = \sum \limits_{n|d} {\mu(\frac{d}{n})g(d)}</script><h2 id="例题：Luogu-
       
         <div class="post-tags">
           
-            <a href="/tags/莫比乌斯反演/" rel="tag"><i class="fa fa-tag"></i> 莫比乌斯反演</a>
-          
             <a href="/tags/数论/" rel="tag"><i class="fa fa-tag"></i> 数论</a>
+          
+            <a href="/tags/莫比乌斯反演/" rel="tag"><i class="fa fa-tag"></i> 莫比乌斯反演</a>
           
         </div>
       
@@ -546,6 +564,10 @@ f(n) = \sum \limits_{n|d} {\mu(\frac{d}{n})g(d)}</script><h2 id="例题：Luogu-
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/29/Dirichlet_Product/" rel="prev" title="狄利克雷卷积学习笔记">
+                狄利克雷卷积学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -629,7 +651,7 @@ f(n) = \sum \limits_{n|d} {\mu(\frac{d}{n})g(d)}</script><h2 id="例题：Luogu-
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -705,7 +727,7 @@ f(n) = \sum \limits_{n|d} {\mu(\frac{d}{n})g(d)}</script><h2 id="例题：Luogu-
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#莫比乌斯反演学习笔记"><span class="nav-number">1.</span> <span class="nav-text">莫比乌斯反演学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯函数"><span class="nav-number">1.1.</span> <span class="nav-text">莫比乌斯函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">1.2.</span> <span class="nav-text">莫比乌斯反演</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题：Luogu-2714-四元组统计"><span class="nav-number">1.3.</span> <span class="nav-text">例题：Luogu 2714 四元组统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#莫比乌斯反演学习笔记"><span class="nav-number">1.</span> <span class="nav-text">莫比乌斯反演学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯函数"><span class="nav-number">1.1.</span> <span class="nav-text">莫比乌斯函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">1.2.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#狄利克雷卷积法"><span class="nav-number">1.2.1.</span> <span class="nav-text">狄利克雷卷积法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义法"><span class="nav-number">1.2.2.</span> <span class="nav-text">定义法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题：Luogu-2714-四元组统计"><span class="nav-number">1.3.</span> <span class="nav-text">例题：Luogu 2714 四元组统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -739,7 +761,7 @@ f(n) = \sum \limits_{n|d} {\mu(\frac{d}{n})g(d)}</script><h2 id="例题：Luogu-
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">54.6k</span>
+    <span title="Site words total count">56.1k</span>
   
 </div>
 
