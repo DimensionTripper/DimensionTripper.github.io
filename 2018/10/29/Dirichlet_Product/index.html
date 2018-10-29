@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="DimensionTripper">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwp7r702r3j30xc0a6792.jpg">
-<meta property="og:updated_time" content="2018-10-29T12:26:21.992Z">
+<meta property="og:updated_time" content="2018-10-29T12:30:41.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狄利克雷卷积学习笔记">
 <meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwp7r702r3j30xc0a6792.jpg">
@@ -460,25 +460,25 @@
 <p>另外的，若 $\forall a, b$ 都有 $f(ab) = f(a) \times f(b)$ ，则函数 $f$ 为<strong>完全积性函数</strong>。</p>
 <p>常见的积性函数：</p>
 <ol>
-<li>$\mu(x)$ ，莫比乌斯函数。这个函数我在 <a href="https://dimensiontripper.github.io/2018/10/29/Mobius_Inversion/" target="_blank" rel="noopener">莫比乌斯反演学习笔记</a>中讲的挺清楚的（；</li>
-<li>$\varphi(x)$ ，欧拉函数。表示不大于 $x$ 且与 $x$ 互质的正整数个数，即 $\varphi(x) = \sum \limits_{i = 1}^{n} {[gcd(n, i) = 1]}$ ；</li>
-<li>$d(x)$ ，约数个数。表示 $x$ 的约数的个数，即 $d(x) = \sum \limits_{d|n} {1}$ ；</li>
-<li>$\sigma(x)$ ，约数和函数。表示 $x$ 的各个约数之和，即 $\sigma(x) = \sum \limits_{d|n} d$ 。</li>
+<li>$\mu(x)$ ，莫比乌斯函数。这个函数我在 <a href="https://dimensiontripper.github.io/2018/10/29/Mobius_Inversion/" target="_blank" rel="noopener">莫比乌斯反演学习笔记</a>中讲的挺清楚的（</li>
+<li>$\varphi(x)$ ，欧拉函数。表示不大于 $x$ 且与 $x$ 互质的正整数个数，即 $\varphi(x) = \sum \limits_{i = 1}^{n} {[gcd(n, i) = 1]}$ </li>
+<li>$d(x)$ ，约数个数。表示 $x$ 的约数的个数，即 $d(x) = \sum \limits_{d|n} {1}$ </li>
+<li>$\sigma(x)$ ，约数和函数。表示 $x$ 的各个约数之和，即 $\sigma(x) = \sum \limits_{d|n} d$ </li>
 </ol>
 <p>常见的完全积性函数：</p>
 <ol>
-<li>$\epsilon(x)$ ，元函数。 $\epsilon(x) = [x = 1]$ ；</li>
-<li>$I(x)$ ，恒等函数。 $I(x) = 1$ ；</li>
-<li>$N(x)$ ，单位函数。$N(x) = x$ 。</li>
+<li>$\epsilon(x)$ ，元函数。 $\epsilon(x) = [x = 1]$ </li>
+<li>$I(x)$ ，恒等函数。 $I(x) = 1$ </li>
+<li>$N(x)$ ，单位函数。$N(x) = x$ </li>
 </ol>
 <h2 id="什么是狄利克雷卷积"><a href="#什么是狄利克雷卷积" class="headerlink" title="什么是狄利克雷卷积"></a>什么是狄利克雷卷积</h2><p>我们定义 $f$ ， $g$ 两个函数的狄利克雷卷积 $(*)$ 运算为：</p>
 <script type="math/tex; mode=display">
 (f*g)(n) = \sum \limits_{d|n} {f(d)g(\frac{n}{d})}</script><p>我们把 $(f*g)$ 称为“ $f$ 卷 $g$ ”， $(n)$ 为范围（不写时默认范围为 $n$ ）。</p>
 <p>很<del>不</del>显然，狄利克雷卷积满足一下运算规律：</p>
 <ol>
-<li>交换律：即 $f <em> g = g </em> f$ ；</li>
-<li>结合律：即 $(f <em> g) </em> h = f <em> (g </em> h)$ ；</li>
-<li>分配律：即 $(f + g) <em> h = f </em> h + g * h$ ；</li>
+<li>交换律：即 $f <em> g = g </em> f$ </li>
+<li>结合律：即 $(f <em> g) </em> h = f <em> (g </em> h)$ </li>
+<li>分配律：即 $(f + g) <em> h = f </em> h + g * h$ </li>
 </ol>
 <p>总之就和乘法是类似的，所以记忆方面并没有什么困难，然而这些运算律是可以证明的</p>
 <ol>
@@ -498,7 +498,7 @@
 <p>然后，狄利克雷卷积有一个非常重要的性质：<strong>如果 $f$ 和 $g$ 均为积性函数，那么 $f * g$ 一定也为积性函数</strong>。</p>
 <h2 id="用卷积的眼光看其他函数"><a href="#用卷积的眼光看其他函数" class="headerlink" title="用卷积的眼光看其他函数"></a>用卷积的眼光看其他函数</h2><h3 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h3><p>（开始填坑）</p>
 <p>在莫比乌斯反演笔记中，我们提到了莫比乌斯函数的几个性质，现在我们再来看一下它们。</p>
-<h4 id="关于莫比乌斯函数的重要等式"><a href="#关于莫比乌斯函数的重要等式" class="headerlink" title="关于莫比乌斯函数的重要等式"></a>关于莫比乌斯函数的重要等式</h4><p>对于 $\forall n$ ， $\sum \limits_{d|n} {\mu(d)} = [n =1]$ ；</p>
+<h4 id="关于莫比乌斯函数的重要等式"><a href="#关于莫比乌斯函数的重要等式" class="headerlink" title="关于莫比乌斯函数的重要等式"></a>关于莫比乌斯函数的重要等式</h4><p>对于 $\forall n​$ ， $\sum \limits_{d|n} {\mu(d)} = [n =1]​$ ；</p>
 <p>我们将这个式子写成卷积的形式可以得到在卷积中的一个重要等式：</p>
 <script type="math/tex; mode=display">
 \mu * I = \epsilon</script><p>利用这个式子，我们可以证明其他的东西。</p>
