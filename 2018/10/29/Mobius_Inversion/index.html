@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="DimensionTripper">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwox20us35j30xc0nmhdg.jpg">
-<meta property="og:updated_time" content="2018-10-30T05:47:08.174Z">
+<meta property="og:updated_time" content="2018-10-30T05:50:49.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="莫比乌斯反演学习笔记">
 <meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwox20us35j30xc0nmhdg.jpg">
@@ -466,15 +466,16 @@
 <li><p>莫比乌斯函数为积性函数，即有 $\mu(ab) = \mu(a) \times \mu(b)$ 。这个比较容易证明，就不证了（懒得打了.jpg）</p>
 </li>
 <li><p>对于 $\forall n$ ， $\sum \limits_{d|n} {\mu(d)} = [n =1]$ 。（ $d|n$ 表示 $d$ 整除 $n$ ， $[n = 1]$ 表示 $n = 1$ 这个布尔式的值。）证明如下：</p>
-<p>① 当 $n = 1$ 时显然成立</p>
-<p>② 当 $n \ne 1$ 时， $n = p_1^{a_1}p_2^{a_2}p_3^{a_3}…p_k^{a_k}$ </p>
+<p>当 $n = 1$ 时显然成立</p>
+<p>当 $n \ne 1$ 时， $n = p_1^{a_1}p_2^{a_2}p_3^{a_3}…p_k^{a_k}$ </p>
 <script type="math/tex; mode=display">
-\mu(d) \ne 0 \iff d = p_1p_2p_3…p_t</script><p>​    质因子个数为 $r$ 的因子只有 $C_k^r$ 个</p>
+\mu(d) \ne 0 \iff d = p_1p_2p_3…p_t</script><p>质因子个数为 $r$ 的因子只有 $C_k^r$ 个</p>
 <script type="math/tex; mode=display">
-\sum \limits_{d | n} = C_k^0 - C_k^1 + … + (-1)^kC_k^k = \sum \limits_{i = 0}^k {(-1) ^ i C_k^i}</script><p>​    接下来只需要证明 $\sum \limits<em>{i = 0}^n {(-1)^i C_n^i}\ (n \in N</em>+)$ 即可</p>
-<p>​    根据二项式定理</p>
+\sum \limits_{d | n} = C_k^0 - C_k^1 + … + (-1)^kC_k^k = \sum \limits_{i = 0}^k {(-1) ^ i C_k^i}</script><p>接下来只需要证明以下式子即可</p>
 <script type="math/tex; mode=display">
-(x + y) ^ n = \sum \limits_{i = 0}^{n} {C_n^i x^i y^{n - i}}</script><p>​    令 $x = -1\ ,\ y = 1$ 代入即可证。</p>
+\sum \limits_{i = 0}^n {(-1)^i C_n^i} = 0\ (n \in N_+)</script><p>根据二项式定理</p>
+<script type="math/tex; mode=display">
+(x + y) ^ n = \sum \limits_{i = 0}^{n} {C_n^i x^i y^{n - i}}</script><p>令 $x = -1\ ,\ y = 1$ 代入即可证。</p>
 </li>
 <li><p>对于 $\forall n$ ， $\sum \limits_{d|n} {\frac{\mu(d)} {d}} = \frac{\varphi(n)}{n}$ 。证明如下：</p>
 <p>将欧拉函数的性质写成卷积形式：</p>
