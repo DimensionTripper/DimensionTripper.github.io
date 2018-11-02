@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="DimensionTripper">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fwth1vn8pzj30xc0kudpt.jpg">
-<meta property="og:updated_time" content="2018-11-02T01:59:33.874Z">
+<meta property="og:updated_time" content="2018-11-02T02:06:31.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SG专题模拟赛">
 <meta name="twitter:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fwth1vn8pzj30xc0kudpt.jpg">
@@ -453,7 +453,9 @@
         <p><img src="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fwth1vn8pzj30xc0kudpt.jpg" alt=""></p>
 <a id="more"></a>
 <p>又是一场相当无聊（毒瘤）的模拟赛QwQ</p>
-<h1 id="A-电话微波炉（暂定）"><a href="#A-电话微波炉（暂定）" class="headerlink" title="A. 电话微波炉（暂定）"></a>A. 电话微波炉（暂定）</h1><p>题意：给出一个序列 $a$ ，一次操作可以把 $a<em>i$ 变成 $a</em>{i - 1} + a<em>{i + 1} - a_i$ ，假定 $a_0 = a</em>{n + 1} = 0$ ，问最后序列中所有元素的和最大是多少。</p>
+<h1 id="A-电话微波炉（暂定）"><a href="#A-电话微波炉（暂定）" class="headerlink" title="A. 电话微波炉（暂定）"></a>A. 电话微波炉（暂定）</h1><p>题意：给出一个序列 $a$ ，一次操作的内容是</p>
+<script type="math/tex; mode=display">
+a_i = a_{i - 1} + a_{i + 1} - a_i\ \ (a_0 = a_{n + 1} = 0)</script><p>问最后序列中所有元素的和最大是多少。</p>
 <hr>
 <p>思路：其实就是一个思博贪心，很显然的一点是最终状态下每次操作都不会让结果更优，即对于每一个 $a_i$ ，都有</p>
 <script type="math/tex; mode=display">
@@ -477,8 +479,9 @@ a_{i + 1} - a_i^{'} = a_i - a_{i - 1}</script><p>我们会发现实质上每次�
 <p>讲一下 $\text{DP}$ 部分：</p>
 <p>我们令 $f_i$ 表示选前 $i$ 个点的数量，然后不难发现每加入一个点就有以下三种情况：</p>
 <ol>
-<li><p>这是孤立的一个点，这种情况下 $f<em>i = f</em>{i - 1}$ </p>
-</li>
+<li><p>这是孤立的一个点，这种情况下</p>
+<script type="math/tex; mode=display">
+f_i = f_{i - 1}</script></li>
 <li><p>这个点加在了某条链上，这种情况下</p>
 <script type="math/tex; mode=display">
 f_i = \frac{f_{i - j} \times C_{i - 1}^{j - 1} \times j!}{2}\ \ (j \in [2, i])</script><p>这种情况其实并不难，就相当于在 $i - 1$ 个点中选 $j - 1$ 个点组成链然后用乘法原理乘一下就行了。重要的是虽然链上的点的顺序会影响图，但是由于是无向图，所以正着和反着其实是一条链，所以要除 $2$ 。</p>
