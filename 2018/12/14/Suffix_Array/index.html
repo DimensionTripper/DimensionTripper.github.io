@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fxzkox5kf3j30re0gjaa3.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fy06tw1prvj30ra0lfaaj.jpg">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fy679pocs5j30qz0imaa2.jpg">
-<meta property="og:updated_time" content="2018-12-14T05:37:09.057Z">
+<meta property="og:updated_time" content="2018-12-14T06:17:53.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀数组(SA)学习笔记">
 <meta name="twitter:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fxzj907fzsj30xc0nm1d6.jpg">
@@ -497,7 +497,7 @@ rk[SA[i]] = SA[rk[i] = i</script><p>总之两数组就是互逆的。然后有�
 <h3 id="高效求得Height数组"><a href="#高效求得Height数组" class="headerlink" title="高效求得Height数组"></a>高效求得Height数组</h3><p>首先如果在 $SA$ 中顺序比较的话复杂度是 $O(n^2)$ 的，还是什么都干不了，所以我们利用 $H$ 数组的一个性质来快速求得 $Height$ 。</p>
 <script type="math/tex; mode=display">
 H[i] \geq H[i - 1] - 1</script><p>证明如下：</p>
-<p>假设 $Suffix<em>k$ 是排在 $Suffix</em>{i - 1}$ 前一名的后缀，则它们最长的公共前缀是 $H<em>{i - 1}$ 。都去掉第一个字符，就变成了 $Suffix</em>{k + 1}$ 与 $Suffix<em>i$ 。如果 $H</em>{i - 1}$ 为0或1，那么 $H<em>i\geq0$ 显然成立；否则 $H_i \geq H</em>{i - 1} - 1$ 。（都去掉了第一个字符，其他前缀都相等）至此得证。</p>
+<p>假设 $Suffix<em>k$ 是排在 $Suffix</em>{i-1}$ 前一名的后缀，则它们最长的公共前缀是 $H<em>{i-1}$ 。都去掉第一个字符，就变成了 $Suffix</em>{k+1}$ 与 $Suffix<em>i$ 。如果 $H</em>{i-1}$ 为0或1，那么 $H<em>i\geq0$ 显然成立；否则 $H_i\geq H</em>{i-1}-1$ 。（都去掉了第一个字符，其他前缀都相等）至此得证。</p>
 <p>那么我们就可以按照 $H_1,H_2,H_3,…,H_n$ 进行计算，复杂度 $O(n)$ 。</p>
 <h3 id="模板代码-1"><a href="#模板代码-1" class="headerlink" title="模板代码"></a>模板代码</h3><p>咕咕咕（</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>咕咕咕</p>
