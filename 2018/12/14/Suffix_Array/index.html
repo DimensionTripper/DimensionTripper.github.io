@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="深度优先搜索，DFS,剪枝," />
+  <meta name="keywords" content="后缀数组，SA," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="暴力搜索+剪枝 （这题简直神级剪枝）">
-<meta name="keywords" content="深度优先搜索，DFS,剪枝">
+<meta name="keywords" content="后缀数组，SA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Luogu P1120 小木棍【数据加强版】">
-<meta property="og:url" content="http://yoursite.com/2018/01/20/Luogu P1120/index.html">
+<meta property="og:title" content="后缀数组(SA)学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/12/14/Suffix_Array/index.html">
 <meta property="og:site_name" content="DimensionTripper">
-<meta property="og:description" content="暴力搜索+剪枝 （这题简直神级剪枝）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-19T05:40:17.015Z">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fxzj907fzsj30xc0nm1d6.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fxzkox5kf3j30re0gjaa3.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fy06tw1prvj30ra0lfaaj.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fy679pocs5j30qz0imaa2.jpg">
+<meta property="og:updated_time" content="2018-12-14T05:37:09.057Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luogu P1120 小木棍【数据加强版】">
-<meta name="twitter:description" content="暴力搜索+剪枝 （这题简直神级剪枝）">
+<meta name="twitter:title" content="后缀数组(SA)学习笔记">
+<meta name="twitter:image" content="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fxzj907fzsj30xc0nm1d6.jpg">
 
 
 
@@ -120,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/20/Luogu P1120/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/14/Suffix_Array/"/>
 
 
 
@@ -136,7 +138,7 @@
 
 
 
-  <title>Luogu P1120 小木棍【数据加强版】 | DimensionTripper</title>
+  <title>后缀数组(SA)学习笔记 | DimensionTripper</title>
   
 
 
@@ -321,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/Luogu P1120/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/14/Suffix_Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DimensionTripper">
@@ -338,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Luogu P1120 小木棍【数据加强版】</h1>
+          <h1 class="post-title" itemprop="name headline">后缀数组(SA)学习笔记</h1>
         
 
         <div class="post-meta">
@@ -351,8 +353,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-20T16:55:02+08:00">
-                2018-01-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-14T13:37:03+08:00">
+                2018-12-14
               </time>
             
             
@@ -373,8 +375,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/题解/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -391,8 +393,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/20/Luogu P1120/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/01/20/Luogu P1120/" itemprop="commentCount"></span>
+                <a href="/2018/12/14/Suffix_Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/14/Suffix_Array/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -414,7 +416,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  448
+                  1.6k
                 </span>
               
 
@@ -430,7 +432,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  6
                 </span>
               
             </div>
@@ -451,15 +453,54 @@
       
 
       
-        <p>暴力搜索+剪枝</p>
-<p>（这题简直神级剪枝）</p>
+        <p><img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fxzj907fzsj30xc0nm1d6.jpg" alt=""></p>
 <a id="more"></a>
-<p>由于200~1000ms实在坑人（实际上最后T的几乎都是500和1000的数据）</p>
-<p>所以卡了我很久……</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,len[N],l,cnt,sum;</span><br><span class="line"><span class="keyword">bool</span> used[N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mmp</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x&gt;y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> lent,<span class="keyword">int</span> goal,<span class="keyword">int</span> now)</span><span class="comment">//记录当前的这根小木棍</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&gt;sum/goal)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,goal);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(goal-lent&lt;len[cnt])</span><br><span class="line">        <span class="keyword">return</span>;<span class="comment">//如果连最小的填进去都会大于当前答案的话就回溯</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=now;i&lt;=cnt;i++)<span class="comment">//从当前开始枚举，因为前面的一定被枚举过了，再做就是浪费时间</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!used[i]&amp;&amp;lent+len[i]&lt;=goal)</span><br><span class="line">        &#123;</span><br><span class="line">            used[i]=<span class="literal">true</span>;</span><br><span class="line">            lent+=len[i];</span><br><span class="line">            <span class="keyword">if</span>(lent==goal)</span><br><span class="line">                dfs(x+<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,goal,<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                dfs(x,y+<span class="number">1</span>,lent,goal,i+<span class="number">1</span>);</span><br><span class="line">            used[i]=<span class="literal">false</span>;</span><br><span class="line">            lent-=len[i];</span><br><span class="line">            <span class="keyword">if</span>(lent+len[i]==goal||lent==<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;<span class="comment">//如果这一组可以凑出却不是正确答案或者第一根都无法满足就直接退出，没必要再去枚举更小的来代替它，因为这一根总是要被用的。</span></span><br><span class="line">            <span class="keyword">while</span>(len[i]==len[i+<span class="number">1</span>])</span><br><span class="line">                i++;<span class="comment">//该长度若不可行，则同样长度的也不可行</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;l);</span><br><span class="line">        <span class="keyword">if</span>(l&gt;<span class="number">50</span>)</span><br><span class="line">            <span class="keyword">continue</span>;<span class="comment">//一定要优先过滤50+的数据</span></span><br><span class="line">        len[++cnt]=l;</span><br><span class="line">        sum+=len[cnt];</span><br><span class="line">    &#125;</span><br><span class="line">    sort(len+<span class="number">1</span>,len+<span class="number">1</span>+cnt,mmp);<span class="comment">//从大到小排序，方便搜索与剪枝</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=len[<span class="number">1</span>];i&lt;=sum/<span class="number">2</span>;i++)</span><br><span class="line">        <span class="keyword">if</span>(sum%i==<span class="number">0</span>)</span><br><span class="line">            dfs(<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,i,<span class="number">1</span>);<span class="comment">//从小到大枚举答案，遇到一个可直接跳出</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考了许多题解大佬，从9分到21分到33分到36分到63分到66分到AC……</p>
-<p>而且跑的很慢QwQ</p>
-<p><a href="https://www.luogu.org/record/show?rid=5402366" target="_blank" rel="noopener">1100ms</a></p>
+<h1 id="后缀数组（SA）学习笔记"><a href="#后缀数组（SA）学习笔记" class="headerlink" title="后缀数组（SA）学习笔记"></a>后缀数组（SA）学习笔记</h1><h2 id="什么是后缀数组"><a href="#什么是后缀数组" class="headerlink" title="什么是后缀数组"></a>什么是后缀数组</h2><p>后缀数组，顾名思义就是与一个字符串的后缀串有关的<del>神奇</del>玩意</p>
+<p>那么什么又是字符串的后缀串呢？</p>
+<p>我们假设有一个长为 $len$ 的字符串 $s$ ，我们把从第 $i$ 个位置到第 $len$ 个位置的这一段子串称为第 $i$ 个位置的后缀 ( $Suffix_i$ ) 。</p>
+<p>然后我们需要知道一点：后缀数组严格说来并不能算是某种特定的算法，算是一种思想<del>(?)</del> 。</p>
+<h2 id="后缀数组能干些什么"><a href="#后缀数组能干些什么" class="headerlink" title="后缀数组能干些什么"></a>后缀数组能干些什么</h2><p>如果你会后缀自动机（ $\text{SAM}$ ）的话，后缀数组的用处自然并不是太大，不过也有一些后缀自动机不能做而后缀数组能做的事情，比如说下面这个题：</p>
+<blockquote>
+<p>有一个01串 $s$ ，定义一个前缀最右边的位置为这个前缀的结束位置，有 $q$ 个询问，每次询问结束位置在区间 $[l, r]$ 中不同前缀的最长公共后缀是多长。（ $|s|, q \leq 10^5$ ）</p>
+</blockquote>
+<p>现在你可能不会这道题，但是相信你看完这篇文章后一定会有一些思路。</p>
+<h2 id="构造后缀数组（SA）"><a href="#构造后缀数组（SA）" class="headerlink" title="构造后缀数组（SA）"></a>构造后缀数组（SA）</h2><h3 id="一些将会用到的变量"><a href="#一些将会用到的变量" class="headerlink" title="一些将会用到的变量"></a>一些将会用到的变量</h3><p>为了避免在下文中讲到一半突然开始解释变量含义这种毒瘤事情的发生，所以我决定把东西在这里讲清楚。</p>
+<ul>
+<li>$a$ ：表示被处理的字符串</li>
+<li>$Suffix_i$ ：如上文所述</li>
+<li>$rk_i$ ：表示 $Suffix_i$ 在所有后缀中的排名。</li>
+<li>$SA_i$ ：表示排名为 $i$ 的后缀的起点在原串中的位置</li>
+</ul>
+<p>好了，基本的东西列完了，来感性理解一下。</p>
+<p><img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fxzkox5kf3j30re0gjaa3.jpg" alt=""></p>
+<p>后缀数组实质上指的就是这个 $SA$ 。由定义可知 $SA$ 与 $rk$ 有以下关系：</p>
+<script type="math/tex; mode=display">
+rk[SA[i]] = SA[rk[i] = i</script><p>总之两数组就是互逆的。然后有了这个东西我们就能开始搞一些神仙玩意了（反正我不会.jpg</p>
+<p>然后我们来讲如何求 $SA$ 。</p>
+<h3 id="倍增算法"><a href="#倍增算法" class="headerlink" title="倍增算法"></a>倍增算法</h3><p>目前两种主流算法之一，主要思想：对于一个 $Suffix_i$ ，想直接知道它的 $rk$ 比较困难，但是我们可以对每个字符开始的长度为 $2^k$ 的字符串求出排名， $k$ 从0开始每次递增1，直到求出所有数的排序为止。</p>
+<p>具体的做法如下图所示：</p>
+<p><img src="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fy06tw1prvj30ra0lfaaj.jpg" alt=""></p>
+<p>实际上只要理解了字符串的比较法则，就并不难理解上面的那张图。所以问题就只剩下了一个：如何进行排序。快排吗？复杂度是 $O(logn)$ 的快排会使最后的复杂度变为 $O(log^2n)$ ，就并没有什么优越性了。所以我们引入一种新的排序方法：基数排序（Radix Sort）。</p>
+<h4 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h4><h5 id="什么是基数排序"><a href="#什么是基数排序" class="headerlink" title="什么是基数排序"></a>什么是基数排序</h5><p>基数排序是一种能够在 $O(n)$ 复杂度内对 $n$ 个元素进行排序的算法（虽然常数很大），如果压位的话可以跑得非常快，<del>再加上一些奇技淫巧就更加香港记者了</del>。wys在<strong>挑战</strong>一题中的 $subtask1$ 即可使用<del>毒瘤卡常</del>基排通过（</p>
+<h5 id="基数排序的原理"><a href="#基数排序的原理" class="headerlink" title="基数排序的原理"></a>基数排序的原理</h5><p>基数排序的原理大概就是对每一位进行一次桶排，以当前位为第一关键字，上一位为第二关键字进行双关键字排序。</p>
+<p>大概过程就在<a href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener">VisuAlgo</a>上看一下动画就懂了吧（懒得讲.jpg</p>
+<h4 id="模板代码"><a href="#模板代码" class="headerlink" title="模板代码"></a>模板代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ri register int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> il inline</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">110</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">110</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">il <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">'-'</span>)</span><br><span class="line">            f = <span class="number">-1</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + ch - <span class="string">'0'</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x * f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Suffix_Array</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="keyword">int</span> rk[N], SA[N], tmp[N], tax[N], a[N];</span><br><span class="line">    <span class="keyword">char</span> s[N];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">1005</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">il <span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>);</span><br><span class="line">        n = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (ri i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            a[i] = (<span class="keyword">int</span>)s[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">il <span class="keyword">void</span> <span class="title">Radix_Sort</span><span class="params">(<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(tax, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (m + <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">for</span> (ri i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            tax[rk[i]]++;</span><br><span class="line">        <span class="keyword">for</span> (ri i = <span class="number">2</span>; i &lt;= m; i++)</span><br><span class="line">            tax[i] += tax[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (ri i = n; i; i--)</span><br><span class="line">            SA[tax[rk[tmp[i]]]--] = tmp[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">il <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a[x] == a[y] &amp;&amp; (x + w &gt; n ? <span class="number">-1</span> : a[x + w]) == (y + w &gt; n ? <span class="number">-1</span> : a[y + w]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">il <span class="keyword">void</span> <span class="title">Build</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (ri i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            rk[i] = a[i], tmp[i] = i;</span><br><span class="line">        m = maxm;</span><br><span class="line">        Radix_Sort(m);</span><br><span class="line">        <span class="keyword">for</span> (ri p = <span class="number">1</span>, w = <span class="number">1</span>; p &lt; n; m = p, w &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            p = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (ri i = n - w + <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">                tmp[++p] = i;</span><br><span class="line">            <span class="keyword">for</span> (ri i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">                SA[i] &gt; w ? tmp[++p] = SA[i] - w : <span class="number">0</span>;</span><br><span class="line">            Radix_Sort(m);</span><br><span class="line">            <span class="keyword">for</span> (ri i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">                tmp[i] = rk[i];</span><br><span class="line">            rk[SA[<span class="number">1</span>]] = p = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (ri i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">                rk[SA[i]] = cmp(tmp, SA[i], SA[i - <span class="number">1</span>], w) ? p : ++p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">il <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (ri i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, SA[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Suffix_Array :: Init();</span><br><span class="line">    Suffix_Array :: Build();</span><br><span class="line">    Suffix_Array :: print();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="DC3算法"><a href="#DC3算法" class="headerlink" title="DC3算法"></a>DC3算法</h3><p>由于我不会，所以不讲（咕咕咕</p>
+<h2 id="求Height数组"><a href="#求Height数组" class="headerlink" title="求Height数组"></a>求Height数组</h2><p>当然，如果只有上面这些东西的话你除了能过洛谷上的板子题外什么也干不了，所以接下来我们来讲一下真正能让后缀数组发挥用处的东西。</p>
+<h3 id="一些将会用到的变量-1"><a href="#一些将会用到的变量-1" class="headerlink" title="一些将会用到的变量"></a>一些将会用到的变量</h3><ul>
+<li>$Height_i$ ：表示 $Suffix[SA[i]]$ 与 $Suffix[SA[i - 1]]$ 的最长公共前缀，也就是排名相邻的两个后缀的最长公共前缀。</li>
+<li>$H_i$ ：等价于 $Height[rk[i]]$ ，也就是后缀 $Suffix_i$ 和它前一名后缀的最长公共前缀。</li>
+</ul>
+<p>两个排名不相邻的后缀的最长公共前缀定义为排名在它们之间的 $Height$ 的最小值。</p>
+<p>先形象的理解一下：</p>
+<p><img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fy679pocs5j30qz0imaa2.jpg" alt=""></p>
+<h3 id="高效求得Height数组"><a href="#高效求得Height数组" class="headerlink" title="高效求得Height数组"></a>高效求得Height数组</h3><p>首先如果在 $SA$ 中顺序比较的话复杂度是 $O(n^2)$ 的，还是什么都干不了，所以我们利用 $H$ 数组的一个性质来快速求得 $Height$ 。</p>
+<script type="math/tex; mode=display">
+H[i] \geq H[i - 1] - 1</script><p>证明如下：</p>
+<p>假设 $Suffix<em>k$ 是排在 $Suffix</em>{i - 1}$ 前一名的后缀，则它们最长的公共前缀是 $H<em>{i - 1}$ 。都去掉第一个字符，就变成了 $Suffix</em>{k + 1}$ 与 $Suffix<em>i$ 。如果 $H</em>{i - 1}$ 为0或1，那么 $H<em>i\geq0$ 显然成立；否则 $H_i \geq H</em>{i - 1} - 1$ 。（都去掉了第一个字符，其他前缀都相等）至此得证。</p>
+<p>那么我们就可以按照 $H_1,H_2,H_3,…,H_n$ 进行计算，复杂度 $O(n)$ 。</p>
+<h3 id="模板代码-1"><a href="#模板代码-1" class="headerlink" title="模板代码"></a>模板代码</h3><p>咕咕咕（</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>咕咕咕</p>
 
       
     </div>
@@ -477,9 +518,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/深度优先搜索，DFS/" rel="tag"><i class="fa fa-tag"></i> 深度优先搜索，DFS</a>
-          
-            <a href="/tags/剪枝/" rel="tag"><i class="fa fa-tag"></i> 剪枝</a>
+            <a href="/tags/后缀数组，SA/" rel="tag"><i class="fa fa-tag"></i> 后缀数组，SA</a>
           
         </div>
       
@@ -504,8 +543,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/13/Luogu P1278/" rel="next" title="Luogu P1278 单词游戏">
-                <i class="fa fa-chevron-left"></i> Luogu P1278 单词游戏
+              <a href="/2018/11/11/NOIp2018/" rel="next" title="NOIp2018游记">
+                <i class="fa fa-chevron-left"></i> NOIp2018游记
               </a>
             
           </div>
@@ -513,10 +552,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/07/Luogu P2590/" rel="prev" title="Luogu P2590 树的统计">
-                Luogu P2590 树的统计 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -571,8 +606,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -657,6 +701,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#后缀数组（SA）学习笔记"><span class="nav-number">1.</span> <span class="nav-text">后缀数组（SA）学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是后缀数组"><span class="nav-number">1.1.</span> <span class="nav-text">什么是后缀数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后缀数组能干些什么"><span class="nav-number">1.2.</span> <span class="nav-text">后缀数组能干些什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造后缀数组（SA）"><span class="nav-number">1.3.</span> <span class="nav-text">构造后缀数组（SA）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些将会用到的变量"><span class="nav-number">1.3.1.</span> <span class="nav-text">一些将会用到的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#倍增算法"><span class="nav-number">1.3.2.</span> <span class="nav-text">倍增算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基数排序"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">基数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是基数排序"><span class="nav-number">1.3.2.1.1.</span> <span class="nav-text">什么是基数排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基数排序的原理"><span class="nav-number">1.3.2.1.2.</span> <span class="nav-text">基数排序的原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板代码"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">模板代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DC3算法"><span class="nav-number">1.3.3.</span> <span class="nav-text">DC3算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求Height数组"><span class="nav-number">1.4.</span> <span class="nav-text">求Height数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些将会用到的变量-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">一些将会用到的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高效求得Height数组"><span class="nav-number">1.4.2.</span> <span class="nav-text">高效求得Height数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板代码-1"><span class="nav-number">1.4.3.</span> <span class="nav-text">模板代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1247,6 +1307,26 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
