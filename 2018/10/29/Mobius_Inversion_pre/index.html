@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="DimensionTripper">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fwotatx4t6j30xc0oaty3.jpg">
-<meta property="og:updated_time" content="2018-10-29T03:19:57.604Z">
+<meta property="og:updated_time" content="2019-03-30T10:57:29.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="整除分块学习笔记">
 <meta name="twitter:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fwotatx4t6j30xc0oaty3.jpg">
@@ -468,7 +468,7 @@
 <script type="math/tex; mode=display">
 \begin{align*}
 j &= i + d_{max} \\ &= i + \lfloor \frac{p}{k} \rfloor \\ &=i + \lfloor \frac{n \bmod i}{\lfloor \frac{n}{i} \rfloor} \rfloor \\ &= i + \lfloor \frac{n - \lfloor \frac{n}{i} \rfloor i}{\lfloor \frac{n}{i} \rfloor} \rfloor \\ &= \lfloor i + \frac{n - \lfloor \frac{n}{i} \rfloor i}{\lfloor \frac{n}{i} \rfloor} \rfloor \\ &= \lfloor \frac{\lfloor \frac{n}{i} \rfloor i}{\lfloor \frac{n}{i} \rfloor} + \frac{n - \lfloor \frac{n}{i} \rfloor i}{\lfloor \frac{n}{i} \rfloor} \rfloor \\ &= \lfloor \frac{n}{\lfloor \frac{n}{i} \rfloor} \rfloor
-\end{align*}</script><p>此时再来谈到整除分块，已知一个块的左端点为 $l$ ，我们就可以根据以上性质求出右端点 $r =  \lfloor\frac{n}{\lfloor\frac{n}{l}\rfloor}\rfloor$ ，然后统计答案的时候加上 $(r - l + 1) \times \lfloor \frac{n}{l} \rfloor$ 就可以了，然后由于性质1，我们可以知道块数最多为 $2\sqrt{n}$ ，所以复杂度为 $O{\sqrt{n}}$ ，可以通过 $n$ 较大的数据Da☆Ze。</p>
+\end{align*}</script><p>此时再来谈到整除分块，已知一个块的左端点为 $l$ ，我们就可以根据以上性质求出右端点 $r =  \lfloor\frac{n}{\lfloor\frac{n}{l}\rfloor}\rfloor$ ，然后统计答案的时候加上 $(r - l + 1) \times \lfloor \frac{n}{l} \rfloor$ 就可以了，然后由于性质1，我们可以知道块数最多为 $2\sqrt{n}$ ，所以复杂度为 $O{\sqrt{n}}$ ，可以通过 $n​$ 较大的数据Da☆Ze。</p>
 <p>以下放出代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (ri l = <span class="number">1</span>, r; l &lt;= r; l = r + <span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    r = n / (n / l);</span><br><span class="line">    ans += (r - l  + <span class="number">1</span>) * (n / l);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -609,7 +609,7 @@ j &= i + d_{max} \\ &= i + \lfloor \frac{p}{k} \rfloor \\ &=i + \lfloor \frac{n 
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -621,7 +621,7 @@ j &= i + d_{max} \\ &= i + \lfloor \frac{p}{k} \rfloor \\ &=i + \lfloor \frac{n 
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
