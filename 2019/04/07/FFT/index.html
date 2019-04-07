@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="骗分," />
+  <meta name="keywords" content="数学,FFT," />
 
 
 
@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="作为一名OIer，我们都会参加各种各样的比赛或者模拟赛，然而并不是每次都能很完美地想到正解，但是打暴力混的那点分又远远不够，怎么办呢？ 于是我在这里简单的讲几种骗分的算法，适用于最优化问题。">
-<meta name="keywords" content="骗分">
+<meta name="description" content="快速傅里叶变换（FFT）学习笔记前言FFT （ Fast Fourier Transformation ）是离散傅氏变换（ DFT ）的快速算法。即为快速傅氏变换。它是根据离散傅氏变换的奇、偶、虚、实等特性，对离散傅立叶变换的算法进行改进获得的。这里仅讨论 FFT 在 OI 中的应用。  多项式数学课上大家都学过多项式，对于定义就不多讲了，这里讲一下多项式的表示方法 系数表示法我们用的最多的表示">
+<meta name="keywords" content="数学,FFT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于那些骗分的随机算法">
-<meta property="og:url" content="http://yoursite.com/2018/07/28/关于那些骗分的随机算法/index.html">
+<meta property="og:title" content="FFT（Fast Fourier Transformation，法法塔）学习笔记，高中生（指我）都看不懂的FFT！">
+<meta property="og:url" content="http://yoursite.com/2019/04/07/FFT/index.html">
 <meta property="og:site_name" content="DimensionTripper">
-<meta property="og:description" content="作为一名OIer，我们都会参加各种各样的比赛或者模拟赛，然而并不是每次都能很完美地想到正解，但是打暴力混的那点分又远远不够，怎么办呢？ 于是我在这里简单的讲几种骗分的算法，适用于最优化问题。">
+<meta property="og:description" content="快速傅里叶变换（FFT）学习笔记前言FFT （ Fast Fourier Transformation ）是离散傅氏变换（ DFT ）的快速算法。即为快速傅氏变换。它是根据离散傅氏变换的奇、偶、虚、实等特性，对离散傅立叶变换的算法进行改进获得的。这里仅讨论 FFT 在 OI 中的应用。  多项式数学课上大家都学过多项式，对于定义就不多讲了，这里讲一下多项式的表示方法 系数表示法我们用的最多的表示">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-19T05:18:48.937Z">
+<meta property="og:image" content="https://i.loli.net/2019/03/30/5c9f305f1c7ea.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/03/30/5c9f43642b66a.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/04/07/5ca9f9f81bed5.jpeg">
+<meta property="og:updated_time" content="2019-04-07T13:43:37.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于那些骗分的随机算法">
-<meta name="twitter:description" content="作为一名OIer，我们都会参加各种各样的比赛或者模拟赛，然而并不是每次都能很完美地想到正解，但是打暴力混的那点分又远远不够，怎么办呢？ 于是我在这里简单的讲几种骗分的算法，适用于最优化问题。">
+<meta name="twitter:title" content="FFT（Fast Fourier Transformation，法法塔）学习笔记，高中生（指我）都看不懂的FFT！">
+<meta name="twitter:description" content="快速傅里叶变换（FFT）学习笔记前言FFT （ Fast Fourier Transformation ）是离散傅氏变换（ DFT ）的快速算法。即为快速傅氏变换。它是根据离散傅氏变换的奇、偶、虚、实等特性，对离散傅立叶变换的算法进行改进获得的。这里仅讨论 FFT 在 OI 中的应用。  多项式数学课上大家都学过多项式，对于定义就不多讲了，这里讲一下多项式的表示方法 系数表示法我们用的最多的表示">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/30/5c9f305f1c7ea.jpg">
 
 
 
@@ -120,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/28/关于那些骗分的随机算法/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/07/FFT/"/>
 
 
 
@@ -136,7 +140,7 @@
 
 
 
-  <title>关于那些骗分的随机算法 | DimensionTripper</title>
+  <title>FFT（Fast Fourier Transformation，法法塔）学习笔记，高中生（指我）都看不懂的FFT！ | DimensionTripper</title>
   
 
 
@@ -321,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/关于那些骗分的随机算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/07/FFT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DimensionTripper">
@@ -338,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于那些骗分的随机算法</h1>
+          <h1 class="post-title" itemprop="name headline">FFT（Fast Fourier Transformation，法法塔）学习笔记，高中生（指我）都看不懂的FFT！</h1>
         
 
         <div class="post-meta">
@@ -351,8 +355,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-28T08:29:42+08:00">
-                2018-07-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-07T21:27:24+08:00">
+                2019-04-07
               </time>
             
             
@@ -391,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/28/关于那些骗分的随机算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/28/关于那些骗分的随机算法/" itemprop="commentCount"></span>
+                <a href="/2019/04/07/FFT/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/07/FFT/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -414,7 +418,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.4k
+                  3k
                 </span>
               
 
@@ -430,7 +434,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  6
+                  13
                 </span>
               
             </div>
@@ -451,26 +455,132 @@
       
 
       
-        <p>作为一名OIer，我们都会参加各种各样的比赛或者模拟赛，然而并不是每次都能很完美地想到正解，但是打暴力混的那点分又远远不够，怎么办呢？</p>
-<p>于是我在这里简单的讲几种骗分的算法，适用于最优化问题。</p>
-<a id="more"></a>
+        <p><img src="https://i.loli.net/2019/03/30/5c9f305f1c7ea.jpg" alt="35470184_p0.jpg"></p>
+<h1 id="快速傅里叶变换（FFT）学习笔记"><a href="#快速傅里叶变换（FFT）学习笔记" class="headerlink" title="快速傅里叶变换（FFT）学习笔记"></a>快速傅里叶变换（FFT）学习笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>FFT （ Fast Fourier Transformation ）是离散傅氏变换（ DFT ）的快速算法。即为快速傅氏变换。它是根据离散傅氏变换的奇、偶、虚、实等特性，对离散傅立叶变换的算法进行改进获得的。这里仅讨论 FFT 在 OI 中的应用。</p>
 <hr>
-<p>这种问题通常是让我们求解某个情景下的最优状态，方法也主要有两种：爬山和模拟退火。</p>
-<h1 id="爬山"><a href="#爬山" class="headerlink" title="爬山"></a>爬山</h1><p>这个算法……名字很奇怪，不过倒是一个贴切的比喻，我们可以把它比喻成一个失忆的攀登者在爬一座云雾缭绕的山，他不知道最高的峰在哪里，只能看清离自己很近的地方，所以他会尽可能往高处爬，爬到他周围的位置都比他目前所在的位置低，他就认为他爬到山顶了。</p>
-<p>然而我们仔细一想，不对啊，这有可能是局部最优，不一定就是全局最优啊。这句话是没错，但是由于单次爬山的复杂度并不高，所以可以多次重复。每次随机选取一个起点，爬到不能爬为止，在多次爬山得到的值中选取最小的那一个，这样就有很大的几率能得到全局最优。<del>实在过不了的调调参就过去了（滑稽</del></p>
-<p>例题：<a href="https://www.luogu.org/problemnew/show/P1337" target="_blank" rel="noopener">Luogu P1337 【JSOI2004】平衡点 / 吊打XXX</a></p>
-<p>这道题大概是一个挺经典的爬山/退火练习题吧，就是找到一个(x,y)，使$\sum ^{n}_{i=1}{\sqrt {(x_i-x)^2+(y_i-y)^2}*w_i}$最小。</p>
-<p>基础思路就是每次随机一个起点，枚举四个方向，如果更优就接受，同时每次减小步数。然后调调参，卡卡精就过去了。</p>
-<p>特别说明：如果不确定需要爬多少次可以尽可能开大，然后利用卡时在超时之前退出。</p>
-<p>以下是代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ri register int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> il inline</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 1ll&lt;&lt;50</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2000000</span>+<span class="number">110</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">1e-6</span>;</span><br><span class="line"><span class="function">il <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(ch==<span class="string">'-'</span>)</span><br><span class="line">			f=<span class="number">-1</span>;</span><br><span class="line">		ch=getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))</span><br><span class="line">	&#123;</span><br><span class="line">		x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>;</span><br><span class="line">		ch=getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">double</span> ans=inf,X,Y;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hole</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x,y;</span><br><span class="line">	<span class="keyword">int</span> weight;</span><br><span class="line">&#125;;</span><br><span class="line">hole A[N];</span><br><span class="line"><span class="function">il <span class="keyword">double</span> <span class="title">dis</span><span class="params">(<span class="keyword">double</span> x1,<span class="keyword">double</span> y1,<span class="keyword">double</span> x2,<span class="keyword">double</span> y2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">sqrt</span>((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">il <span class="keyword">double</span> <span class="title">get_weight</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> ret=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		ret+=dis(x,y,A[i].x,A[i].y)*A[i].weight;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t=clock();</span><br><span class="line">	srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));</span><br><span class="line">	n=read();</span><br><span class="line">	<span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;A[i].x,&amp;A[i].y);</span><br><span class="line">		A[i].weight=read();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=<span class="number">5000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(clock()-t&gt;<span class="number">950000</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">double</span> x=<span class="number">-10000</span>+rand()%<span class="number">20000</span>,y=<span class="number">-10000</span>+rand()%<span class="number">20000</span>;</span><br><span class="line">		<span class="keyword">double</span> step=<span class="number">1000</span>,k=get_weight(x,y);</span><br><span class="line">		<span class="keyword">while</span>(step&gt;eps)</span><br><span class="line">		&#123;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">double</span> xi,yi;</span><br><span class="line">			<span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=<span class="number">4</span>;i++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">					xi=x+step,yi=y;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">					xi=x-step,yi=y;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(i==<span class="number">3</span>)</span><br><span class="line">					xi=x,yi=y+step;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(i==<span class="number">4</span>)</span><br><span class="line">					xi=x,yi=y-step;</span><br><span class="line">				<span class="keyword">double</span> now=get_weight(xi,yi);</span><br><span class="line">				<span class="keyword">if</span>(now&lt;k)</span><br><span class="line">					x=xi,y=yi,k=now;</span><br><span class="line">			&#125;</span><br><span class="line">			step=step*<span class="number">0.921</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(k&lt;ans)</span><br><span class="line">			X=x,Y=y,ans=k;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.3lf %.3lf"</span>,X,Y);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="模拟退火"><a href="#模拟退火" class="headerlink" title="模拟退火"></a>模拟退火</h1><p>就像字面上描述的那样，这个算法是对金属退火的模拟。</p>
-<p>对于这个算法呢，如果说爬山中的那个攀登者是神志清晰的，那么这里面的那个攀登者就喝醉了酒。由于他神志不清，所以有一定的概率会往更低的方向爬，并且随着时间的推移，酒力逐渐消退，这个概率会越来越小。这样就有一定的概率跳出局部最优的陷阱，达到全局最优。</p>
-<p>然而由于并不一定是全局最优，所以与爬山类似，需要做多次（不过好像并不是特别需要调参</p>
-<p>例题：<a href="https://www.luogu.org/problemnew/show/P2503" target="_blank" rel="noopener">Luogu P2503 【HAOI2006】均分数据</a></p>
-<p>这道题其实也比较基础，基本思路就是每次随机一个分组，然后降温过程中每次随机一个元素，将其放入和最小的组里，看结果是否更优。如果更优则接受，反之则以一定概率接受。</p>
-<p>以下是代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ri register int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> il inline</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sqr(x) ((x)*(x))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100000</span>+<span class="number">110</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">1l</span>l&lt;&lt;<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">110</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">1e-6</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> deltaT=<span class="number">0.9</span>;</span><br><span class="line"><span class="function">il <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ch==<span class="string">'-'</span>)</span><br><span class="line">            f=<span class="number">-1</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> a[MAXN],bel[MAXN],sum[MAXN];</span><br><span class="line"><span class="keyword">double</span> ave,ans=inf;</span><br><span class="line"><span class="function">il <span class="keyword">void</span> <span class="title">SimulatedAnnealing</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(sum,<span class="number">0</span>,<span class="keyword">sizeof</span>(sum));</span><br><span class="line">    <span class="keyword">double</span> now=<span class="number">0</span>,T=<span class="number">1926</span>;</span><br><span class="line">    <span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        bel[i]=<span class="number">1</span>+rand()%m;</span><br><span class="line">        sum[bel[i]]+=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        now+=sqr(sum[i]-ave);</span><br><span class="line">    <span class="keyword">while</span>(T&gt;eps)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> P=min_element(sum+<span class="number">1</span>,sum+<span class="number">1</span>+m)-sum;</span><br><span class="line">        <span class="keyword">int</span> X=<span class="number">1</span>+rand()%n;</span><br><span class="line">        <span class="keyword">double</span> pre=now;</span><br><span class="line">        now-=(sqr(sum[bel[X]]-ave)+sqr(sum[P]-ave));</span><br><span class="line">        sum[bel[X]]-=a[X];</span><br><span class="line">        sum[P]+=a[X];</span><br><span class="line">        now+=(sqr(sum[bel[X]]-ave)+sqr(sum[P]-ave));</span><br><span class="line">        <span class="keyword">if</span>(now&lt;pre||(<span class="built_in">exp</span>((now-pre)/T)*RAND_MAX&lt;rand()))</span><br><span class="line">            bel[X]=P;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            now=pre,sum[bel[X]]+=a[X],sum[P]-=a[X];</span><br><span class="line">        T*=deltaT;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(now&lt;ans)</span><br><span class="line">        ans=now;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));</span><br><span class="line">    n=read(),m=read();</span><br><span class="line">    <span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        a[i]=read();</span><br><span class="line">        ave+=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    ave/=m;</span><br><span class="line">    <span class="keyword">for</span>(ri i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++)</span><br><span class="line">        SimulatedAnnealing();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.2lf"</span>,<span class="built_in">sqrt</span>(ans/m));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h2><p>数学课上大家都学过多项式，对于定义就不多讲了，这里讲一下多项式的表示方法</p>
+<h3 id="系数表示法"><a href="#系数表示法" class="headerlink" title="系数表示法"></a>系数表示法</h3><p>我们用的最多的表示法，设 $A(n)$ 表示一个 $n - 1$ 次多项式</p>
+<p>则 $A(x) = \sum \limits <em>{i = 0} ^{n} a </em>{i} \times x ^{i}$ </p>
+<p>利用这种表示法计算多项式乘法是我们数学课上经常干的事情（不管你有没有意识到），但其实这只是一个 $O(n ^{2})$ 的暴力做法</p>
+<h3 id="点值表示法"><a href="#点值表示法" class="headerlink" title="点值表示法"></a>点值表示法</h3><p>我们数学课上不会用它去表示一个多项式，但是其思路我们是知道的</p>
+<p>我们将多项式看做一个函数，那么任意选出 $n$ 个互不相同的值带进去就会有 $n$ 个不同的函数值，对应到坐标平面上就会有 $n$ 个点，该多项式可由这 $n$ 个点唯一确定。</p>
+<p>然后我们惊奇地发现这样表示下的两个多项式相乘的复杂度是 $O(n)$ 的，比上面一种要优秀很多。</p>
+<p>但是很遗憾，由于大多数题目给出的多项式都是系数表示的，要将其转化为点值表示再运算并最后转换回去，复杂度还是 $O(n ^2 )$ 的。</p>
+<p>至此我们发现多项式的两种表示方法做多项式乘法都是 $O(n ^2 )$ 的，于是我们考虑进行优化。</p>
 <hr>
-<p>到这里就基本讲完了，其他的这类算法还有蚁群、遗传等，不过由于不常用，这里就不讲了QwQ</p>
+<h2 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h2><p>在谈优化之前，我们先岔开一下话题，谈一下复数</p>
+<p>然后在介绍复数之前我们再先来谈一些可能会用到的东西</p>
+<h3 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h3><p>具有大小和方向的量，几何中常用带有箭头的线段表示，其余见高中数学课本</p>
+<p>向量的表示方法： $\vec{a}$ 或 $\boldsymbol{a}$ 均表示向量</p>
+<h3 id="圆的弧度制"><a href="#圆的弧度制" class="headerlink" title="圆的弧度制"></a>圆的弧度制</h3><p>将等于半径长的圆弧所对的圆心角叫做 1 弧度的角，符号为 rad ，用弧度作单位来度量角的制度为弧度制，与角度制相对，其余见高中数学课本</p>
+<h3 id="平行四边形定则"><a href="#平行四边形定则" class="headerlink" title="平行四边形定则"></a>平行四边形定则</h3><p><img src="https://i.loli.net/2019/03/30/5c9f43642b66a.jpg" alt=""></p>
+<p>向量加法法则：即 $\vec {AC} = \boldsymbol{a} + \boldsymbol{b}$ </p>
+<p>下面我们正式开始讲复数。</p>
+<h3 id="复数的定义"><a href="#复数的定义" class="headerlink" title="复数的定义"></a>复数的定义</h3><p>初中老师会告诉我们复数是不能开根号的，但是高中老师就会告诉我们 $i = \sqrt{-1}$ ，我们把 $i$ 就叫做虚数单位，对于实数 $a, b$ ，形如 $a + bi$ 的数我们就称其为复数，其中 $a$ 为 <strong>实部</strong> ， $bi$ 为 <strong>虚部</strong> 。可以简单地把复数理解为实部与虚部复合而成的数。</p>
+<p>在复平面中， $x$ 轴代表实数， $y$ 轴（处原点以外）代表虚数，则在复平面上的向量 $(a, b)$ 就可以表示复数 $a + bi$ 。</p>
+<p>模长：与向量的模长定义相同，即为 $\sqrt{a ^2 + b ^2 }$ </p>
+<p>幅角：为向量与 <strong>$x$ 轴正方向</strong> 的有向夹角，以逆时针为正方向，关于任意角的定义参见高中数学必修四</p>
+<h3 id="运算法则"><a href="#运算法则" class="headerlink" title="运算法则"></a>运算法则</h3><h4 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h4><p>由于在复平面中复数可被表示为向量，所以复数的加法法则与向量加法法则相同。</p>
+<h4 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h4><p>几何意义：两向量模长相乘，幅角相加</p>
+<p>代数意义：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(a + bi) \times (c + di) & = ac + bci + adi + bdi ^2 \\ &=ac + bci + adi - bd \\ &= (ac - bd) + (bci + adi)
+\end{aligned}</script><hr>
+<h2 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h2><p> <strong>从这里开始，无特殊说明均认为 $n$ 是 2 的整数次幂</strong> </p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>在复平面上，以原点为圆心， 1 为半径作出 <strong>单位圆</strong> ，以原点为七点，圆的 $n$ 等分点为终点作出 $n$ 个向量，设幅角为正且最小的向量对应的复数为 $\omega _n$ ，称为 $n$ 次单位根。</p>
+<p>根据复数乘法的运算法则，其余 $n - 1$ 个复数为 $\omega <em>{n} ^{2},\ \omega </em>{n} ^{3},\ …\ ,\ \omega _{n} ^{n}$ </p>
+<p>可知 $\omega <em>{n} ^{0} = \omega </em>{n} ^{n} = 1$ ，它们均对应复平面上 $x$ 轴正方向上的向量。</p>
+<p>由欧拉公式可以计算出任意 $\omega _{n} ^{k}$ 的值</p>
+<script type="math/tex; mode=display">
+\omega _{n} ^{k} = \cos{(k * \dfrac{2\pi}{n})} + i \sin{(k * \dfrac{2\pi}{n})}</script><blockquote>
+<p>在代数中，若 $z ^{n} = 1$ ，我们就称 $z$ 为 $n$ 次单位根</p>
+</blockquote>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ul>
+<li><p>$\omega _{n} ^{k} = \cos{(k <em> \frac{2\pi}{n})} + i \sin{(k </em> \frac{2\pi}{n})}$ ，即欧拉公式</p>
+</li>
+<li><p>$\omega <em>{2n} ^{2k} = \omega </em>{n} ^{k}$ </p>
+<p>证明：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\omega _{2n} ^{2k} &= \cos{(2k * \dfrac{2\pi}{2n})} + i \sin{(2k * \dfrac{2\pi}{2n})} \\ &= \cos{(k * \dfrac{2\pi}{n})} + i \sin{(k * \dfrac{2\pi}{n})} = \omega _{n} ^{k}
+\end{aligned}</script></li>
+<li><p>$\omega <em>{n} ^{k + \frac{n}{2}} = -\omega </em>{n} ^{k}$ </p>
+<p>证明：</p>
+<script type="math/tex; mode=display">
+\omega _{n} ^{k + \frac{n}{2}} = \omega _{n} ^{k} \times \omega _{n} ^{\frac{n}{2}} \\
+\begin{aligned}
+\omega _{n} ^{\frac{n}{2}} &= \cos{(\dfrac{n}{2} * \dfrac{2\pi}{n})} + i \sin{(\dfrac{n}{2} * \dfrac{2\pi}{n})} \\ &= \cos{\pi} + i \sin{\pi} = -1
+\end{aligned}</script></li>
+<li><p>$\omega <em>{n} ^{0} = \omega </em>{n} ^{n} = 1$ </p>
+</li>
+</ul>
+<p>直到这里，我们和这篇文章的话题依然没有多大的关系，所以，前方高能预警，公式恐惧症患者请迅速撤离！</p>
+<hr>
+<h2 id="快速傅里叶变换"><a href="#快速傅里叶变换" class="headerlink" title="快速傅里叶变换"></a>快速傅里叶变换</h2><p>我们前面提到过，一个 $n$ 次多项式可以被 $n$ 个点唯一确定。</p>
+<p>那么既然这 $n$ 个点是可以任意选定的，我们当然可以钦定它们为单位根的 0 到 $n - 1$ 次幂，然而这样复杂度并没有降低</p>
+<p>我们设多项式 $A(x)$ 的系数为 $(a<em>0,\ a_1,\ a_2,\ …\ ,\ a</em>{n - 1})$ ，那么</p>
+<script type="math/tex; mode=display">
+A(x) = a_{0} + a_{1}x + a_{2}x^{2} + a_{3}x^{3} + … + a_{n - 1}x^{n - 1}</script><p>将其下标按奇偶性分类</p>
+<script type="math/tex; mode=display">
+A(x) = (a_{0} + a_{2}x^{2} + … + a_{n - 2}x^{n - 2}) + (a_{1}x + a_{3}x^{3} + … + a_{n - 1}x^{n - 1})</script><p>设</p>
+<script type="math/tex; mode=display">
+A_1(x) = a_{0} + a_{2}x + a_{4}x^{2} + … + a_{n - 2}x^{\frac{n}{2} - 1}\\
+A_2(x) = a_{1} + a_{3}x + a_{5}x^{2} + … + a_{n - 1}x^{\frac{n}{2} - 1}</script><p>那么我们可以得到</p>
+<script type="math/tex; mode=display">
+A(x) = A_{1}(x^{2}) + xA_{2}(x^{2})</script><p>我们将 $\omega_{n}^{k}\ (k\leq \frac{n}{2})$ 代入得</p>
+<script type="math/tex; mode=display">
+A(\omega_{n}^{k}) = A_{1}(\omega_{n}^{2k}) + \omega_{n}^{k} A_{2}(\omega_{n}^{2k})</script><p>同理，我们将 $\omega _{n} ^{k + \frac{n}{2}}$ 代入得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A(\omega _{n} ^{k + \frac{n}{2}}) &= A_{1}(\omega _{n} ^{2k + n}) + \omega _{n} ^{k + \frac{n}{2}}A_{2}(\omega _{n} ^{2k + n}) \\
+&= A_{1}(\omega _{n} ^{2k} \times \omega _{n} ^{n}) - \omega _{n} ^{k}A_{2}(\omega _{n} ^{2k} \times \omega _{n} ^{n}) \\
+&= A_{1}(\omega _{n} ^{2k}) - \omega _{n} ^{k}A_{2}(\omega _{n} ^{2k})
+\end{aligned}</script><p>两个式子一比较，我们发现它们只有一个常数项不同，也就是说我们枚举第一个式子的时候可以 $O(1)$ 的得到第二个式子</p>
+<p>然后又发现当第一个式子的 $k$ 在 $[0, \frac{n}{2} - 1]$ 中取值的时候， $k + \frac{n}{2}$ 能取到 $[\frac{n}{2},\ n - 1]$ 中的每一个值</p>
+<p>于是问题规模缩小了一半</p>
+<p>而缩小后的问题仍然满足原问题的性质，于是我们可以递归的去搞直到多项式仅剩一个常数项</p>
+<p>时间复杂度：不难看出 FFT 其实是一个分治算法，因此复杂度为 $O(nlogn)$ </p>
+<hr>
+<h2 id="快速傅里叶逆变换"><a href="#快速傅里叶逆变换" class="headerlink" title="快速傅里叶逆变换"></a>快速傅里叶逆变换</h2><p>我们前面也提到过，大多数时候我们的多项式都是系数表示的，而 FFT 并不能解决多项式乘法的问题，它只是快速的把系数表示的多项式转换成了点值表示的多项式，而算出结果后我们还要把它转换回来，这里就要用到 <strong>傅里叶逆变换</strong> 。</p>
+<p>设 $(y<em>{0}, y</em>{1}, y<em>{2}, …, y</em>{n - 1})$ 为 $(a<em>{0}, a</em>{1}, a<em>{2}, …, a</em>{n - 1})$ 的傅里叶变换（即点值表示）</p>
+<p>假设有另一个向量 $(c<em>{0}, c</em>{1}, c<em>{2}, …, c</em>{n - 1})$ 为多项式 $B(x) = y <em>{0} + y </em>{1} x + y <em>{2} x ^{2} + … + y </em>{n - 1} x ^{n - 1}$ 在 $\omega <em>{n} ^{0}, \omega </em>{n} ^{-1}, \omega <em>{n} ^{-2}, …, \omega </em>{n} ^{-(n - 1)}$ 处的点值表示，即满足</p>
+<script type="math/tex; mode=display">
+c _{k} = \sum \limits _{i = 0} ^{n - 1} y_{i}(\omega _{n} ^{-k}) ^{i}</script><p>然后继续推式子：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+c _{k} &= \sum \limits _{i = 0} ^{n - 1} y_{i}(\omega _{n} ^{-k}) ^{i} \\
+&= \sum \limits _{i = 0} ^{n - 1}(\sum \limits _{j = 0} ^{n - 1} a_{j} (\omega _{n} ^{i}) ^{j})(\omega _{n} ^{-k}) ^{i} \\
+&= \sum \limits _{i = 0} ^{n - 1}(\sum \limits _{j = 0} ^{n - 1} a_{j} (\omega _{n} ^{j}) ^{i})(\omega _{n} ^{-k}) ^{i} \\
+&= \sum \limits _{i = 0} ^{n - 1}(\sum \limits _{j = 0} ^{n - 1} a_{j} (\omega _{n} ^{j}) ^{i}(\omega _{n} ^{-k}) ^{i}) \\
+&= \sum \limits _{i = 0} ^{n - 1} \sum \limits _{j = 0} ^{n - 1} a_{j} (\omega _{n} ^{j}) ^{i}(\omega _{n} ^{-k}) ^{i} \\
+&= \sum \limits _{i = 0} ^{n - 1} \sum \limits _{j = 0} ^{n - 1} a_{j} (\omega _{n} ^{j - k}) ^{i} \\
+&= \sum \limits _{j = 0} ^{n - 1} a _{j} (\sum \limits _{i = 0} ^{n - 1} (\omega _{n} ^{j - k}) ^{i})
+\end{aligned}</script><p>设 $S(x) = \sum \limits <em>{i = 0} ^{n - 1} x ^{i}$ ， 将 $\omega </em>{n} ^{k}$ 代入得</p>
+<script type="math/tex; mode=display">
+S(\omega _{n} ^{k}) = 1 + \omega _{n} ^{k} + (\omega _{n} ^{k}) ^{2} + … + (\omega _{n} ^{k}) ^{n - 1}</script><p>当 $k \not = 0$ 时，由等比数列求和公式（虽然 $\omega _{n} ^{k}$ 不为实数）可得</p>
+<script type="math/tex; mode=display">
+S(\omega _{n} ^{k}) = \dfrac{1 - (\omega _{n} ^{k}) ^{n}}{1 - \omega _{n} ^{k}} = \dfrac{1 - 1}{\omega _{n} ^{k} - 1} = 0</script><p>当 $k = 0$ 时，观察可得 $S(\omega _{n} ^{0}) = n$ </p>
+<p>继续考虑刚才的东西： $c <em>{k} = \sum \limits </em>{j = 0} ^{n - 1} a <em>{j} (\sum \limits </em>{i = 0} ^{n - 1} (\omega _{n} ^{j - k}) ^{i})$ </p>
+<p>可以发现当 $j \not = k$ 时，右边的累和式值为 0 ；当 $j = k$ 时，累和式的值为 $n$ </p>
+<p>因此我们有</p>
+<script type="math/tex; mode=display">
+c _{k} = na _{k}</script><p>即</p>
+<script type="math/tex; mode=display">
+a _{k} = \dfrac{c _{k}}{n}</script><p>这样我们就能通过傅里叶变换实现傅里叶逆变换了。</p>
+<hr>
+<h2 id="非递归-FFT"><a href="#非递归-FFT" class="headerlink" title="非递归 FFT"></a>非递归 FFT</h2><p>有上面推出来的东西，我们可以写出递归版的 FFT ，但是递归在很多时候是不够优秀的，于是我们就要用到非递归的 FFT 。</p>
+<p>首先放一张图</p>
+<p><img src="https://i.loli.net/2019/04/07/5ca9f9f81bed5.jpeg" alt=""></p>
+<p>然后大家会发现：每个数最终的下标就是原下标二进制翻转之后的结果，那么我们就可以先把最终的序列弄出来，然后再向上合并</p>
+<h2 id="蝴蝶优化"><a href="#蝴蝶优化" class="headerlink" title="蝴蝶优化"></a>蝴蝶优化</h2><p>由于笔者退役了，所以本部分无限期咕咕咕</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ri register int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> il inline</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> <span class="meta-keyword">elif</span> <span class="meta-keyword">else</span> <span class="meta-keyword">if</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, j, k) for (ri (i) = (j); (i) &lt;= (k); (i)++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dep(i, j, k) for (ri (i) = (j); (i) &gt;= (k); (i)--)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Side(x) for (ri i = head[(x)]; ~i; i = e[i].nxt)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">complex</span> &lt;<span class="keyword">double</span>&gt; cpx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span> + <span class="number">110</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">110</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="built_in">acos</span>(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line"><span class="function">il <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> ch = getchar();</span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch)) &#123;</span><br><span class="line">		<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">		ch = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch)) &#123;</span><br><span class="line">		x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + ch - <span class="string">'0'</span>;</span><br><span class="line">		ch = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x * f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">il T <span class="title">chkmin</span><span class="params">(T a, T b)</span> </span>&#123;<span class="keyword">return</span> a &lt; b ? a : b;&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">il T <span class="title">chkmax</span><span class="params">(T a, T b)</span> </span>&#123;<span class="keyword">return</span> a &gt; b ? a : b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, lim;</span><br><span class="line"><span class="keyword">int</span> r[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function">il <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (n = <span class="number">1</span>; n &lt;= m; n &lt;&lt;= <span class="number">1</span>) lim++;</span><br><span class="line">	rep(i, <span class="number">0</span>, n - <span class="number">1</span>) r[i] = (r[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (lim - <span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">il <span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cpx *a, <span class="keyword">int</span> opt)</span> </span>&#123;</span><br><span class="line">	rep(i, <span class="number">0</span>, n - <span class="number">1</span>) <span class="keyword">if</span> (i &lt; r[i]) swap(a[i], a[r[i]]);</span><br><span class="line">	<span class="keyword">for</span> (ri i = <span class="number">1</span>; i &lt; n; i &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">		cpx W(cos(pi / i), opt * sin(pi / i));</span><br><span class="line">		<span class="keyword">for</span> (ri p = i &lt;&lt; <span class="number">1</span>, j = <span class="number">0</span>; j &lt; n; j += p) &#123;</span><br><span class="line">			<span class="function">cpx <span class="title">w</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">			<span class="keyword">for</span> (ri k = <span class="number">0</span>; k &lt; i; k++, w *= W) &#123;</span><br><span class="line">				cpx x = a[j + k], y = w * a[j + k + i];</span><br><span class="line">				a[j + k] = x + y, a[j + k + i] = x - y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cpx a[maxn], b[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n = read(), m = read();</span><br><span class="line">	rep(i, <span class="number">0</span>, n) a[i] = read();</span><br><span class="line">	rep(i, <span class="number">0</span>, m) b[i] = read();</span><br><span class="line">	m += n;</span><br><span class="line">	init();</span><br><span class="line">	FFT(a, <span class="number">1</span>), FFT(b, <span class="number">1</span>);</span><br><span class="line">	rep(i, <span class="number">0</span>, n - <span class="number">1</span>) a[i] *= b[i];</span><br><span class="line">	FFT(a, <span class="number">-1</span>);</span><br><span class="line">	rep(i, <span class="number">0</span>, m) <span class="built_in">printf</span>(<span class="string">"%d "</span>, (<span class="keyword">int</span>)(a[i].real() / n + <span class="number">0.5</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>虽然早就写的差不多了，不过由于我比较颓，加上省选前的时间都用来打板子了，所以咕到现在才弄出来（虽然几乎都是抄的），然后本来还想再多学一点多项式相关的东西，结果退役了……</p>
+<blockquote>
+<p>本博客<del>大</del>部分借鉴于</p>
+<p><a href="https://www.cnblogs.com/zwfymqz/p/8244902.html" target="_blank" rel="noopener">https://www.cnblogs.com/zwfymqz/p/8244902.html</a></p>
+<p>图也全部都是盗的QwQ</p>
+</blockquote>
 
       
     </div>
@@ -488,7 +598,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/骗分/" rel="tag"><i class="fa fa-tag"></i> 骗分</a>
+            <a href="/tags/数学/" rel="tag"><i class="fa fa-tag"></i> 数学</a>
+          
+            <a href="/tags/FFT/" rel="tag"><i class="fa fa-tag"></i> FFT</a>
           
         </div>
       
@@ -513,8 +625,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/26/Luogu P3936/" rel="next" title="Luogu P3936 Coloring题解">
-                <i class="fa fa-chevron-left"></i> Luogu P3936 Coloring题解
+              <a href="/2019/01/05/NBDC/" rel="next" title="点分治学习笔记">
+                <i class="fa fa-chevron-left"></i> 点分治学习笔记
               </a>
             
           </div>
@@ -523,8 +635,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/02/Kruskal重构树/" rel="prev" title="Kruskal重构树">
-                Kruskal重构树 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/07/AFO/" rel="prev" title="AFO">
+                AFO <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -685,7 +797,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#爬山"><span class="nav-number">1.</span> <span class="nav-text">爬山</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模拟退火"><span class="nav-number">2.</span> <span class="nav-text">模拟退火</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速傅里叶变换（FFT）学习笔记"><span class="nav-number">1.</span> <span class="nav-text">快速傅里叶变换（FFT）学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式"><span class="nav-number">1.2.</span> <span class="nav-text">多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系数表示法"><span class="nav-number">1.2.1.</span> <span class="nav-text">系数表示法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点值表示法"><span class="nav-number">1.2.2.</span> <span class="nav-text">点值表示法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复数"><span class="nav-number">1.3.</span> <span class="nav-text">复数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向量"><span class="nav-number">1.3.1.</span> <span class="nav-text">向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆的弧度制"><span class="nav-number">1.3.2.</span> <span class="nav-text">圆的弧度制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平行四边形定则"><span class="nav-number">1.3.3.</span> <span class="nav-text">平行四边形定则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复数的定义"><span class="nav-number">1.3.4.</span> <span class="nav-text">复数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算法则"><span class="nav-number">1.3.5.</span> <span class="nav-text">运算法则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加法"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">加法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乘法"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">乘法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单位根"><span class="nav-number">1.4.</span> <span class="nav-text">单位根</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性质"><span class="nav-number">1.4.2.</span> <span class="nav-text">性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速傅里叶变换"><span class="nav-number">1.5.</span> <span class="nav-text">快速傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速傅里叶逆变换"><span class="nav-number">1.6.</span> <span class="nav-text">快速傅里叶逆变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非递归-FFT"><span class="nav-number">1.7.</span> <span class="nav-text">非递归 FFT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蝴蝶优化"><span class="nav-number">1.8.</span> <span class="nav-text">蝴蝶优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.9.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">1.10.</span> <span class="nav-text">后记</span></a></li></ol></li></ol></div>
             
 
           </div>
