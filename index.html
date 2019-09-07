@@ -419,7 +419,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  28
+                  45
                 </span>
               
 
@@ -459,6 +459,7 @@
         
           
             <h1 id="博主AFO通知"><a href="#博主AFO通知" class="headerlink" title="博主AFO通知"></a>博主AFO通知</h1><p>由于博主已经退役了，此博客无限期停更</p>
+<p>（假的，实际上偶尔会更新一些文化课笔记）</p>
 <blockquote>
 <p>Wepdekr AFO on 2019.04.07</p>
 </blockquote>
@@ -655,6 +656,228 @@
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/08/Characteristic_Equation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DimensionTripper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1ftl6uu6qd1j30a40a4q95.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DimensionTripper">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/08/Characteristic_Equation/" itemprop="url">特征方程教程</a></h1>
+        
+
+        <div class="post-meta">
+			
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-08T00:00:59+08:00">
+                2019-09-08
+              </time>
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文化课/" itemprop="url" rel="index">
+                    <span itemprop="name">文化课</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/08/Characteristic_Equation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/08/Characteristic_Equation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="特征方程教程"><a href="#特征方程教程" class="headerlink" title="特征方程教程"></a>特征方程教程</h1><p>我们常常会遇到这样的递推式 $a <em>{n} = c </em>{1} a <em>{n - 1} + c </em>{2} a <em>{n - 2}$ ，然而数列 ${a </em>{n}}$ 的通项我们却难以求出</p>
+<p>当然，很多这样的题目其实是可以暴力地列举出来的，但是能不能用数学一点的方法去求出来呢？</p>
+<p>我们当然有这样的科技，它就是接下来要讲的 <strong>特征方程(Characteristic Equation)</strong> 。</p>
+<p>实际上它非常简单易懂，并没有听起来那么复杂。</p>
+<hr>
+<h2 id="找规律"><a href="#找规律" class="headerlink" title="找规律"></a>找规律</h2><p>首先我们来看一个栗子 $a <em>{n+2} = 5a </em>{n + 1} - 6a _{n}$ </p>
+<p>看一眼，令人摸不着头脑？</p>
+<p>那么现在告诉您一件事： $a _{n} = 2 ^{n - 1}$ 这个等比数列满足这个式子</p>
+<p>您可以自己代一下，就会知道这是正确的</p>
+<p>那么问题就来了，等比数列的首项一定得是 $1$ 不可吗？当然不是。</p>
+<p>显然我们可以发现，当 $a <em>{n} = a </em>{1} \times 2 ^{n - 1} \  (a <em>{1} \in R\ 且 a </em>{1} \not = 0)$ 时它都是成立的</p>
+<p>于是我们可以知道： <strong>若等比数列 ${a <em>{n}}$ 满足递推式，则等比数列 ${\lambda a </em>{n}}$ 也满足递推式</strong></p>
+<hr>
+<h2 id="另一个规律"><a href="#另一个规律" class="headerlink" title="另一个规律"></a>另一个规律</h2><p>现在再告诉您另一件事： $a _{n} = 3 ^{n - 1}$ 也满足递推式</p>
+<p>由上一个结论可以知道 $a <em>{n} = a </em>{1} \times 3 ^{n - 1} \  (a <em>{1} \in R\ 且 a </em>{1} \not = 0)$ 也是满足的</p>
+<p>那么很显而易见的一个事实是将两个数列分别乘以任意系数并相加得到的新数列也满足递推式</p>
+<p>那么有： <strong>若等比数列 ${a <em>{n}}$ 与 ${b </em>{n}}$ 均满足递推式，则数列 ${\lambda a <em>{n} + \mu b </em>{n}}$ 也满足这个递推式</strong></p>
+<hr>
+<h2 id="一般性的结论"><a href="#一般性的结论" class="headerlink" title="一般性的结论"></a>一般性的结论</h2><p>我们把二阶递推式拓展到 $k$ 阶，即有 $a <em>{n} = p </em>{1} a <em>{n - 1} + p </em>{2} a <em>{n - 2} + … + p </em>{k} a _{n - k}$ </p>
+<p>移项，并重新整理 ${p <em>{n}}$ 得到 $a {n} + p </em>{1} a <em>{n - 1} + p </em>{2} a <em>{n - 2} + … + p </em>{k} a _{n - k} = 0$ ，这个方程我们称之为 $k$ 阶齐次递推方程</p>
+<p>由上面的结论，我们知道若能找到数列 ${a <em>{n}},{b </em>{n}},{c <em>{n}}…$ 均满足递推式，那么它们的线性组合即 ${\alpha a </em>{n} + \beta b <em>{n} + \gamma c </em>{n} + …}$ 也满足递推式</p>
+<p>我们将 ${a <em>{n}},{b </em>{n}},{c _{n}}…$ 称为 <strong>递推方程的解</strong> </p>
+<p>依据结论，我们知道只要有一组解，我们就可以用它们拼凑出许许多多个合法的序列，而由上面的结论，我们可以知道两个线性有关的解是没有共存价值的，即我们所说的一组解 ${a <em>{n}},{b </em>{n}},{c _{n}}…$ <strong>彼此线性无关</strong> </p>
+<p>此处线性相关的概念与向量基底类似，可类比理解一下。</p>
+<hr>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>对于上面的栗子，我们求出通项公式的关键在于我们知道了两个结论，但是做题的时候出题人并不会告诉我们有哪些数列符合递推式，然而这玩意一眼又看不出来，所以我们需要自己构造</p>
+<p>由上面的栗子，我们显然有一个经验性的结论：构造一个等比数列好像比较靠谱。那么我们不妨设公比为 $q$ </p>
+<p>柿子是 $a <em>{n + 2} = 5 a </em>{n + 1} - 6 a _{n}$ </p>
+<p>则有 $q ^{2} a <em>{n} = 5 q a </em>{n} - 6 a _{n}$ </p>
+<p>由于 $a _{n} \not = 0$ ，则有 $q ^{2} = 5 q - 6$ </p>
+<p>解一元二次方程得 $q <em>{1} = 2, q </em>{2} = 3$ </p>
+<p>因此我们对于这样的递推数列可以用 $q ^{p}$ 来代替 $a _{n + p}$ ，得到的方程即被称为该数列的 <strong>特征方程</strong> </p>
+<p>特征方程的根也就为递推方程的解的等比数列的公比</p>
+<hr>
+<h2 id="并不超纲的应用"><a href="#并不超纲的应用" class="headerlink" title="并不超纲的应用"></a>并不超纲的应用</h2><p>在高中的文化课生活中，我们面对的递推式很难超过二阶，所以我们有不超纲的解决方法。</p>
+<p>首先联想在面对一阶递推方程 $a <em>{n} = m a </em>{n - 1} + n$ 的时候，我们的数学老师教我们：用 <strong>待定系数法</strong> 将方程改写为 $a <em>{n} - t = k(a </em>{n - 1} - t)$ 的形式，然后比较系数就可以得到一个等比数列 ${a _{n} - t}$ </p>
+<p>那么我们面对二阶递推方程 $a <em>{n} = c </em>{1} a <em>{n - 1} + c </em>{2} a <em>{n - 2}$ 的时候也可以类似的变一下形，我们将方程写成 $a </em>{n + 1} + t a <em>{n} = s(a </em>{n} - t a <em>{n - 1})$ 的形式，然后我们有 $s - t = c </em>{1}, st = c <em>{2}$ 然后可以得到一个关于 $s$ 或者 $t$ 的一元二次方程，最终得到的 ${a </em>{n} - t a <em>{n - 1}}$ 是以 $s$ 为公比的等比数列，当然，两组解就对应了两个不同的数列，然后我们如果知道 $a </em>{1}, a <em>{2}$ ，那么我们就可以分别求出两个数列的通项公式，并最终通过消去 $a </em>{n + 1}$ 求出 $a _{n}$ </p>
+<p>这样绝对不超纲（大雾）</p>
+<hr>
+<p>感谢 rxz 的博客 <a href="http://ruanx.pw/post/%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B.html" target="_blank" rel="noopener">特征方程教程</a> </p>
+
+          
         
       
     </div>
@@ -1977,193 +2200,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/20181105/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="DimensionTripper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1ftl6uu6qd1j30a40a4q95.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DimensionTripper">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/05/20181105/" itemprop="url">Streaming#6模拟赛题解</a></h1>
-        
-
-        <div class="post-meta">
-			
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T18:39:59+08:00">
-                2018-11-05
-              </time>
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/模拟赛/" itemprop="url" rel="index">
-                    <span itemprop="name">模拟赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/05/20181105/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/05/20181105/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  1.8k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  9
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fwxc3g3qk2j30xc0irx1b.jpg" alt=""></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/05/20181105/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2218,7 +2254,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2230,7 +2266,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2241,7 +2277,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2312,7 +2348,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">81.1k</span>
+    <span title="Site words total count">82.4k</span>
   
 </div>
 
@@ -2899,6 +2935,6 @@ function showCode()
     document.getElementById(str).style.display='block',this.style.display='none';
 }
 
-  </script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 </html>
